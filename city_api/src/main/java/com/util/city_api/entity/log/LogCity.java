@@ -10,7 +10,7 @@ import javax.persistence.*;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import com.util.city_api.entity.City;
+import com.util.city_api.entity._core.City;
 import com.util.city_api.product_core.enums.EnumLogOperatıons;
 
 import java.time.LocalDateTime;

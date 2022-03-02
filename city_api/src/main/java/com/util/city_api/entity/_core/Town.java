@@ -1,4 +1,4 @@
-package com.util.city_api.entity;
+package com.util.city_api.entity._core;
 
 import java.time.LocalDateTime;
 

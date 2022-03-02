@@ -10,8 +10,8 @@ import org.springframework.context.annotation.Bean;
 
 import com.util.city_api.dao.CityDao;
 import com.util.city_api.dao.TerritoryDao;
-import com.util.city_api.entity.City;
-import com.util.city_api.entity.Territory;
+import com.util.city_api.entity._core.City;
+import com.util.city_api.entity._core.Territory;
 
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;

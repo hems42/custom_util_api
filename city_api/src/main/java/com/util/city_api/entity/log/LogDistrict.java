@@ -1,8 +1,8 @@
 package com.util.city_api.entity.log;
 
 
-import com.util.city_api.entity.City;
-import com.util.city_api.entity.District;
+import com.util.city_api.entity._core.City;
+import com.util.city_api.entity._core.District;
 import com.util.city_api.product_core.enums.EnumLogOperatıons;
 import lombok.AllArgsConstructor;
 import lombok.Data;
