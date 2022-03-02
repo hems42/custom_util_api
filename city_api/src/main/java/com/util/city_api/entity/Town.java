@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,9 +25,10 @@ import lombok.NoArgsConstructor;
 @Table(name = "Towns")
 public class Town {
 	
-	    @Id
-	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    private Long townId;
+		@Id
+	    @GeneratedValue(generator = "UUID")
+	    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+	    private String townId;
 
 	    @ManyToOne(fetch = FetchType.LAZY)
 	    @JoinColumn(name = "DistrictId",referencedColumnName = "districtId")

@@ -2,7 +2,6 @@ package com.util.city_api.entity;
 
 import java.time.LocalDateTime;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,22 +18,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Territories")
-public class Territory {
+@Table(name = "Users")
+public class User {
 	
 	@Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    private String territoryId;
-	
-	@Column(name = "TerritoryName",nullable = false, length = 100,unique = true)
-	private String territoryName;
-	
-	@Column(name = "TerritoryDescription",length = 200)
-    private String territoryDescription;
-	
-    @Column(name = "CreatedDate", updatable = false)
-    private LocalDateTime createdDate;
+    private String userId;
 
-    @Column(name = "UpdatedDate", insertable = false)
-    private LocalDateTime updatedDate; }
+}

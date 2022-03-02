@@ -5,13 +5,13 @@ import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,8 +25,9 @@ import lombok.NoArgsConstructor;
 public class City {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long cityId;
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    private String cityId;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "TerritoryId",nullable = false, referencedColumnName = "territoryId")

@@ -9,7 +9,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import com.util.city_api.dao.CityDao;
+import com.util.city_api.dao.TerritoryDao;
 import com.util.city_api.entity.City;
+import com.util.city_api.entity.Territory;
 
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -24,6 +26,9 @@ public class CityApiApplication implements CommandLineRunner{
 	@Autowired
 	CityDao dao;
 	
+	@Autowired
+	TerritoryDao dao2;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(CityApiApplication.class, args);
 	}
@@ -35,14 +40,16 @@ public class CityApiApplication implements CommandLineRunner{
 		
 		// TODO Auto-generated method stub
 	
-		/*City city;
+	Territory territory =	dao2.save(new Territory(null,"İÇ ANADOLU", "MEMLEKET GÜZEL İNSANI YARAK", LocalDateTime.now(),LocalDateTime.now()));
+		
+		City city;
 		for(int i=0;i<100;i++)
 		{
-			city = new City(null,"KONYA","42",LocalDateTime.now(), LocalDateTime.now());
+			city = new City(null,territory,"KONYA"+i,"42"+i,"42000"+i,"332"+i,"konya güzel memleket yaşanabilir...",LocalDateTime.now(), LocalDateTime.now());
 			
 			dao.save(city);
 		}
-		*/
+		
 	}
 
     @Bean

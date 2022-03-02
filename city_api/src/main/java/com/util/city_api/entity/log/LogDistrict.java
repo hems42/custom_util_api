@@ -9,6 +9,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+
+import org.hibernate.annotations.GenericGenerator;
+
 import java.time.LocalDateTime;
 
 @Data
@@ -18,9 +21,10 @@ import java.time.LocalDateTime;
 @Table(name = "LogDistricts")
 public class LogDistrict {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+	@Id
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    private String logDistrictId;
 
     @Enumerated(EnumType.STRING)
     private EnumLogOperatıons crud;

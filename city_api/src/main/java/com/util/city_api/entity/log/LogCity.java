@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import com.util.city_api.entity.City;
 import com.util.city_api.product_core.enums.EnumLogOperatıons;
 
@@ -20,9 +22,10 @@ import java.time.LocalDateTime;
 @Table(name = "LogCities")
 public class LogCity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+	@Id
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    private String logCityId;
 
     @Enumerated(EnumType.STRING)
     private EnumLogOperatıons crud;

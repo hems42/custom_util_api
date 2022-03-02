@@ -5,6 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+
+import org.hibernate.annotations.GenericGenerator;
+
 import java.time.LocalDateTime;
 
 @Data
@@ -14,9 +17,10 @@ import java.time.LocalDateTime;
 @Table(name = "Districts")
 public class District {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long districtId;
+	@Id
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    private String districtId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CityId",nullable = false, referencedColumnName = "cityId")
