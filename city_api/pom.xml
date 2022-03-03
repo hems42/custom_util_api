@@ -93,12 +93,12 @@
             <scope>runtime</scope>
         </dependency>-->
 
-        <!--mysql 
+        <!--mysql -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.27</version>
-        </dependency>-->
+        </dependency>
 
          <!-- h2 database-->
 		<dependency>

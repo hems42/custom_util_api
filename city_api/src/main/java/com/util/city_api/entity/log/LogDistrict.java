@@ -1,8 +1,8 @@
 package com.util.city_api.entity.log;
 
 
-import com.util.city_api.entity._core.City;
 import com.util.city_api.entity._core.District;
+import com.util.city_api.entity._core.User;
 import com.util.city_api.product_core.enums.EnumLogOperatıons;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,17 +26,19 @@ public class LogDistrict {
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private String logDistrictId;
 
-    @Enumerated(EnumType.STRING)
-    private EnumLogOperatıons crud;
+	@Enumerated(EnumType.STRING)
+    @Column(name = "TypeOfTransaction", nullable = false)
+    private EnumLogOperatıons transactionType;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "DistrictId", nullable = false)
+	private District district;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "CityId", nullable = false)
-    private City city;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "DistrictId", nullable = false)
-    private District district;
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PerformedTransactionBy", nullable = false)
+    private User PerformingTransactionBy;
 
     @Column(name = "CreatedDate", updatable = false)
     private LocalDateTime createdDate;
+
 }

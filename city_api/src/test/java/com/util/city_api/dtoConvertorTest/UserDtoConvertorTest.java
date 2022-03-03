@@ -1,48 +1,66 @@
 package com.util.city_api.dtoConvertorTest;
 
-import org.junit.jupiter.api.BeforeAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import com.util.city_api.baseMockModel.BaseEntityAndDtoTestModel;
+import com.util.city_api.entity._core.User;
+import com.util.city_api.product_core.dto._coreDto.UserDto;
 import com.util.city_api.product_core.dtoConvertor.UserDtoConvertor;
 
 public class UserDtoConvertorTest extends BaseEntityAndDtoTestModel{
 
 	private UserDtoConvertor userDtoConvertor;
+	private User user;
+	private UserDto userDto;
 	
 	@BeforeEach
-	void init()
+	void setup()
 	{
-		System.out.println("önce çalışan");
 		this.userDtoConvertor = Mockito.mock(UserDtoConvertor.class);
+		user = super.getUser();
+		userDto = super.getUserDto();
 	}
 	
     @Test
-    void IfUserconvertedToUserDtoItMustBeSameAllParameter() {
+    void WhenUserConvertedToUserDtoItMustBeSameAllParameterWithUserDto() {
     	
+    	Mockito.when(userDtoConvertor.convert(user)).thenReturn(userDto);
+    	
+    	UserDto userDtoResult = userDtoConvertor.convert(user);
+    	
+    	assertEquals(userDtoResult.getUserId(), user.getUserId());
+    	assertEquals(userDtoResult.getUserName(),user.getUserName());
+    	assertEquals(userDtoResult.getEMail(), user.getEMail());
+    	assertEquals(userDtoResult.getPassword(), user.getPassword());
+    	assertEquals(userDtoResult.getIsActive(), user.getIsActive());
+    	assertEquals(userDtoResult.getIsBlocked(), user.getIsBlocked());
+    	assertEquals(userDtoResult.getIsRegistered(), user.getIsRegistered());
+    	assertEquals(userDtoResult.getRoles(), user.getRoles());
+    	assertEquals(userDtoResult.getCreatedDate(), user.getCreatedDate());
+    	assertEquals(userDtoResult.getUpdatedDate(), user.getUpdatedDate());   	
         
     }
     
     @Test
-    void convert2() {
-    	System.out.println("sonra 2çalışan");
-        
+    void WhenUserDtoConvertedToUserItMustBeSameAllParameterWithUser() {
+    	
+    	Mockito.when(userDtoConvertor.convert(userDto)).thenReturn(user);
+    	
+    	User userResult = userDtoConvertor.convert(userDto);
+    	
+    	assertEquals(userResult.getUserId(), userDto.getUserId());
+    	assertEquals(userResult.getUserName(),userDto.getUserName());
+    	assertEquals(userResult.getEMail(), userDto.getEMail());
+    	assertEquals(userResult.getPassword(), userDto.getPassword());
+    	assertEquals(userResult.getIsActive(), userDto.getIsActive());
+    	assertEquals(userResult.getIsBlocked(), userDto.getIsBlocked());
+    	assertEquals(userResult.getIsRegistered(), userDto.getIsRegistered());
+    	assertEquals(userResult.getRoles(), userDto.getRoles());
+    	assertEquals(userResult.getCreatedDate(), userDto.getCreatedDate());
+    	assertEquals(userResult.getUpdatedDate(), userDto.getUpdatedDate());
+    
     }
-    
-    
-    @Test
-    void convert3() {
-    	System.out.println("sonra 3çalışan");
-        
-    }
-    
-    
-    @Test
-    void convert() {
-    	System.out.println("sonra 4çalışan");
-        
-    }
-
 }
