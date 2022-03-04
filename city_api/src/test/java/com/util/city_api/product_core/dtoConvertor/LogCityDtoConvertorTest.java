@@ -31,9 +31,14 @@ public class LogCityDtoConvertorTest extends BaseEntityAndDtoTestModel{
     	
     	LogCityDto logCityDtoResult = logCityDtoConvertor.convert(logCity);
     	
+    	assertEquals(logCityDtoResult.getLogCityId(), logCity.getLogCityId());
+    	assertEquals(logCityDtoResult.getTransactionType(), logCity.getTransactionType());
+    	assertEquals(logCityDtoResult.getCity(), logCity.getCity());
+    	assertEquals(logCityDtoResult.getPerformingTransactionBy(), logCity.getPerformingTransactionBy());
+    	assertEquals(logCityDtoResult.getCreatedDate(), logCity.getCreatedDate());
+
     }
     	
-    	//assertEquals(logCityDtoResult.getDistrictId(), district.getDistrictId());    }
     
     @Test
     void WhenLogCityDtoConvertedToLogCityThenReturnLogCityThatAllParametersMustBeSameWithLogCityDtoParamaters() {
@@ -42,8 +47,10 @@ public class LogCityDtoConvertorTest extends BaseEntityAndDtoTestModel{
     	
     	LogCity logCityResult = logCityDtoConvertor.convert(logCityDto);
     	
-    	//assertEquals(logCityResult.getDistrictId(), districtDto.getDistrictId());
-    
-   
+    	assertEquals(logCityResult.getLogCityId(), logCityDto.getLogCityId());
+    	assertEquals(logCityResult.getTransactionType(), logCityDto.getTransactionType());
+    	assertEquals(logCityResult.getCity(), logCityDto.getCity());
+    	assertEquals(logCityResult.getPerformingTransactionBy(), logCityDto.getPerformingTransactionBy());
+    	assertEquals(logCityResult.getCreatedDate(), logCityDto.getCreatedDate());
     }
 }

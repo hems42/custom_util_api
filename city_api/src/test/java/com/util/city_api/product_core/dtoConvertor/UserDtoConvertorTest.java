@@ -8,7 +8,6 @@ import org.mockito.Mockito;
 import com.util.city_api.baseMockModel.BaseEntityAndDtoTestModel;
 import com.util.city_api.entity._core.User;
 import com.util.city_api.product_core.dto._coreDto.UserDto;
-import com.util.city_api.product_core.dtoConvertor.UserDtoConvertor;
 
 public class UserDtoConvertorTest extends BaseEntityAndDtoTestModel{
 
@@ -40,8 +39,7 @@ public class UserDtoConvertorTest extends BaseEntityAndDtoTestModel{
     	assertEquals(userDtoResult.getIsRegistered(), user.getIsRegistered());
     	assertEquals(userDtoResult.getRoles(), user.getRoles());
     	assertEquals(userDtoResult.getCreatedDate(), user.getCreatedDate());
-    	assertEquals(userDtoResult.getUpdatedDate(), user.getUpdatedDate());   	
-        
+    	assertEquals(userDtoResult.getUpdatedDate(), user.getUpdatedDate());   	       
     }
     
     @Test
@@ -60,7 +58,6 @@ public class UserDtoConvertorTest extends BaseEntityAndDtoTestModel{
     	assertEquals(userResult.getIsRegistered(), userDto.getIsRegistered());
     	assertEquals(userResult.getRoles(), userDto.getRoles());
     	assertEquals(userResult.getCreatedDate(), userDto.getCreatedDate());
-    	assertEquals(userResult.getUpdatedDate(), userDto.getUpdatedDate());
-    
+    	assertEquals(userResult.getUpdatedDate(), userDto.getUpdatedDate()); 
     }
 }
