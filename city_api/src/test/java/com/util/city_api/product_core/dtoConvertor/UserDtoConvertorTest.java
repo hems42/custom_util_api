@@ -1,4 +1,4 @@
-package com.util.city_api.dtoConvertorTest;
+package com.util.city_api.product_core.dtoConvertor;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
@@ -25,7 +25,7 @@ public class UserDtoConvertorTest extends BaseEntityAndDtoTestModel{
 	}
 	
     @Test
-    void WhenUserConvertedToUserDtoItMustBeSameAllParameterWithUserDto() {
+    void WhenUserConvertedToUserDtoThenReturnUserDtoThatAllParametersMustBeSameWithUserParamaters() {
     	
     	Mockito.when(userDtoConvertor.convert(user)).thenReturn(userDto);
     	
@@ -45,7 +45,7 @@ public class UserDtoConvertorTest extends BaseEntityAndDtoTestModel{
     }
     
     @Test
-    void WhenUserDtoConvertedToUserItMustBeSameAllParameterWithUser() {
+    void WhenUserDtoConvertedToUserThenReturnUserThatAllParametersMustBeSameWithUserDtoParamaters() {
     	
     	Mockito.when(userDtoConvertor.convert(userDto)).thenReturn(user);
     	

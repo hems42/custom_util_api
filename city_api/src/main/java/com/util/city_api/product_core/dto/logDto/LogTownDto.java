@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class logTownDto {
+public class LogTownDto {
 	
 	private String logTownId;
 
