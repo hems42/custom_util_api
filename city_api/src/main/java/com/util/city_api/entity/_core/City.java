@@ -40,7 +40,7 @@ public class City {
     private String plateCode;
 
     @Column(name = "PostCode",nullable = false,length = 15, unique = true)
-    private String posteCode;
+    private String postCode;
 
     @Column(name = "PhonoNumberCode",nullable = false,length = 15, unique = true)
     private String phoneNumberCode;

@@ -21,7 +21,7 @@ public class CityDto {
 
     private String plateCode;
 
-    private String posteCode;
+    private String postCode;
 
     private String phoneNumberCode;
 

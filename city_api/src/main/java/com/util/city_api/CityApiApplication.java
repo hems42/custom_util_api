@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 
 import com.util.city_api.dao.CityDao;
@@ -21,7 +23,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableSwagger2
-public class CityApiApplication implements CommandLineRunner{
+public class CityApiApplication extends SpringBootServletInitializer implements CommandLineRunner{
 
 	@Autowired
 	CityDao dao;
@@ -29,11 +31,17 @@ public class CityApiApplication implements CommandLineRunner{
 	@Autowired
 	TerritoryDao dao2;
 	
+	
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder applicationBuilder)
+	{
+		return applicationBuilder.sources(CityApiApplication.class);
+	}
+	
 	public static void main(String[] args) {
 		SpringApplication.run(CityApiApplication.class, args);
 	}
 
-	@Override
+
 	public void run(String... args) throws Exception {
 		
 	//	dao.findAll().forEach(c -> System.out.println(c.toString()+" gelen şehir bilgisi"));

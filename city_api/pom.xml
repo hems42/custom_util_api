@@ -11,11 +11,12 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
    
-<groupId>com.util</groupId>
-	<artifactId>city_api</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>city_api</name>
-	<description>custom city information api</description>
+    	<groupId>com.util</groupId>
+		<artifactId>city_api</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<name>city_api</name>
+		<description>custom city information api</description>
+	    <packaging>war</packaging>
 
 
     <properties>
@@ -53,6 +54,22 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
+
+
+		  <!--spring-boot-war-api-deploy -->
+		        <dependency>
+		            <groupId>org.springframework.boot</groupId>
+		            <artifactId>spring-boot-starter-tomcat</artifactId>
+		            <scope>provided</scope>
+		        </dependency>
+
+                <dependency>
+		            <groupId>org.apache.tomcat.embed</groupId>
+		            <artifactId>tomcat-embed-jasper</artifactId>
+		            <scope>provided</scope>
+		        </dependency>
+
+
 
         <!--spring-boot-starter-test -->
         <dependency>
