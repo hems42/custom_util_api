@@ -37,8 +37,7 @@ public class LogCityDtoConvertorTest extends BaseEntityAndDtoTestModel{
     	assertEquals(logCityDtoResult.getPerformingTransactionBy(), logCity.getPerformingTransactionBy());
     	assertEquals(logCityDtoResult.getCreatedDate(), logCity.getCreatedDate());
 
-    }
-    	
+    }   	
     
     @Test
     void WhenLogCityDtoConvertedToLogCityThenReturnLogCityThatAllParametersMustBeSameWithLogCityDtoParamaters() {
