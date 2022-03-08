@@ -286,4 +286,45 @@ public class BaseEntityAndDtoTestModel {
 			   );
    }
 
+   public LogUser getLogUser() {
+	   
+	   return new LogUser(
+			   null,
+			   CREATED,
+			   getUser(),
+			   getUser(),
+			   getTime()
+			   );
+	   }
+   
+   public LogUserDto getLogUserDto()
+   {
+	   return new LogUserDto(
+			   null,
+			   CREATED,
+			   getUser(),
+			   getUser(),
+			   getTime()
+			   );
    }
+
+   public LogRole getLogRole()
+   {
+	   return new LogRole(
+			   null,
+			   CREATED,
+			   getRole(),
+			   getUser(),
+			   getTime());
+   }
+   
+   public LogRoleDto getLogRoleDto()
+   {
+	    return new LogRoleDto(
+	    		   null,
+				   CREATED,
+				   getRole(),
+				   getUser(),
+				   getTime());
+   }
+}

@@ -1,6 +1,7 @@
 package com.util.city_api.product_core.dtoConvertor;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import com.util.city_api.baseMockModel.BaseEntityAndDtoTestModel;
@@ -14,11 +15,16 @@ public class TerritoryDtoConvertorTest extends BaseEntityAndDtoTestModel{
 	private TerritoryDto territoryDto;
 	
 	@BeforeEach
-	void setup()
-	{
+	void setup() {
 		this.territoryDtoConvertor = Mockito.mock(TerritoryDtoConvertor.class);
 		territory = super.getTerritory();
 		territoryDto = super.getTerritoryDto();
 	}
 	
+	  @Test
+		void WhenTerritoryConvertedToTerritoryDtoThenReturnTerritoryDtoThatAllParametersMustBeSameWithTerritoryParamaters() {}
+		
+		 @Test
+		void WhenTerritoryDtoConvertedToTerritoryThenReturnTerritoryThatAllParametersMustBeSameWithTerritoryDtoParamaters() {}
+	 
 }
