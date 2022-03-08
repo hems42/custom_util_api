@@ -9,13 +9,28 @@ import com.util.city_api.product_core.dto._coreDto.DistrictDto;
 public class DistrictDtoConvertor  {
 
 	public District convert(DistrictDto from) {
-		// TODO Auto-generated method stub
-		return null;
+		return new District(
+				from.getDistrictId(),
+				from.getCity(),
+				from.getDistrictName(),
+				from.getPostCode(),
+				from.getDistrictDescription(),
+                from.getCreatedDate() == null ? null : from.getCreatedDate(),
+                from.getUpdatedDate() == null ? null : from.getUpdatedDate()
+				);
 	}
 
 	public DistrictDto convert(District from) {
-		// TODO Auto-generated method stub
-		return null;
+		return new DistrictDto(
+				from.getDistrictId(),
+				from.getCity(),
+				from.getDistrictName(),
+				from.getPostCode(),
+				from.getDistrictDescription(),
+                from.getCreatedDate() == null ? null : from.getCreatedDate(),
+                from.getUpdatedDate() == null ? null : from.getUpdatedDate()
+				
+				);
 	}
 
 }

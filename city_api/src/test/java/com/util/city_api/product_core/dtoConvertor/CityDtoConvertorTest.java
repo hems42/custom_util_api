@@ -28,26 +28,3 @@ public class CityDtoConvertorTest extends BaseEntityAndDtoTestModel{
 	@Test
     void WhenCityDtoConvertedToCityThenReturnCityThatAllParametersMustBeSameWithCityDtoParamaters() {}
 }
-
-/*
-
- 
- 	private ?DtoConvertor ?DtoConvertor;
-	private ? ?;
-	private ?Dto ?Dto;
-	
-	@BeforeEach
-	void setup()
-	{
-		this.?DtoConvertor = Mockito.mock(?DtoConvertor.class);
-		? = super.get
-		?Dto = super.get
-	}
- 
-    @Test
-	void When?ConvertedTo?DtoThenReturn?DtoThatAllParametersMustBeSameWith?Paramaters() {}
-	
-	  @Test
-    void When?DtoConvertedTo?ThenReturn?ThatAllParametersMustBeSameWith?DtoParamaters() {}
- 
- */

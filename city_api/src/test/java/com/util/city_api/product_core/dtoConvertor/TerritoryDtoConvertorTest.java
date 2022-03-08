@@ -21,10 +21,10 @@ public class TerritoryDtoConvertorTest extends BaseEntityAndDtoTestModel{
 		territoryDto = super.getTerritoryDto();
 	}
 	
-	  @Test
-		void WhenTerritoryConvertedToTerritoryDtoThenReturnTerritoryDtoThatAllParametersMustBeSameWithTerritoryParamaters() {}
+	@Test
+	void WhenTerritoryConvertedToTerritoryDtoThenReturnTerritoryDtoThatAllParametersMustBeSameWithTerritoryParamaters() {}
 		
-		 @Test
-		void WhenTerritoryDtoConvertedToTerritoryThenReturnTerritoryThatAllParametersMustBeSameWithTerritoryDtoParamaters() {}
+	@Test
+	void WhenTerritoryDtoConvertedToTerritoryThenReturnTerritoryThatAllParametersMustBeSameWithTerritoryDtoParamaters() {}
 	 
 }
