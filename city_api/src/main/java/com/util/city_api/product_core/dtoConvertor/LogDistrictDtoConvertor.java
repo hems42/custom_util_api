@@ -9,13 +9,23 @@ import com.util.city_api.product_core.dto.logDto.LogDistrictDto;
 public class LogDistrictDtoConvertor {
 
 	public LogDistrict convert(LogDistrictDto from) {
-		// TODO Auto-generated method stub
-		return null;
+		return new LogDistrict(
+				from.getLogDistrictId(),
+				from.getTransactionType(),
+				from.getDistrict(),
+				from.getPerformingTransactionBy(),
+				from.getCreatedDate() == null ? null : from.getCreatedDate()
+				);
 	}
 
 	public LogDistrictDto convert(LogDistrict from) {
-		// TODO Auto-generated method stub
-		return null;
+		return new LogDistrictDto(
+				from.getLogDistrictId(),
+				from.getTransactionType(),
+				from.getDistrict(),
+				from.getPerformingTransactionBy(),
+				from.getCreatedDate() == null ? null : from.getCreatedDate()
+				);
 	}
 
 }

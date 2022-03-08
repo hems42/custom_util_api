@@ -9,13 +9,23 @@ import com.util.city_api.product_core.dto.logDto.LogRoleDto;
 public class LogRoleDtoConvertor {
 
 	public LogRole convert(LogRoleDto from) {
-		// TODO Auto-generated method stub
-		return null;
+		return new LogRole(
+				from.getLogRoleId(),
+				from.getTransactionType(),
+				from.getRole(),
+				from.getPerformingTransactionBy(),
+				from.getCreatedDate() == null ? null : from.getCreatedDate()
+				);
 	}
 
 	public LogRoleDto convert(LogRole from) {
-		// TODO Auto-generated method stub
-		return null;
+		return new LogRoleDto(
+				from.getLogRoleId(),
+				from.getTransactionType(),
+				from.getRole(),
+				from.getPerformingTransactionBy(),
+				from.getCreatedDate() == null ? null : from.getCreatedDate()
+				);
 	}
 
 }

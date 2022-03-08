@@ -9,13 +9,24 @@ import com.util.city_api.product_core.dto.logDto.LogCityDto;
 public class LogCityDtoConvertor {
 
 	public LogCity convert(LogCityDto from) {
-		// TODO Auto-generated method stub
-		return null;
+		return new LogCity(
+				from.getLogCityId(),
+				from.getTransactionType(),
+				from.getCity(),
+				from.getPerformingTransactionBy(),
+				from.getCreatedDate() == null ? null : from.getCreatedDate()
+				);
 	}
 
 	public LogCityDto convert(LogCity from) {
-		// TODO Auto-generated method stub
-		return null;
+		return new LogCityDto(
+				from.getLogCityId(),
+				from.getTransactionType(),
+				from.getCity(),
+				from.getPerformingTransactionBy(),
+				from.getCreatedDate() == null ? null : from.getCreatedDate()
+				
+				);
 	}
 
 }
