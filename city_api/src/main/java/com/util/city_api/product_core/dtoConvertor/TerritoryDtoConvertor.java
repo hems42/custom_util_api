@@ -9,13 +9,23 @@ import com.util.city_api.product_core.dto._coreDto.TerritoryDto;
 public class TerritoryDtoConvertor {
 
 	public Territory convert(TerritoryDto from) {
-		// TODO Auto-generated method stub
-		return null;
+		return new Territory(
+				from.getTerritoryId(),
+				from.getTerritoryName(),
+				from.getTerritoryDescription(),
+		        from.getCreatedDate() == null ? null : from.getCreatedDate(),
+		        from.getUpdatedDate() == null ? null : from.getUpdatedDate()
+		        );
 	}
 
 	public TerritoryDto convert(Territory from) {
-		// TODO Auto-generated method stub
-		return null;
+		return new TerritoryDto(
+				from.getTerritoryId(),
+				from.getTerritoryName(),
+				from.getTerritoryDescription(),
+		        from.getCreatedDate() == null ? null : from.getCreatedDate(),
+		        from.getUpdatedDate() == null ? null : from.getUpdatedDate()		      
+				);
 	}
 
 }

@@ -9,13 +9,23 @@ import com.util.city_api.product_core.dto._coreDto.RoleDto;
 public class RoleDtoConvertor {
 
 	public Role convert(RoleDto from) {
-		// TODO Auto-generated method stub
-		return null;
+		return new Role(
+				from.getRoleId(),
+				from.getRoleName(),
+				from.getRoleDescription(),
+	            from.getCreatedDate() == null ? null : from.getCreatedDate(),
+	            from.getUpdatedDate() == null ? null : from.getUpdatedDate()       
+				);
 	}
 
 	public RoleDto convert(Role from) {
-		// TODO Auto-generated method stub
-		return null;
+		return new RoleDto(
+				from.getRoleId(),
+				from.getRoleName(),
+				from.getRoleDescription(),
+	            from.getCreatedDate() == null ? null : from.getCreatedDate(),
+	            from.getUpdatedDate() == null ? null : from.getUpdatedDate()
+				);
 	}
 
 }

@@ -39,4 +39,6 @@ public class UserDtoConvertor {
                 from.getUpdatedDate() == null ? null : from.getUpdatedDate()
 
         );
-    } }
+    } 
+    
+}

@@ -9,13 +9,25 @@ import com.util.city_api.product_core.dto._coreDto.TownDto;
 public class TownDtoConvertor {
 
 	public Town convert(TownDto from) {
-		// TODO Auto-generated method stub
-		return null;
+		return new Town(
+				from.getTownId(),
+				from.getDistrict(),
+				from.getTownName(),
+				from.getTownDescription(),
+				from.getCreatedDate() == null ? null : from.getCreatedDate(),
+			    from.getUpdatedDate() == null ? null : from.getUpdatedDate()
+				);
 	}
 
 	public TownDto convert(Town from) {
-		// TODO Auto-generated method stub
-		return null;
+		return new TownDto(
+				from.getTownId(),
+				from.getDistrict(),
+				from.getTownName(),
+				from.getTownDescription(),
+				from.getCreatedDate() == null ? null : from.getCreatedDate(),
+			    from.getUpdatedDate() == null ? null : from.getUpdatedDate()
+				);
 	}
 
 }
