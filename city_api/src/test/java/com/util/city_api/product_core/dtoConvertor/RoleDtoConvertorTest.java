@@ -1,5 +1,7 @@
 package com.util.city_api.product_core.dtoConvertor;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -23,9 +25,31 @@ public class RoleDtoConvertorTest extends BaseEntityAndDtoTestModel{
 	}
  
     @Test
-	void WhenRoleConvertedToRoleDtoThenReturnRoleDtoThatAllParametersMustBeSameWithRoleParamaters() {}
+	void WhenRoleConvertedToRoleDtoThenReturnRoleDtoThatAllParametersMustBeSameWithRoleParamaters() {
+    	
+    	Mockito.when(roleDtoConvertor.convert(role)).thenReturn(roleDto);
+    	
+    	RoleDto roleDtoResult = roleDtoConvertor.convert(role);
+    	
+    	assertEquals(roleDtoResult.getRoleId(), role.getRoleId());
+    	assertEquals(roleDtoResult.getRoleName(), role.getRoleName());
+    	assertEquals(roleDtoResult.getRoleDescription(), role.getRoleDescription());
+    	assertEquals(roleDtoResult.getCreatedDate(), role.getCreatedDate());
+    	assertEquals(roleDtoResult.getUpdatedDate(), role.getUpdatedDate());
+    }
 	
 	  @Test
-    void WhenRoleDtoConvertedToRoleThenReturnRoleThatAllParametersMustBeSameWithRoleDtoParamaters() {}
+    void WhenRoleDtoConvertedToRoleThenReturnRoleThatAllParametersMustBeSameWithRoleDtoParamaters() {
+		  
+			Mockito.when(roleDtoConvertor.convert(roleDto)).thenReturn(role);
+	    	
+	    	Role roleResult = roleDtoConvertor.convert(roleDto);
+	    	
+	    	assertEquals(roleResult.getRoleId(), roleDto.getRoleId());
+	    	assertEquals(roleResult.getRoleName(), roleDto.getRoleName());
+	    	assertEquals(roleResult.getRoleDescription(), roleDto.getRoleDescription());
+	    	assertEquals(roleResult.getCreatedDate(), roleDto.getCreatedDate());
+	    	assertEquals(roleResult.getUpdatedDate(), roleDto.getUpdatedDate());		  
+	  }
  
 }

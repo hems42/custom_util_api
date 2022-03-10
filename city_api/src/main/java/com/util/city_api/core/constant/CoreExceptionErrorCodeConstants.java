@@ -3,10 +3,13 @@ package com.util.city_api.core.constant;
 public class CoreExceptionErrorCodeConstants {
 
     /*
-     
-     
+    
+    
     CUSTOM EXCEPTION CODES:
     
+      //******************************************************************
+    
+    Error_MainGroupCodeList :
     
     - NOT : 4000
     - ALREADY : 3000
@@ -15,17 +18,17 @@ public class CoreExceptionErrorCodeConstants {
     
     
     
-    //*****************************************************************
+     //*****************************************************************
     
+    Error_SubGroupCodeList :
     
-     
      - FOUND : 400
      - VALID : 200
      - SUCCESS : 500
      - ACCEPT : 600
      - EXIST : 100
      - AUTHORIZE : 700
-    
+     
     
     */
 

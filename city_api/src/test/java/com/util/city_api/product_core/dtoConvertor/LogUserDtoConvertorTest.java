@@ -1,5 +1,7 @@
 package com.util.city_api.product_core.dtoConvertor;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -23,9 +25,31 @@ public class LogUserDtoConvertorTest extends BaseEntityAndDtoTestModel{
 	}
  
     @Test
-	void WhenLogUserConvertedToLogUserDtoThenReturnLogUserDtoThatAllParametersMustBeSameWitLogUserParamaters() {}
+	void WhenLogUserConvertedToLogUserDtoThenReturnLogUserDtoThatAllParametersMustBeSameWitLogUserParamaters() {
+    	
+    	Mockito.when(logUserDtoConvertor.convert(logUser)).thenReturn(logUserDto);
+    	
+    	LogUserDto logUserDtoResult = logUserDtoConvertor.convert(logUser);
+    	
+    	assertEquals(logUserDtoResult.getLogUserId(), logUser.getLogUserId());
+    	assertEquals(logUserDtoResult.getTransactionType(), logUser.getTransactionType());
+    	assertEquals(logUserDtoResult.getUser(), logUser.getUser());
+    	assertEquals(logUserDtoResult.getPerformingTransactionBy(), logUser.getPerformingTransactionBy());
+    	assertEquals(logUserDtoResult.getCreatedDate(), logUser.getCreatedDate());
+    }
 	
 	  @Test
-    void WhenLogUserDtoConvertedToLogUserThenReturnLogUserThatAllParametersMustBeSameWithLogUserDtoParamaters() {}
+    void WhenLogUserDtoConvertedToLogUserThenReturnLogUserThatAllParametersMustBeSameWithLogUserDtoParamaters() {
+		  
+		  Mockito.when(logUserDtoConvertor.convert(logUserDto)).thenReturn(logUser);
+	    	
+	      LogUser logUserResult = logUserDtoConvertor.convert(logUserDto);
+	    	
+	      assertEquals(logUserResult.getLogUserId(), logUserDto.getLogUserId());
+	      assertEquals(logUserResult.getTransactionType(), logUserDto.getTransactionType());
+	      assertEquals(logUserResult.getUser(), logUserDto.getUser());
+	      assertEquals(logUserResult.getPerformingTransactionBy(), logUserDto.getPerformingTransactionBy());
+	      assertEquals(logUserResult.getCreatedDate(), logUserDto.getCreatedDate());
+	  }
 	
 }

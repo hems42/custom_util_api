@@ -8,6 +8,9 @@ public enum CoreEnumExceptionMessages {
      
     CUSTOM EXCEPTION CODES:
     
+      //******************************************************************
+    
+    Error_MainGroupCodeList :
     
     - NOT : 4000
     - ALREADY : 3000
@@ -16,7 +19,10 @@ public enum CoreEnumExceptionMessages {
     
     
     
-    //*****************************************************************
+     //*****************************************************************
+    
+    Error_SubGroupCodeList :
+    
      - FOUND : 400
      - VALID : 200
      - SUCCESS : 500
@@ -27,7 +33,8 @@ public enum CoreEnumExceptionMessages {
      
      
      //******************************************************************
-    SubErrorCodeList :
+    
+    Error_EntityCodeList :
     
     USER : 5000
     ROLE : 5100
@@ -39,7 +46,13 @@ public enum CoreEnumExceptionMessages {
     LOGIN : 5700
     ACCESS TOKEN : 5800
      
+    
      
+     
+      //******************************************************************
+    
+    Error_EventCodeList :
+    
      
      */
 

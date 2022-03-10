@@ -22,7 +22,7 @@ public class BaseExceptionModel extends RuntimeException {
 	                              String baseErrorCode,
 	                              String errorDescription,
 	                              HttpStatus baseStatusCode) {
-	        super(errorDescription);
+	        super(errorDescription); 
 	        this.coreEnumExceptionMessages = coreEnumExceptionMessages;
 	        errorCode = coreEnumExceptionMessages.getExceptionCode();
 	        errorMessage = coreEnumExceptionMessages.getExceptionMessage();

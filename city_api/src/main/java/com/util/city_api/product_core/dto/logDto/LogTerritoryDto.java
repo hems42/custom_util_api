@@ -19,7 +19,7 @@ public class LogTerritoryDto {
 
     private EnumLogOperatıons transactionType;
 
-    private Territory terrritory;
+    private Territory territory;
 
     private User PerformingTransactionBy;
 

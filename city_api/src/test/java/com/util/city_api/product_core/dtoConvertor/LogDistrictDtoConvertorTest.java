@@ -1,5 +1,7 @@
 package com.util.city_api.product_core.dtoConvertor;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -23,10 +25,35 @@ public class LogDistrictDtoConvertorTest extends BaseEntityAndDtoTestModel{
 	}
  
     @Test
-	void WhenLogDistrictConvertedToLogDistrictDtoThenReturnLogDistrictDtoThatAllParametersMustBeSameWithLogDistrictParamaters() {}
+	void WhenLogDistrictConvertedToLogDistrictDtoThenReturnLogDistrictDtoThatAllParametersMustBeSameWithLogDistrictParamaters() {
+    	
+    	Mockito.when(logDistrictDtoConvertor.convert(logDistrict)).thenReturn(logDistrictDto);
+    	
+    	LogDistrictDto logDistrictDtoResult = logDistrictDtoConvertor.convert(logDistrict);
+    	
+    	assertEquals(logDistrictDtoResult.getLogDistrictId(), logDistrict.getLogDistrictId());
+    	assertEquals(logDistrictDtoResult.getTransactionType(), logDistrict.getTransactionType());
+    	assertEquals(logDistrictDtoResult.getDistrict(), logDistrict.getDistrict());
+    	assertEquals(logDistrictDtoResult.getPerformingTransactionBy(), logDistrict.getPerformingTransactionBy());
+    	assertEquals(logDistrictDtoResult.getCreatedDate(), logDistrict.getCreatedDate());
+    	
+    }
 	
 	  @Test
-    void WhenLogDistrictDtoConvertedToLogDistrictThenReturnLogDistrictThatAllParametersMustBeSameWithLogDistrictDtoParamaters() {}
+    void WhenLogDistrictDtoConvertedToLogDistrictThenReturnLogDistrictThatAllParametersMustBeSameWithLogDistrictDtoParamaters() {
+		  
+		  Mockito.when(logDistrictDtoConvertor.convert(logDistrictDto)).thenReturn(logDistrict);
+	    	
+	    	LogDistrict logDistrictResult = logDistrictDtoConvertor.convert(logDistrictDto);
+	    	
+	    	assertEquals(logDistrictResult.getLogDistrictId(), logDistrictDto.getLogDistrictId());
+	    	assertEquals(logDistrictResult.getTransactionType(), logDistrictDto.getTransactionType());
+	    	assertEquals(logDistrictResult.getDistrict(), logDistrictDto.getDistrict());
+	    	assertEquals(logDistrictResult.getPerformingTransactionBy(), logDistrictDto.getPerformingTransactionBy());
+	    	assertEquals(logDistrictResult.getCreatedDate(), logDistrictDto.getCreatedDate());
+		  
+	  }
 
+	  
 
 }

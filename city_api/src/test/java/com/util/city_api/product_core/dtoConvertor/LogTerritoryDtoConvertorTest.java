@@ -1,5 +1,7 @@
 package com.util.city_api.product_core.dtoConvertor;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -23,8 +25,31 @@ public class LogTerritoryDtoConvertorTest extends BaseEntityAndDtoTestModel{
 	}
  
     @Test
-	void WhenLogTerritoryConvertedToLogTerritoryDtoThenReturnLogTerritoryDtoThatAllParametersMustBeSameWithLogTerritoryParamaters() {}
+	void WhenLogTerritoryConvertedToLogTerritoryDtoThenReturnLogTerritoryDtoThatAllParametersMustBeSameWithLogTerritoryParamaters() {
+    	
+    	Mockito.when(logTerritoryDtoConvertor.convert(logTerritory)).thenReturn(logTerritoryDto);
+    	
+    	LogTerritoryDto logTerritoryDtoResult = logTerritoryDtoConvertor.convert(logTerritory);
+    	
+    	assertEquals(logTerritoryDtoResult.getLogTerritoryId(), logTerritory.getLogTerritoryId());
+    	assertEquals(logTerritoryDtoResult.getTransactionType(), logTerritory.getTransactionType());
+    	assertEquals(logTerritoryDtoResult.getTerritory(), logTerritory.getTerritory());
+    	assertEquals(logTerritoryDtoResult.getPerformingTransactionBy(), logTerritory.getPerformingTransactionBy());
+    	assertEquals(logTerritoryDtoResult.getCreatedDate(), logTerritory.getCreatedDate());
+    }
 	
    @Test
-    void WhenLogTerritoryDtoConvertedToLogTerritoryThenReturnLogTerritoryThatAllParametersMustBeSameWithLogTerritoryDtoParamaters() {}
+    void WhenLogTerritoryDtoConvertedToLogTerritoryThenReturnLogTerritoryThatAllParametersMustBeSameWithLogTerritoryDtoParamaters() {
+	   
+	   Mockito.when(logTerritoryDtoConvertor.convert(logTerritoryDto)).thenReturn(logTerritory);
+   	
+   	   LogTerritory logTerritoryResult = logTerritoryDtoConvertor.convert(logTerritoryDto);
+   	
+   	   assertEquals(logTerritoryResult.getLogTerritoryId(), logTerritoryDto.getLogTerritoryId());
+   	   assertEquals(logTerritoryResult.getTransactionType(), logTerritoryDto.getTransactionType());
+   	   assertEquals(logTerritoryResult.getTerritory(), logTerritoryDto.getTerritory());
+   	   assertEquals(logTerritoryResult.getPerformingTransactionBy(), logTerritoryDto.getPerformingTransactionBy());
+   	   assertEquals(logTerritoryResult.getCreatedDate(), logTerritoryDto.getCreatedDate());
+
+   }
 }

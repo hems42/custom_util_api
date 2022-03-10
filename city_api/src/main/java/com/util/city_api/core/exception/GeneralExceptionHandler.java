@@ -29,7 +29,7 @@ public class GeneralExceptionHandler extends ResponseEntityExceptionHandler {
 	            final String fieldName = ((FieldError) error).getField();
 	            final String errorMessage = error.getDefaultMessage();
 	            errors.put(fieldName, errorMessage);
-	        });
+	        }); 
 
 	        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
 	    }

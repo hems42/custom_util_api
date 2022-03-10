@@ -12,7 +12,7 @@ public class LogTerritoryDtoConvertor {
 		return new LogTerritory(
 				from.getLogTerritoryId(),
 				from.getTransactionType(),
-				from.getTerrritory(),
+				from.getTerritory(),
 				from.getPerformingTransactionBy(),
 				from.getCreatedDate() == null ? null : from.getCreatedDate()
 				);
