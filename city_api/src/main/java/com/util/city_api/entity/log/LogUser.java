@@ -16,7 +16,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
 import com.util.city_api.entity._core.User;
-import com.util.city_api.product_core.enums.EnumLogOperatıons;
+import com.util.city_api.product_core.enums.EnumLogOperations;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -36,7 +36,7 @@ public class LogUser {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "TypeOfTransaction", nullable = false)
-    private EnumLogOperatıons transactionType;
+    private EnumLogOperations transactionType;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "UserId", nullable = false)

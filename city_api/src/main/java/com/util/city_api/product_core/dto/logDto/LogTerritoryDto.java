@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 import com.util.city_api.entity._core.Territory;
 import com.util.city_api.entity._core.User;
-import com.util.city_api.product_core.enums.EnumLogOperatıons;
+import com.util.city_api.product_core.enums.EnumLogOperations;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,7 +17,7 @@ public class LogTerritoryDto {
 	
 	private String logTerritoryId;
 
-    private EnumLogOperatıons transactionType;
+    private EnumLogOperations transactionType;
 
     private Territory territory;
 

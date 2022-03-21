@@ -3,7 +3,7 @@ package com.util.city_api.product_core.dto.logDto;
 import java.time.LocalDateTime;
 
 import com.util.city_api.entity._core.User;
-import com.util.city_api.product_core.enums.EnumLogOperatıons;
+import com.util.city_api.product_core.enums.EnumLogOperations;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,7 +16,7 @@ public class LogUserDto {
 	
 	private String logUserId;
 
-    private EnumLogOperatıons transactionType;
+    private EnumLogOperations transactionType;
 
     private User user;
 

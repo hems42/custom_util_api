@@ -16,7 +16,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 		<name>city_api</name>
 		<description>custom city information api</description>
-	    <packaging>war</packaging>
+	    <packaging>jar</packaging>
 
 
     <properties>

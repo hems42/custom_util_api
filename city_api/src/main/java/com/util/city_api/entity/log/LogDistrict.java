@@ -3,7 +3,7 @@ package com.util.city_api.entity.log;
 
 import com.util.city_api.entity._core.District;
 import com.util.city_api.entity._core.User;
-import com.util.city_api.product_core.enums.EnumLogOperatıons;
+import com.util.city_api.product_core.enums.EnumLogOperations;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,7 +28,7 @@ public class LogDistrict {
 
 	@Enumerated(EnumType.STRING)
     @Column(name = "TypeOfTransaction", nullable = false)
-    private EnumLogOperatıons transactionType;
+    private EnumLogOperations transactionType;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "DistrictId", nullable = false)

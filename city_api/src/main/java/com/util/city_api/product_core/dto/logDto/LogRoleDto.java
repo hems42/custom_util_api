@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 import com.util.city_api.entity._core.Role;
 import com.util.city_api.entity._core.User;
-import com.util.city_api.product_core.enums.EnumLogOperatıons;
+import com.util.city_api.product_core.enums.EnumLogOperations;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,7 +17,7 @@ public class LogRoleDto {
 	
 	private String logRoleId;
 
-    private EnumLogOperatıons transactionType;
+    private EnumLogOperations transactionType;
 
     private Role role;
 

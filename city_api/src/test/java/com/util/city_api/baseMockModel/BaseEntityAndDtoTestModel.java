@@ -8,7 +8,7 @@ import com.util.city_api.entity.log.*;
 import com.util.city_api.product_core.dto._coreDto.*;
 import com.util.city_api.product_core.dto.logDto.*;
 
-import static com.util.city_api.product_core.enums.EnumLogOperatıons.*;
+import static com.util.city_api.product_core.enums.EnumLogOperations.*;
 
 public class BaseEntityAndDtoTestModel {
 

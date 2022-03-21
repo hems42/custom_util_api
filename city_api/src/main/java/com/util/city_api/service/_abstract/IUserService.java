@@ -13,6 +13,7 @@ public interface IUserService {
 	// create
 	UserDto createUser(UserCreateRequest createRequest);
 	
+	//----------
 	
 	// select	
 	UserDto getUserById(String userId);
@@ -32,25 +33,63 @@ public interface IUserService {
 	List<UserDto> getAllUsersByRoleType(RoleTypes roleType);
 		
 	
+	//----------
 	
 	// update
 	UserDto updateUser(UserUpdateRequest updateRequest);
 	
+	UserDto updateUserName(String userName);
+	
+	UserDto updatePassword(String password);
+	
+	UserDto updateUserIsActive(Boolean isActive);
+	
+	UserDto updateUserIsBlocked(Boolean isBlocked);
+	
+	UserDto updateUserIsRegistered(Boolean isRegistered);
 	
 	
-	
+	//----------
 	
 	//delete
 	Boolean deleteUser(User user);
 
 	Boolean deleteUserById(String userId);
+	
+	Boolean deleteUserByEmail(String email);
+	
 
+	//----------
 
-
-	// isExist
+	// isCheck
+	Boolean isExistUserById(String userId);
+	
+	Boolean isExistUserByUserName(String userName);
+	
+	Boolean isExistUserByEmail(String email);
+	
+	Boolean isRegisteredUser(User user);
+	
+	Boolean isActiveUser(User user);
+	
+	Boolean isBlockedUser(User user);
+	
+	//----------
 	
 	//count
+	Integer getCountAllUsers();
 	
+	Integer getCountUserByIsActive(Boolean isActive);
+	
+	Integer getCountUserByIsRegistered(Boolean isRegistered);
+	
+	Integer getCountUserByIsBlocked(Boolean isBlocked);
+	
+	Integer getCountUserByHasRoleType(RoleTypes roleType);
+	
+	
+	
+	//----------
 	
 	
 }

@@ -12,7 +12,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import com.util.city_api.entity._core.City;
 import com.util.city_api.entity._core.User;
-import com.util.city_api.product_core.enums.EnumLogOperatıons;
+import com.util.city_api.product_core.enums.EnumLogOperations;
 
 import java.time.LocalDateTime;
 
@@ -30,7 +30,7 @@ public class LogCity {
 
 	@Enumerated(EnumType.STRING)
     @Column(name = "TypeOfTransaction", nullable = false)
-    private EnumLogOperatıons transactionType;
+    private EnumLogOperations transactionType;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CityId", nullable = false)
