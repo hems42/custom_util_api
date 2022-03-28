@@ -1,10 +1,15 @@
 package com.util.city_api.service.concrete;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Service;
 
+import com.util.city_api.core.constant.CoreEnumExceptionMessages;
+import com.util.city_api.core.exception.exceptionModels.NotFoundException;
 import com.util.city_api.dao.UserDao;
 import com.util.city_api.entity._core.User;
 import com.util.city_api.product_core.dto._coreDto.UserDto;
@@ -16,6 +21,8 @@ import com.util.city_api.service._abstract.ILogUserService;
 import com.util.city_api.service._abstract.IUserService;
 
 import static com.util.city_api.product_core.enums.EnumLogOperations.*; 
+
+@Service
 public class UserService implements IUserService{
 	
 	private final UserDao userRepository;
@@ -70,44 +77,37 @@ public class UserService implements IUserService{
 	
 	@Override
 	public UserDto getUserById(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+		return userDtoConvertor.convert(userRepository.getById(userId));
 	}
 
 	@Override
 	public UserDto getUserByUserName(String userName) {
-		// TODO Auto-generated method stub
-		return null;
+		return userDtoConvertor.convert(userRepository.getUserByNickName(userName));
 	}
 
 	@Override
 	public UserDto getUserByEmail(String email) {
-		// TODO Auto-generated method stub
-		return null;
+		return userDtoConvertor.convert(userRepository.getUserByEmail(email));
 	}
 
 	@Override
 	public List<UserDto> getAllUsers() {
-		// TODO Auto-generated method stub
-		return null;
+		return userRepository.findAll().stream().map(t -> userDtoConvertor.convert(t)).collect(Collectors.toList());
 	}
 
 	@Override
 	public List<UserDto> getAllUsersByIsActive(Boolean isActive) {
-		// TODO Auto-generated method stub
-		return null;
+		return userRepository.getAllUsersByIsActive(isActive).stream().map(t -> userDtoConvertor.convert(t)).collect(Collectors.toList());
 	}
 
 	@Override
 	public List<UserDto> getAllUsersByIsBlocked(Boolean isBlocked) {
-		// TODO Auto-generated method stub
-		return null;
+		return userRepository.getAllUsersByIsBlocked(isBlocked).stream().map(t -> userDtoConvertor.convert(t)).collect(Collectors.toList());
 	}
 
 	@Override
 	public List<UserDto> getAllUsersByIsRegistered(Boolean isRegistered) {
-		// TODO Auto-generated method stub
-		return null;
+		return userRepository.getAllUsersByIsRegistered(isRegistered).stream().map(t -> userDtoConvertor.convert(t)).collect(Collectors.toList());
 	}
 
 	@Override
@@ -291,6 +291,17 @@ public class UserService implements IUserService{
 	private Boolean isExistUser(@Nullable String userName, @Nullable String email) {
 		User user = userRepository.getUserByNickNameOrEmail(userName, userName);	
 		return user != null;
+	}
+	
+	private Boolean isExistUserWithException(@Nullable String userName, @Nullable String email) {
+		User user = userRepository.getUserByNickNameOrEmail(userName, userName);	
+		
+		if(user==null)
+		{
+			throw new NotFoundException(CoreEnumExceptionMessages.NOT_FOUND_USER,"user not found");
+		}
+		
+		return true;
 	}
 
 }
