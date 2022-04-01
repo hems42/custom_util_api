@@ -10,7 +10,7 @@ import com.util.city_api.core.constant.CoreEnumExceptionMessages;
 @ResponseStatus
 public class BaseExceptionModel extends RuntimeException {
 
-	 private LocalDateTime timeStamp;
+	    private LocalDateTime timeStamp;
 	    private Integer errorCode;
 	    private String errorMessage;
 	    private String errorDescription;
