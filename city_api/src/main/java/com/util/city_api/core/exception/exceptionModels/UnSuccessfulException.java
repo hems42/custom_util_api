@@ -4,7 +4,7 @@ import com.util.city_api.core.constant.CoreEnumExceptionMessages;
 import com.util.city_api.core.exception.abstracts.BaseExceptionModel;
 import org.springframework.http.HttpStatus;
 
-import static com.util.city_api.core.constant.CoreExceptionErrorCodeConstants.*;
+import static com.util.city_api.core.constant.CoreConstantExceptionErrorCode.*;
 
 public class UnSuccessfulException extends BaseExceptionModel {
     public UnSuccessfulException(CoreEnumExceptionMessages coreEnumExceptionMessages,

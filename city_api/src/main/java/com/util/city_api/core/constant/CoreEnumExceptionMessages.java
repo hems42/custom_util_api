@@ -56,12 +56,11 @@ public enum CoreEnumExceptionMessages {
      
      */
 
-
-
+ 
 
     //AUTHENTICATION***
       //REQUEST
-    UNAUTHORIZED_REQUEST("UNAUTHORIZED_REQUEST",5227),    
+    UNAUTHORIZED_REQUEST("UNAUTHORIZED_REQUEST",5227),
     
     
     // ACCESS TOKEN

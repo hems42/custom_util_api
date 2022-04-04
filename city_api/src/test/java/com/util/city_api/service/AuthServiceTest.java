@@ -3,17 +3,26 @@ package com.util.city_api.service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.util.city_api.service._abstract.IAccesTokenService;
 import com.util.city_api.service._abstract.IAuthService;
+import com.util.city_api.service._abstract.IConfirmationTokenService;
+import com.util.city_api.service._abstract.IRefreshTokenService;
+import com.util.city_api.service._abstract.IUserService;
 import com.util.city_api.service.concrete.AuthService;
 
 public class AuthServiceTest {
 	
+	IUserService userService;
+    IAccesTokenService accessTokenService;
+    IRefreshTokenService refreshTokenService;
+    IConfirmationTokenService confirmationTokenService;	
 	IAuthService authService;
+	
 
 	@BeforeEach
 	void setup() {
 		
-		authService = new AuthService();
+		authService = new AuthService(null,null,null,null);
 	}
 	
 	

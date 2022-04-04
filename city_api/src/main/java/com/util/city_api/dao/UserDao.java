@@ -17,12 +17,12 @@ public interface UserDao extends JpaRepository<User,String> {
     @Query( "SELECT u " +
             "FROM User u " +
             "WHERE u.userName = ?1")
-    User getUserByNickName(String userName);
+    User getUserByUsername(String userName);
 
     @Query( "SELECT u " +
             "FROM User u " +
             "WHERE u.userName = ?1 or u.eMail = ?2")
-    User getUserByNickNameOrEmail(String userName, String email);
+    User getUserByUsernameOrEmail(String userName, String email);
 
     @Query( value = "SELECT * " +
             "FROM User u " +

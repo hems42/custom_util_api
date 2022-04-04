@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.util.city_api.entity._core.User;
 import com.util.city_api.product_core.dto._coreDto.UserDto;
-import com.util.city_api.product_core.enums.RoleTypes;
+import com.util.city_api.product_core.enums.EnumRoleTypes;
 import com.util.city_api.product_core.request.createRequest.UserCreateRequest;
 import com.util.city_api.product_core.request.updateRequest.UserUpdateRequest;
 
@@ -18,7 +18,7 @@ public interface IUserService {
 	// select	
 	UserDto getUserById(String userId);
 	
-	UserDto getUserByUserName(String userName);
+	UserDto getUserByUserName(String username);
 	
 	UserDto getUserByEmail(String email);
 	
@@ -30,7 +30,7 @@ public interface IUserService {
 	
 	List<UserDto> getAllUsersByIsRegistered(Boolean isRegistered);
 	
-	List<UserDto> getAllUsersByRoleType(RoleTypes roleType);
+	List<UserDto> getAllUsersByRoleType(EnumRoleTypes roleType);
 		
 	
 	//----------
@@ -38,7 +38,7 @@ public interface IUserService {
 	// update
 	UserDto updateUser(UserUpdateRequest updateRequest);
 	
-	UserDto updateUserName(String userName);
+	UserDto updateUserName(String username);
 	
 	UserDto updatePassword(String password);
 	
@@ -64,7 +64,7 @@ public interface IUserService {
 	// isCheck
 	Boolean isExistUserById(String userId);
 	
-	Boolean isExistUserByUserName(String userName);
+	Boolean isExistUserByUserName(String username);
 	
 	Boolean isExistUserByEmail(String email);
 	
@@ -85,7 +85,7 @@ public interface IUserService {
 	
 	Integer getCountUserByIsBlocked(Boolean isBlocked);
 	
-	Integer getCountUserByHasRoleType(RoleTypes roleType);
+	Integer getCountUserByHasRoleType(EnumRoleTypes roleType);
 	
 	
 	

@@ -14,7 +14,7 @@ import com.util.city_api.dao.UserDao;
 import com.util.city_api.entity._core.User;
 import com.util.city_api.product_core.dto._coreDto.UserDto;
 import com.util.city_api.product_core.dtoConvertor.UserDtoConvertor;
-import com.util.city_api.product_core.enums.RoleTypes;
+import com.util.city_api.product_core.enums.EnumRoleTypes;
 import com.util.city_api.product_core.request.createRequest.UserCreateRequest;
 import com.util.city_api.product_core.request.updateRequest.UserUpdateRequest;
 import com.util.city_api.service._abstract.ILogUserService;
@@ -43,8 +43,6 @@ public class UserService implements IUserService{
 	
 	@Override
 	public UserDto createUser(UserCreateRequest createRequest) {
-		
-		if(!isExistUser(createRequest.getUserName(), createRequest.getEMail())) {
 		 
 			User user = userRepository.save(new User(null, 
 				 createRequest.getUserName(),
@@ -57,19 +55,11 @@ public class UserService implements IUserService{
 				 LocalDateTime.now(),
 				 null));
 		 
-		    if(user!=null) {
-		    	logUserService.addLogToUser(CREATED, user);}
-		    else {
-		    	return null;}	
+		    if(user!=null) 
+		    { logUserService.addLogToUser(CREATED, user);}
+		    else { return null;}	
 		    
-		    return userDtoConvertor.convert(user);
-		}
-		else {
-			
-		 return null;	
-		
-		}
-		
+		    return userDtoConvertor.convert(user);		
 	}
 
 
@@ -81,8 +71,8 @@ public class UserService implements IUserService{
 	}
 
 	@Override
-	public UserDto getUserByUserName(String userName) {
-		return userDtoConvertor.convert(userRepository.getUserByNickName(userName));
+	public UserDto getUserByUserName(String username) {
+		return userDtoConvertor.convert(userRepository.getUserByUsername(username));
 	}
 
 	@Override
@@ -111,7 +101,7 @@ public class UserService implements IUserService{
 	}
 
 	@Override
-	public List<UserDto> getAllUsersByRoleType(RoleTypes roleType) {
+	public List<UserDto> getAllUsersByRoleType(EnumRoleTypes roleType) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -184,22 +174,19 @@ public class UserService implements IUserService{
 
 	@Override
 	public Boolean isExistUserById(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+		return userRepository.getById(userId)!=null;
 	}
 
 
 	@Override
-	public Boolean isExistUserByUserName(String userName) {
-		// TODO Auto-generated method stub
-		return null;
+	public Boolean isExistUserByUserName(String username) {
+		return userRepository.getUserByUsername(username)!=null;
 	}
 
 
 	@Override
 	public Boolean isExistUserByEmail(String email) {
-		// TODO Auto-generated method stub
-		return null;
+		return userRepository.getUserByEmail(email)!=null;
 	}
 
 
@@ -253,7 +240,7 @@ public class UserService implements IUserService{
 
 
 	@Override
-	public Integer getCountUserByHasRoleType(RoleTypes roleType) {
+	public Integer getCountUserByHasRoleType(EnumRoleTypes roleType) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -287,21 +274,5 @@ public class UserService implements IUserService{
 	
 	
 	// UTILTY...
-	
-	private Boolean isExistUser(@Nullable String userName, @Nullable String email) {
-		User user = userRepository.getUserByNickNameOrEmail(userName, userName);	
-		return user != null;
-	}
-	
-	private Boolean isExistUserWithException(@Nullable String userName, @Nullable String email) {
-		User user = userRepository.getUserByNickNameOrEmail(userName, userName);	
-		
-		if(user==null)
-		{
-			throw new NotFoundException(CoreEnumExceptionMessages.NOT_FOUND_USER,"user not found");
-		}
-		
-		return true;
-	}
 
 }

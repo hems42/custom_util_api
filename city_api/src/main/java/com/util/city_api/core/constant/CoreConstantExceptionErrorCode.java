@@ -1,6 +1,6 @@
 package com.util.city_api.core.constant;
 
-public class CoreExceptionErrorCodeConstants {
+public class CoreConstantExceptionErrorCode {
 
     /*
     
@@ -31,7 +31,7 @@ public class CoreExceptionErrorCodeConstants {
      
     
     */
-
+	
 	
     public static String NOT_FOUND_EXCEPTION_ERROR_CODE ="4400";
     public static String ALREADY_EXIST_EXCEPTION_ERROR_CODE ="3100";
