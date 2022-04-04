@@ -18,15 +18,13 @@ public class TerritoryDtoConvertorTest extends BaseEntityAndDtoTestModel{
 	
 	@BeforeEach
 	void setup() {
-		this.territoryDtoConvertor = Mockito.mock(TerritoryDtoConvertor.class);
+		this.territoryDtoConvertor = new TerritoryDtoConvertor();
 		territory = super.getTerritory();
 		territoryDto = super.getTerritoryDto();
 	}
 	
 	@Test
 	void WhenTerritoryConvertedToTerritoryDtoThenReturnTerritoryDtoThatAllParametersMustBeSameWithTerritoryParamaters() {
-		
-		Mockito.when(territoryDtoConvertor.convert(territory)).thenReturn(territoryDto);
 		
 		TerritoryDto territoryDtoResult = territoryDtoConvertor.convert(territory);
 	
@@ -39,8 +37,6 @@ public class TerritoryDtoConvertorTest extends BaseEntityAndDtoTestModel{
 		
 	@Test
 	void WhenTerritoryDtoConvertedToTerritoryThenReturnTerritoryThatAllParametersMustBeSameWithTerritoryDtoParamaters() {
-		
-	    Mockito.when(territoryDtoConvertor.convert(territoryDto)).thenReturn(territory);
 		
 		Territory territoryResult = territoryDtoConvertor.convert(territoryDto);
 	

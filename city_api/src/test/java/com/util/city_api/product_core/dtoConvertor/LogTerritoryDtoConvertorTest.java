@@ -19,15 +19,13 @@ public class LogTerritoryDtoConvertorTest extends BaseEntityAndDtoTestModel{
 	@BeforeEach
 	void setup()
 	{
-		this.logTerritoryDtoConvertor = Mockito.mock(LogTerritoryDtoConvertor.class);
+		this.logTerritoryDtoConvertor = new LogTerritoryDtoConvertor();
 		logTerritory = super.getLogTerritory();
 		logTerritoryDto = super.getLogTerritoryDto();
 	}
  
     @Test
 	void WhenLogTerritoryConvertedToLogTerritoryDtoThenReturnLogTerritoryDtoThatAllParametersMustBeSameWithLogTerritoryParamaters() {
-    	
-    	Mockito.when(logTerritoryDtoConvertor.convert(logTerritory)).thenReturn(logTerritoryDto);
     	
     	LogTerritoryDto logTerritoryDtoResult = logTerritoryDtoConvertor.convert(logTerritory);
     	
@@ -40,8 +38,6 @@ public class LogTerritoryDtoConvertorTest extends BaseEntityAndDtoTestModel{
 	
    @Test
     void WhenLogTerritoryDtoConvertedToLogTerritoryThenReturnLogTerritoryThatAllParametersMustBeSameWithLogTerritoryDtoParamaters() {
-	   
-	   Mockito.when(logTerritoryDtoConvertor.convert(logTerritoryDto)).thenReturn(logTerritory);
    	
    	   LogTerritory logTerritoryResult = logTerritoryDtoConvertor.convert(logTerritoryDto);
    	

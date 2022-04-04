@@ -19,15 +19,13 @@ public class LogCityDtoConvertorTest extends BaseEntityAndDtoTestModel{
 	@BeforeEach
 	void setup()
 	{
-		this.logCityDtoConvertor = Mockito.mock(LogCityDtoConvertor.class);
+		this.logCityDtoConvertor = new LogCityDtoConvertor();
 		logCity = super.getLogCity();
 		logCityDto = super.getLogCityDto();
 	}
 	
     @Test
     void WhenLogCityConvertedToLogCityDtoThenReturnLogCityDtoThatAllParametersMustBeSameWithLogCityParamaters() {
-    	
-    	Mockito.when(logCityDtoConvertor.convert(logCity)).thenReturn(logCityDto);
     	
     	LogCityDto logCityDtoResult = logCityDtoConvertor.convert(logCity);
     	
@@ -41,8 +39,6 @@ public class LogCityDtoConvertorTest extends BaseEntityAndDtoTestModel{
     
     @Test
     void WhenLogCityDtoConvertedToLogCityThenReturnLogCityThatAllParametersMustBeSameWithLogCityDtoParamaters() {
-    	
-        Mockito.when(logCityDtoConvertor.convert(logCityDto)).thenReturn(logCity);
     	
     	LogCity logCityResult = logCityDtoConvertor.convert(logCityDto);
     	

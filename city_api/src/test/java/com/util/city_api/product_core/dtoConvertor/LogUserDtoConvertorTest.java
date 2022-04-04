@@ -19,15 +19,13 @@ public class LogUserDtoConvertorTest extends BaseEntityAndDtoTestModel{
 	@BeforeEach
 	void setup()
 	{
-		this.logUserDtoConvertor = Mockito.mock(LogUserDtoConvertor.class);
+		this.logUserDtoConvertor = new LogUserDtoConvertor();
 		logUser = super.getLogUser();
 		logUserDto = super.getLogUserDto();
 	}
  
     @Test
 	void WhenLogUserConvertedToLogUserDtoThenReturnLogUserDtoThatAllParametersMustBeSameWitLogUserParamaters() {
-    	
-    	Mockito.when(logUserDtoConvertor.convert(logUser)).thenReturn(logUserDto);
     	
     	LogUserDto logUserDtoResult = logUserDtoConvertor.convert(logUser);
     	
@@ -40,8 +38,6 @@ public class LogUserDtoConvertorTest extends BaseEntityAndDtoTestModel{
 	
 	  @Test
     void WhenLogUserDtoConvertedToLogUserThenReturnLogUserThatAllParametersMustBeSameWithLogUserDtoParamaters() {
-		  
-		  Mockito.when(logUserDtoConvertor.convert(logUserDto)).thenReturn(logUser);
 	    	
 	      LogUser logUserResult = logUserDtoConvertor.convert(logUserDto);
 	    	

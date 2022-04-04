@@ -19,15 +19,13 @@ public class LogRoleDtoConvertorTest extends BaseEntityAndDtoTestModel{
 	@BeforeEach
 	void setup()
 	{
-		this.logRoleDtoConvertor = Mockito.mock(LogRoleDtoConvertor.class);
+		this.logRoleDtoConvertor = new LogRoleDtoConvertor();
 		logRole = super.getLogRole();
 		logRoleDto = super.getLogRoleDto();
 	}
  
     @Test
 	void WhenLogRoleConvertedToLogRoleDtoThenReturnLogRoleDtoThatAllParametersMustBeSameWithLogRoleParamaters() {
-    	
-    	Mockito.when(logRoleDtoConvertor.convert(logRole)).thenReturn(logRoleDto);
     	
     	LogRoleDto logRoleDtoResult = logRoleDtoConvertor.convert(logRole);
     	
@@ -40,8 +38,6 @@ public class LogRoleDtoConvertorTest extends BaseEntityAndDtoTestModel{
 	
 	  @Test
     void WhenLogRoleDtoConvertedToLogRoleThenReturnLogRoleThatAllParametersMustBeSameWithLogRoleDtoParamaters() {
-		  
-		  Mockito.when(logRoleDtoConvertor.convert(logRoleDto)).thenReturn(logRole);
 	    	
 	      LogRole logRoleResult = logRoleDtoConvertor.convert(logRoleDto);
 	    	

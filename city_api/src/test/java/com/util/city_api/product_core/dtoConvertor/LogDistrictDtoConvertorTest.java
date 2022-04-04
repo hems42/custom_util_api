@@ -19,15 +19,13 @@ public class LogDistrictDtoConvertorTest extends BaseEntityAndDtoTestModel{
 	@BeforeEach
 	void setup()
 	{
-		this.logDistrictDtoConvertor = Mockito.mock(LogDistrictDtoConvertor.class);
+		this.logDistrictDtoConvertor = new LogDistrictDtoConvertor();
 		logDistrict    = super.getLogDistrict();
 		logDistrictDto = super.getLogDistrictDto();
 	}
  
     @Test
 	void WhenLogDistrictConvertedToLogDistrictDtoThenReturnLogDistrictDtoThatAllParametersMustBeSameWithLogDistrictParamaters() {
-    	
-    	Mockito.when(logDistrictDtoConvertor.convert(logDistrict)).thenReturn(logDistrictDto);
     	
     	LogDistrictDto logDistrictDtoResult = logDistrictDtoConvertor.convert(logDistrict);
     	
@@ -41,8 +39,6 @@ public class LogDistrictDtoConvertorTest extends BaseEntityAndDtoTestModel{
 	
 	  @Test
     void WhenLogDistrictDtoConvertedToLogDistrictThenReturnLogDistrictThatAllParametersMustBeSameWithLogDistrictDtoParamaters() {
-		  
-		  Mockito.when(logDistrictDtoConvertor.convert(logDistrictDto)).thenReturn(logDistrict);
 	    	
 	    	LogDistrict logDistrictResult = logDistrictDtoConvertor.convert(logDistrictDto);
 	    	

@@ -48,15 +48,17 @@ public class CityApiApplication extends SpringBootServletInitializer implements 
 		
 		// TODO Auto-generated method stub
 	
-	Territory territory =	dao2.save(new Territory(null,"İÇ ANADOLU", "MEMLEKET GÜZEL İNSANI YARAK", LocalDateTime.now(),LocalDateTime.now()));
+	//Territory territory =	dao2.save(new Territory(null,"İÇ ANADOLU", "...", LocalDateTime.now(),LocalDateTime.now()));
 		
-		City city;
+		/* City city;
 		for(int i=0;i<100;i++)
 		{
 			city = new City(null,territory,"KONYA"+i,"42"+i,"42000"+i,"332"+i,"konya güzel memleket yaşanabilir...",LocalDateTime.now(), LocalDateTime.now());
 			
 			dao.save(city);
 		}
+		
+		*/
 		
 	}
 

@@ -24,19 +24,24 @@ public interface UserDao extends JpaRepository<User,String> {
             "WHERE u.userName = ?1 or u.eMail = ?2")
     User getUserByNickNameOrEmail(String userName, String email);
 
-    @Query( "SELECT * " +
+    @Query( value = "SELECT * " +
             "FROM User u " +
-            "WHERE u.isActive = ?1")
+            "WHERE u.isActive = ?1",
+            nativeQuery = true)
     List<User> getAllUsersByIsActive(Boolean isActive);
     
-    @Query( "SELECT * " +
+    @Query( value ="SELECT * " +
             "FROM User u " +
-            "WHERE u.isBlocked = ?1")
+            "WHERE u.isBlocked = ?1",
+            nativeQuery = true
+    		)
     List<User> getAllUsersByIsBlocked(Boolean isBlocked);
     
-    @Query( "SELECT * " +
+    @Query( value = "SELECT * " +
             "FROM User u " +
-            "WHERE u.isRegistered = ?1")
+            "WHERE u.isRegistered = ?1",
+            nativeQuery = true
+    		)
     List<User> getAllUsersByIsRegistered(Boolean isRegistered);
     
 }

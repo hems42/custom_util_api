@@ -19,15 +19,13 @@ public class RoleDtoConvertorTest extends BaseEntityAndDtoTestModel{
 	@BeforeEach
 	void setup()
 	{
-		this.roleDtoConvertor = Mockito.mock(RoleDtoConvertor.class);
+		this.roleDtoConvertor = new RoleDtoConvertor();
 		role = super.getRole();
 		roleDto = super.getRoleDto();
 	}
  
     @Test
 	void WhenRoleConvertedToRoleDtoThenReturnRoleDtoThatAllParametersMustBeSameWithRoleParamaters() {
-    	
-    	Mockito.when(roleDtoConvertor.convert(role)).thenReturn(roleDto);
     	
     	RoleDto roleDtoResult = roleDtoConvertor.convert(role);
     	
@@ -40,8 +38,6 @@ public class RoleDtoConvertorTest extends BaseEntityAndDtoTestModel{
 	
 	  @Test
     void WhenRoleDtoConvertedToRoleThenReturnRoleThatAllParametersMustBeSameWithRoleDtoParamaters() {
-		  
-			Mockito.when(roleDtoConvertor.convert(roleDto)).thenReturn(role);
 	    	
 	    	Role roleResult = roleDtoConvertor.convert(roleDto);
 	    	

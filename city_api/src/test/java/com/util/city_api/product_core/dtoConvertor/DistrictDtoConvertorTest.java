@@ -19,15 +19,13 @@ public class DistrictDtoConvertorTest extends BaseEntityAndDtoTestModel{
 	@BeforeEach
 	void setup()
 	{
-		this.districtDtoConvertor = Mockito.mock(DistrictDtoConvertor.class);
+		this.districtDtoConvertor = new DistrictDtoConvertor();
 		district = super.getDistrict();
 		districtDto = super.getDistrictDto();
 	}
 	
     @Test
     void WhenDistrictConvertedToDistrictDtoThenReturnDistrictDtoThatAllParametersMustBeSameWithDistrictParamaters() {
-    	
-    	Mockito.when(districtDtoConvertor.convert(district)).thenReturn(districtDto);
     	
     	DistrictDto districtDtoResult = districtDtoConvertor.convert(district);
     	
@@ -42,8 +40,6 @@ public class DistrictDtoConvertorTest extends BaseEntityAndDtoTestModel{
     
     @Test
     void WhenDistrictDtoConvertedToDistrictThenReturnDistrictThatAllParametersMustBeSameWithDistrictDtoParamaters() {
-    	
-        Mockito.when(districtDtoConvertor.convert(districtDto)).thenReturn(district);
     	
     	District districtResult = districtDtoConvertor.convert(districtDto);
     	

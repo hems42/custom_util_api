@@ -19,15 +19,13 @@ public class TownDtoConvertorTest extends BaseEntityAndDtoTestModel{
 	@BeforeEach
 	void setup()
 	{
-		this.townDtoConvertor = Mockito.mock(TownDtoConvertor.class);
+		this.townDtoConvertor = new TownDtoConvertor();
 		town = super.getTown();
 		townDto = super.getTownDto();
 	}
  
     @Test
 	void WhenTownConvertedToTownDtoThenReturnTownDtoThatAllParametersMustBeSameWithTownParamaters() {
-    	
-    	Mockito.when(townDtoConvertor.convert(town)).thenReturn(townDto);
     	
     	TownDto townDtoResult = townDtoConvertor.convert(town);
     	
@@ -41,8 +39,6 @@ public class TownDtoConvertorTest extends BaseEntityAndDtoTestModel{
 	
 	 @Test
 	void WhenTownDtoConvertedToTownThenReturnTownThatAllParametersMustBeSameWithTownDtoParamaters() {
-		 
-			Mockito.when(townDtoConvertor.convert(townDto)).thenReturn(town);
 	    	
 	    	Town townResult = townDtoConvertor.convert(townDto);
 	    	
