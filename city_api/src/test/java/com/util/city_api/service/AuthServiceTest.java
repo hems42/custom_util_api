@@ -3,6 +3,9 @@ package com.util.city_api.service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.util.city_api.core.constant.CoreConstantExceptionErrorCode;
+import com.util.city_api.core.constant.CoreEnumExceptionMessages;
+import com.util.city_api.core.exception.exceptionModels.UnAuthorizeException;
 import com.util.city_api.service._abstract.IAccesTokenService;
 import com.util.city_api.service._abstract.IAuthService;
 import com.util.city_api.service._abstract.IConfirmationTokenService;
@@ -29,7 +32,8 @@ public class AuthServiceTest {
 
 	
    	   //singup metod logic...
-	/*	 
+	/*	
+	 *  
 	 * request ok ??
 	 * user created allready by email or username ??
 	 * refresh token create ?? 
@@ -44,7 +48,11 @@ public class AuthServiceTest {
 	
 	     // signup metod :
 	@Test
-	void WhenUserAllReadyCreatedByUsernameThenItMustThro__Exception() {}
+	void WhenUserAllReadyCreatedByUsernameThenItMustThrow__Exception() {
+	throw 	new UnAuthorizeException(CoreEnumExceptionMessages.UNAUTHORIZED_REQUEST,"gidecek hata mesajı");
+		
+	//System.out.println("gelen hata kodu :"+CoreConstantExceptionErrorCode.ALREADY_EXIST_EXCEPTION_ERROR_CODE); 
+	}
 
 
 	@Test

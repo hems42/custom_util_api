@@ -7,6 +7,7 @@ import com.util.city_api.core.exception.abstracts.BaseExceptionModel;
 
 import static com.util.city_api.core.constant.CoreConstantExceptionErrorCode.*;
 
+/*
 public class ForbiddenException extends BaseExceptionModel {
 
     public ForbiddenException(CoreEnumExceptionMessages coreEnumExceptionMessages, String errorDescription) {
@@ -15,3 +16,4 @@ public class ForbiddenException extends BaseExceptionModel {
                 errorDescription,
                 HttpStatus.FORBIDDEN); }
 }
+*/

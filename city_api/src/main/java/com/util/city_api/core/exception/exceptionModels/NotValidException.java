@@ -6,7 +6,7 @@ import com.util.city_api.core.constant.CoreEnumExceptionMessages;
 import com.util.city_api.core.exception.abstracts.BaseExceptionModel;
 
 import static com.util.city_api.core.constant.CoreConstantExceptionErrorCode.*;
-
+/*
 public class NotValidException extends BaseExceptionModel {
     public NotValidException(CoreEnumExceptionMessages coreEnumExceptionMessages,String errorDescription) {
         super(coreEnumExceptionMessages,
@@ -15,3 +15,4 @@ public class NotValidException extends BaseExceptionModel {
                 HttpStatus.NOT_ACCEPTABLE);
     }
 }
+*/

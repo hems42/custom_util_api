@@ -12,6 +12,7 @@ public class BaseExceptionModel extends RuntimeException {
 
 	    private LocalDateTime timeStamp;
 	    private Integer errorCode;
+	    private String errorDetailCode;
 	    private String errorMessage;
 	    private String errorDescription;
 	    private String baseErrorCode;
@@ -20,6 +21,7 @@ public class BaseExceptionModel extends RuntimeException {
 
 	    public BaseExceptionModel(CoreEnumExceptionMessages coreEnumExceptionMessages,
 	                              String baseErrorCode,
+	                              String errorDetailCode,
 	                              String errorDescription,
 	                              HttpStatus baseStatusCode) {
 	        super(errorDescription); 
@@ -28,11 +30,12 @@ public class BaseExceptionModel extends RuntimeException {
 	        errorMessage = coreEnumExceptionMessages.getExceptionMessage();
 	        this.errorDescription = errorDescription;
 	        this.baseErrorCode = baseErrorCode;
+	        this.errorDetailCode = errorDetailCode;
 	        this.baseStatusCode = baseStatusCode;
 
 
 	    }
-
+ 
 	    public LocalDateTime getTimeStamp() {
 	        return LocalDateTime.now();
 	    }
@@ -51,7 +54,7 @@ public class BaseExceptionModel extends RuntimeException {
 
 	    private String convertToSuperErrorCode() {
 	        String foundErrorCode = coreEnumExceptionMessages.getExceptionCode().toString();
-	        return baseErrorCode + foundErrorCode;
+	        return baseErrorCode + foundErrorCode + errorDetailCode;
 	    }
 
 	    public HttpStatus getBaseStatusCode() {

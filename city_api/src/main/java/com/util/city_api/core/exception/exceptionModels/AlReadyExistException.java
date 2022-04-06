@@ -7,6 +7,7 @@ import com.util.city_api.core.exception.abstracts.BaseExceptionModel;
 
 import static com.util.city_api.core.constant.CoreConstantExceptionErrorCode.*;
 
+/*
 public class AlReadyExistException extends BaseExceptionModel {
     public AlReadyExistException(CoreEnumExceptionMessages coreEnumExceptionMessages, String errorDescription) {
         super(coreEnumExceptionMessages,
@@ -15,3 +16,4 @@ public class AlReadyExistException extends BaseExceptionModel {
                 HttpStatus.EXPECTATION_FAILED);
     }
 }
+*/

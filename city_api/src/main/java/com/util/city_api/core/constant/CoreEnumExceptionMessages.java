@@ -1,5 +1,7 @@
 package com.util.city_api.core.constant;
 
+import static com.util.city_api.core.constant.CoreConstantExceptionErrorCode.*;
+
 public enum CoreEnumExceptionMessages {
 
     /*
@@ -59,12 +61,12 @@ public enum CoreEnumExceptionMessages {
  
 
     //AUTHENTICATION***
-      //REQUEST
-    UNAUTHORIZED_REQUEST("UNAUTHORIZED_REQUEST",5227),
+ 
+	//REQUEST
+    UNAUTHORIZED_REQUEST("UNAUTHORIZED_REQUEST",Integer.parseInt(REQUEST)),
     
-    
-    // ACCESS TOKEN
-    NOT_VALID_ACCESS_TOKEN_EXPIRED("ACCESS_TOKEN_EXPIRED",5842),
+     // ACCESS TOKEN
+    NOT_VALID_ACCESS_TOKEN("ACCESS_TOKEN_EXPIRED",Integer.parseInt(ACCESS_TOKEN+"000")),
     NOT_FOUND_ACCESS_TOKEN("ACCESS_TOKEN_NOT_FOUND",5844),
     NOT_FOUND_ACCESS_TOKEN_USERNAME("ACCESS_TOKEN_USERNAME_NOT_FOUND",5844),
 
@@ -98,7 +100,12 @@ public enum CoreEnumExceptionMessages {
     //REGISTRATION
     UN_SUCCESSFUL_REGISTRATION("USER_NOT_CONFIRMED",5625),
 
+    
+    //SIGNUP
+    UN_SUCCESSFUL_SIGNUP("UN_SUCCESSFUL_SIGNUP",Integer.parseInt(SIGNUP)),
 
+    
+ 
     //ENTITY***
       //ROLE
     ALREADY_EXIST_ROLE("ROLE_ALREADY_EXIST", 5131),

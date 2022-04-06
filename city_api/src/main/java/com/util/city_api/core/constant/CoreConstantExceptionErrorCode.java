@@ -7,39 +7,111 @@ public class CoreConstantExceptionErrorCode {
     
     CUSTOM EXCEPTION CODES:
     
-      //******************************************************************
+   //******************************************************************
     
     Error_MainGroupCodeList :
     
-    - NOT : 4000
-    - ALREADY : 3000
-    - FORBIDDEN : 6000
-    - UN : 2000
+    - UN                      : 10
+    - ALREADY                 : 20
+    - NOT                     : 30
+    - NON                     : 40
+    - FORBIDDEN               : 50
     
     
     
-     //*****************************************************************
+    
+   //*****************************************************************
     
     Error_SubGroupCodeList :
     
-     - FOUND : 400
-     - VALID : 200
-     - SUCCESS : 500
-     - ACCEPT : 600
-     - EXIST : 100
-     - AUTHORIZE : 700
+     - EXIST                  : 10
+     - VALID                  : 20
+     - FOUND                  : 30
+     - SUCCESS                : 40
+     - ACCEPT                 : 50
+     - AUTHORIZE              : 60
+     
+	
+   //******************************************************************
+    
+    Error_EntityCodeList :
+    
+      - USER                  : 010
+      - ROLE                  : 020
+      - REQUEST               : 030
+      - REFRESH TOKEN         : 040
+      - CONFIRMATION TOKEN    : 050
+      - ACCESS TOKEN          : 060
+      - REGISTRATION          : 070
+      - LOGIN                 : 080
+      - EMAIL                 : 090 
+      - SIGNUP                : 100
+      - LOGIN                 : 101
+      - LOGOUT                : 102
+           
+     
+   //******************************************************************
+    
+    Error_EventCodeList :
+    
+     
      
     
-    */
+     */
+	
+	public static Integer convertCode(String errorCode) {return Integer.parseInt(errorCode);}
+	
+	//-Error_MainGroupCodeList :
+	
+	private final static String UN                            = "10";
+	private final static String ALREADY                       = "20";
+	private final static String NOT                           = "30";
+	private final static String NON                           = "40";
+	private final static String FORBIDDEN                     = "50";
 	
 	
-    public static String NOT_FOUND_EXCEPTION_ERROR_CODE ="4400";
-    public static String ALREADY_EXIST_EXCEPTION_ERROR_CODE ="3100";
-    public static String ALREADY_ACCEPTED_EXCEPTION_ERROR_CODE ="3600";
-    public static String FORBIDDEN_EXCEPTION_ERROR_CODE ="6000";
-    public static String UN_AUTHORIZE_EXCEPTION_ERROR_CODE ="2700";
-    public static String UN_SUCCESSFUL_EXCEPTION_ERROR_CODE ="2500";
-    public static String UN_ACCEPTABLE_EXCEPTION_ERROR_CODE ="2600";
-    public static String NOT_VALID_EXCEPTION_ERROR_CODE ="4200";
+	//-Error_SubGroupCodeList :
 	
+	private final static String EXIST                         = "10";
+    private final static String VALID                         = "20";
+    private final static String FOUND                         = "30";
+    private final static String SUCCESS                       = "40";
+    private final static String ACCEPT                        = "50";
+    private final static String AUTHORIZE                     = "60";
+
+    
+    
+    //-Error_EntityCodeList :
+    
+    public final static String USER                           = "010";
+    public final static String ROLE                           = "020";
+    public final static String REQUEST                        = "030";
+    public final static String REFRESH_TOKEN                  = "040";
+    public final static String CONFIRMATION_TOKEN             = "050";
+    public final static String ACCESS_TOKEN                   = "060";
+    public final static String REGISTRATION                   = "070";
+    public final static String EMAIL                          = "080";
+    public final static String SIGNUP                         = "090";
+    public final static String LOGIN                          = "091";
+    public final static String LOGOUT                         = "092";
+    
+    
+     
+    //-Error_ExceptionMessageCodeList :
+    
+    public static String NOT_FOUND_EXCEPTION_ERROR_CODE = NOT + FOUND;
+    public static String ALREADY_EXIST_EXCEPTION_ERROR_CODE = ALREADY + EXIST;
+    public static String ALREADY_ACCEPTED_EXCEPTION_ERROR_CODE = ALREADY + ACCEPT;
+    public static String FORBIDDEN_EXCEPTION_ERROR_CODE = FORBIDDEN + "00";
+    public static String UN_AUTHORIZE_EXCEPTION_ERROR_CODE = UN + AUTHORIZE;
+    public static String UN_SUCCESSFUL_EXCEPTION_ERROR_CODE = UN + SUCCESS;
+    public static String UN_ACCEPTABLE_EXCEPTION_ERROR_CODE = UN + ACCEPT;
+    public static String NOT_VALID_EXCEPTION_ERROR_CODE = NOT +VALID;
+	
+    
+    
+    //-Error_EventCodeList :
+
+    public static String EMAIL_ALREADY_USED = "0001";
+
 }

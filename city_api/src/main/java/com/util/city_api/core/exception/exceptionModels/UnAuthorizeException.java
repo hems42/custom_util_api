@@ -6,7 +6,7 @@ import com.util.city_api.core.constant.CoreEnumExceptionMessages;
 import com.util.city_api.core.exception.abstracts.BaseExceptionModel;
 
 import static com.util.city_api.core.constant.CoreConstantExceptionErrorCode.*;
-
+/*
 public class UnAuthorizeException extends BaseExceptionModel {
 
     public UnAuthorizeException(CoreEnumExceptionMessages coreEnumExceptionMessages,
@@ -17,3 +17,4 @@ public class UnAuthorizeException extends BaseExceptionModel {
                 HttpStatus.UNAUTHORIZED);
     }
 }
+*/
