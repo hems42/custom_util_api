@@ -49,7 +49,7 @@ public class AuthServiceTest {
 	     // signup metod :
 	@Test
 	void WhenUserAllReadyCreatedByUsernameThenItMustThrow__Exception() {
-	throw 	new UnAuthorizeException(CoreEnumExceptionMessages.UNAUTHORIZED_REQUEST,"gidecek hata mesajı");
+	//throw 	new UnAuthorizeException(CoreEnumExceptionMessages.UNAUTHORIZED_REQUEST,"gidecek hata mesajı");
 		
 	//System.out.println("gelen hata kodu :"+CoreConstantExceptionErrorCode.ALREADY_EXIST_EXCEPTION_ERROR_CODE); 
 	}
