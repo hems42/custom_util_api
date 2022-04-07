@@ -65,7 +65,7 @@ public class AuthService implements IAuthService{
 		 * 
 		 * 
 		 */
-		
+		 
 	
 	
 		if(userService.isExistUserByEmail(signupRequest.getEmail()))
@@ -88,7 +88,7 @@ public class AuthService implements IAuthService{
 			
 			log.error("user created allready by email");
 			
-			throw new UnSuccessfulException(CoreEnumExceptionMessages.UN_SUCCESSFUL_CREATED_USER,"email address already used");
+		//	throw new UnSuccessfulException(CoreEnumExceptionMessages.UN_SUCCESSFUL_CREATED_USER,"email address already used");
 		}
 		
 		

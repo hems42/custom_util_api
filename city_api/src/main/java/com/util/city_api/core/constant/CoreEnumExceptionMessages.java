@@ -3,68 +3,18 @@ package com.util.city_api.core.constant;
 import static com.util.city_api.core.constant.CoreConstantExceptionErrorCode.*;
 
 public enum CoreEnumExceptionMessages {
-
-    /*
-      
-      
-     
-    CUSTOM EXCEPTION CODES:
-    
-      //******************************************************************
-    
-    Error_MainGroupCodeList :
-    
-    - NOT : 4000
-    - ALREADY : 3000
-    - FORBIDDEN : 6000
-    - UN : 2000
-    
-    
-    
-     //*****************************************************************
-    
-    Error_SubGroupCodeList :
-    
-     - FOUND : 400
-     - VALID : 200
-     - SUCCESS : 500
-     - ACCEPT : 600
-     - EXIST : 100
-     - AUTHORIZE : 700
-     
-     
-     
-     //******************************************************************
-    
-    Error_EntityCodeList :
-    
-    USER : 5000
-    ROLE : 5100
-    REQUEST : 5200
-    REFRESH TOKEN : 5300
-    CONFIRMATION TOKEN : 5400
-    EMAIL : 5500
-    REGISTRATION : 5600
-    LOGIN : 5700
-    ACCESS TOKEN : 5800
-     
-    
-     
-     
-      //******************************************************************
-    
-    Error_EventCodeList :
-    
-     
-     */
-
  
 
     //AUTHENTICATION***
  
 	//REQUEST
-    UNAUTHORIZED_REQUEST("UNAUTHORIZED_REQUEST",Integer.parseInt(REQUEST)),
+    UNAUTHORIZED_REQUEST("UNAUTHORIZED_REQUEST",REQUEST),
+
     
+    //SIGNUP
+    UN_SUCCESSFUL_SIGNUP("UN_SUCCESSFUL_SIGNUP",SIGNUP);
+    
+    /*
      // ACCESS TOKEN
     NOT_VALID_ACCESS_TOKEN("ACCESS_TOKEN_EXPIRED",Integer.parseInt(ACCESS_TOKEN+"000")),
     NOT_FOUND_ACCESS_TOKEN("ACCESS_TOKEN_NOT_FOUND",5844),
@@ -124,6 +74,7 @@ public enum CoreEnumExceptionMessages {
     UN_ACCEPTABLE_LOGIN_REQUEST("LOGIN REQUEST UNACCEPTABLE",5726);
 
 
+*/
 
 
 
@@ -146,14 +97,14 @@ public enum CoreEnumExceptionMessages {
 
 
     private String exceptionMessage;
-    private Integer exceptionCode;
+    private String exceptionCode;
 
-    CoreEnumExceptionMessages(String exceptionMessage, Integer exceptionCode) {
+    CoreEnumExceptionMessages(String exceptionMessage, String exceptionCode) {
         this.exceptionMessage = exceptionMessage;
         this.exceptionCode = exceptionCode;
     }
 
-    public void setExceptionCode(Integer exceptionCode) {
+    public void setExceptionCode(String exceptionCode) {
         this.exceptionCode = exceptionCode;
     }
 
@@ -161,7 +112,7 @@ public enum CoreEnumExceptionMessages {
         return exceptionMessage;
     }
 
-    public Integer getExceptionCode() {
+    public String getExceptionCode() {
         return exceptionCode;
     }
 	

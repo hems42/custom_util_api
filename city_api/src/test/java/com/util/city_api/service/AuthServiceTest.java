@@ -3,9 +3,6 @@ package com.util.city_api.service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.util.city_api.core.constant.CoreConstantExceptionErrorCode;
-import com.util.city_api.core.constant.CoreEnumExceptionMessages;
-import com.util.city_api.core.exception.exceptionModels.UnAuthorizeException;
 import com.util.city_api.service._abstract.IAccesTokenService;
 import com.util.city_api.service._abstract.IAuthService;
 import com.util.city_api.service._abstract.IConfirmationTokenService;

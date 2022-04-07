@@ -11,7 +11,7 @@ import com.util.city_api.core.constant.CoreEnumExceptionMessages;
 public class BaseExceptionModel extends RuntimeException {
 
 	    private LocalDateTime timeStamp;
-	    private Integer errorCode;
+	    private String errorCode;
 	    private String errorDetailCode;
 	    private String errorMessage;
 	    private String errorDescription;
@@ -53,7 +53,7 @@ public class BaseExceptionModel extends RuntimeException {
 	    }
 
 	    private String convertToSuperErrorCode() {
-	        String foundErrorCode = coreEnumExceptionMessages.getExceptionCode().toString();
+	        String foundErrorCode = coreEnumExceptionMessages.getExceptionCode();
 	        return baseErrorCode + foundErrorCode + errorDetailCode;
 	    }
 

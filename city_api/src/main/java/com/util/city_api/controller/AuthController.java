@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.util.city_api.core.constant.CoreConstantExceptionErrorCode;
 import com.util.city_api.core.constant.CoreEnumExceptionMessages;
 import com.util.city_api.core.exception.exceptionModels.UnSuccessfulException;
 import com.util.city_api.product_core.dto._coreDto.UserDto;
@@ -34,7 +35,7 @@ public class AuthController {
 		   	}
 		   	else {
 		   		
-		   		throw new UnSuccessfulException(CoreEnumExceptionMessages.UN_SUCCESSFUL_CREATED_USER,"user did not cerated beacause : ");
+		   		throw new UnSuccessfulException(CoreEnumExceptionMessages.UN_SUCCESSFUL_SIGNUP,CoreConstantExceptionErrorCode.EMAIL_ALREADY_USED,"emial adresi ddaha önce kullanılmış başkan");
 		   	}
 	   
 	    	
