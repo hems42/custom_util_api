@@ -45,7 +45,7 @@ public class AuthServiceTest {
 	
 	     // signup metod :
 	@Test
-	void WhenUserAllReadyCreatedByUsernameThenItMustThrow__Exception() {
+	void WhenUserAllReadyCreatedByUsernameThenItMustThrowUnSuccessFulException() {
 	//throw 	new UnAuthorizeException(CoreEnumExceptionMessages.UNAUTHORIZED_REQUEST,"gidecek hata mesajı");
 		
 	//System.out.println("gelen hata kodu :"+CoreConstantExceptionErrorCode.ALREADY_EXIST_EXCEPTION_ERROR_CODE); 

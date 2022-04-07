@@ -2,6 +2,7 @@ package com.util.city_api.service.concrete;
 
 import org.springframework.stereotype.Service;
 
+import com.util.city_api.core.constant.CoreConstantExceptionErrorCode;
 import com.util.city_api.core.constant.CoreEnumExceptionMessages;
 import com.util.city_api.core.exception.exceptionModels.UnSuccessfulException;
 import com.util.city_api.product_core.dto._coreDto.UserDto;
@@ -81,14 +82,28 @@ public class AuthService implements IAuthService{
 				if(_userDto != null)
 				{
 					log.info("user created");
-					//if()
+					
+					//if(refreshTokenService.)
+					
+					
+					
+					
+					
+				} else {
+					log.error("user not created");
+					
+					throw new UnSuccessfulException(CoreEnumExceptionMessages.UN_SUCCESSFUL_SIGNUP,CoreConstantExceptionErrorCode.USER_NOT_CREATED,"user not created");
 				}
+			} else {
+				log.error("user created allready by username");
+				
+				throw new UnSuccessfulException(CoreEnumExceptionMessages.UN_SUCCESSFUL_SIGNUP,CoreConstantExceptionErrorCode.USERNAME_ALREADY_USED,"user created allready by username");
 			}
 		} else {
 			
 			log.error("user created allready by email");
 			
-		//	throw new UnSuccessfulException(CoreEnumExceptionMessages.UN_SUCCESSFUL_CREATED_USER,"email address already used");
+			throw new UnSuccessfulException(CoreEnumExceptionMessages.UN_SUCCESSFUL_SIGNUP,CoreConstantExceptionErrorCode.EMAIL_ALREADY_USED,"user created allready by email");
 		}
 		
 		

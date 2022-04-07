@@ -113,5 +113,11 @@ public class CoreConstantExceptionErrorCode {
     //-Error_EventCodeList :
 
     public static String EMAIL_ALREADY_USED = "0001";
+    public static String USERNAME_ALREADY_USED = "0002";
+    public static String EMAIL_AND_USERNAME_ALREADY_USED = "0003";
+    
+    // USER
+    public static String USER_NOT_CREATED = "0010";
+    
 
 }
