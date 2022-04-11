@@ -71,28 +71,28 @@ public class CoreConstantExceptionErrorCode {
 	
 	//-Error_SubGroupCodeList :
 	
-	private final static String EXIST                         = "10";
-    private final static String VALID                         = "20";
-    private final static String FOUND                         = "30";
-    private final static String SUCCESS                       = "40";
-    private final static String ACCEPT                        = "50";
-    private final static String AUTHORIZE                     = "60";
+	private final static String EXIST                          = "10";
+    private final static String VALID                          = "20";
+    private final static String FOUND                          = "30";
+    private final static String SUCCESS                        = "40";
+    private final static String ACCEPT                         = "50";
+    private final static String AUTHORIZE                      = "60";
 
     
     
     //-Error_EntityCodeList :
     
-    public final static String USER                           = "010";
-    public final static String ROLE                           = "020";
-    public final static String REQUEST                        = "030";
-    public final static String REFRESH_TOKEN                  = "040";
-    public final static String CONFIRMATION_TOKEN             = "050";
-    public final static String ACCESS_TOKEN                   = "060";
-    public final static String REGISTRATION                   = "070";
-    public final static String EMAIL                          = "080";
-    public final static String SIGNUP                         = "090";
-    public final static String LOGIN                          = "091";
-    public final static String LOGOUT                         = "092";
+    public final static String USER                            = "010";
+    public final static String ROLE                            = "020";
+    public final static String REQUEST                         = "030";
+    public final static String REFRESH_TOKEN                   = "040";
+    public final static String CONFIRMATION_TOKEN              = "050";
+    public final static String ACCESS_TOKEN                    = "060";
+    public final static String REGISTRATION                    = "070";
+    public final static String EMAIL                           = "080";
+    public final static String SIGNUP                          = "090";
+    public final static String LOGIN                           = "091";
+    public final static String LOGOUT                          = "092";
     
     
      
