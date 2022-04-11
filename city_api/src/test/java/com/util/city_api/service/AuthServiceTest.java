@@ -1,8 +1,17 @@
 package com.util.city_api.service;
 
-import org.junit.jupiter.api.BeforeEach;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.awt.print.Printable;
+
+import static com.util.city_api.core.constant.CoreConstantExceptionErrorCode.*;
+
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import com.util.city_api.baseMock.BaseMockServiceAndServiceAndRequestModel;
+import com.util.city_api.core.exception.abstracts.BaseExceptionModel;
+import com.util.city_api.core.exception.exceptionModels.UnSuccessfulException;
 import com.util.city_api.service._abstract.IAccesTokenService;
 import com.util.city_api.service._abstract.IAuthService;
 import com.util.city_api.service._abstract.IConfirmationTokenService;
@@ -10,22 +19,14 @@ import com.util.city_api.service._abstract.IRefreshTokenService;
 import com.util.city_api.service._abstract.IUserService;
 import com.util.city_api.service.concrete.AuthService;
 
-public class AuthServiceTest {
+public class AuthServiceTest extends BaseMockServiceAndServiceAndRequestModel{
 	
 	IUserService userService;
     IAccesTokenService accessTokenService;
     IRefreshTokenService refreshTokenService;
     IConfirmationTokenService confirmationTokenService;	
 	IAuthService authService;
-	
-
-	@BeforeEach
-	void setup() {
 		
-		authService = new AuthService(null,null,null,null);
-	}
-	
-	
 
 	
    	   //singup metod logic...
@@ -46,9 +47,22 @@ public class AuthServiceTest {
 	     // signup metod :
 	@Test
 	void WhenUserAllReadyCreatedByUsernameThenItMustThrowUnSuccessFulException() {
-	//throw 	new UnAuthorizeException(CoreEnumExceptionMessages.UNAUTHORIZED_REQUEST,"gidecek hata mesajı");
+
+		authService = new AuthService(getUserService(),getMockAccesTokenService(),getMockRefreshTokenService(),getMockConfirmationTokenService());
 		
-	//System.out.println("gelen hata kodu :"+CoreConstantExceptionErrorCode.ALREADY_EXIST_EXCEPTION_ERROR_CODE); 
+		try {
+			authService.signup(getSignupRequestModel());
+		}
+		catch(BaseExceptionModel exceptionModel)
+		{
+			assertEquals(exceptionModel.getErrorCode(), UN_SUCCESSFUL_EXCEPTION_ERROR_CODE+EMAIL_ALREADY_USED);
+		//System.out.println("gelen hata  :"+exceptionModel.getErrorMessage());
+		}
+		
+	//UnSuccessfulException  exceptionModel =	Assertions.assertThrows(UnSuccessfulException.class,null);
+
+//	assertEquals(exceptionModel.getErrorCode(),UN_SUCCESSFUL_EXCEPTION_ERROR_CODE+EMAIL_ALREADY_USED);
+	
 	}
 
 

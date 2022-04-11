@@ -5,7 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import com.util.city_api.baseMockModel.BaseEntityAndDtoTestModel;
+import com.util.city_api.baseMock.BaseEntityAndDtoTestModel;
 import com.util.city_api.entity._core.User;
 import com.util.city_api.product_core.dto._coreDto.UserDto;
 

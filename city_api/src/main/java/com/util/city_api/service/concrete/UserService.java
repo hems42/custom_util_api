@@ -1,15 +1,9 @@
 package com.util.city_api.service.concrete;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
-
-import com.util.city_api.core.constant.CoreEnumExceptionMessages;
-import com.util.city_api.core.exception.exceptionModels.NotFoundException;
 import com.util.city_api.dao.UserDao;
 import com.util.city_api.entity._core.User;
 import com.util.city_api.product_core.dto._coreDto.UserDto;
@@ -187,6 +181,7 @@ public class UserService implements IUserService{
 	@Override
 	public Boolean isExistUserByEmail(String email) {
 		return userRepository.getUserByEmail(email)!=null;
+	//return false;
 	}
 
 

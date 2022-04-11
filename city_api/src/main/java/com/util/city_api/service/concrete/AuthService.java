@@ -103,7 +103,7 @@ public class AuthService implements IAuthService{
 			
 			log.error("user created allready by email");
 			
-			throw new UnSuccessfulException(CoreEnumExceptionMessages.UN_SUCCESSFUL_SIGNUP,CoreConstantExceptionErrorCode.EMAIL_ALREADY_USED,"user created allready by email");
+			throw new UnSuccessfulException(CoreEnumExceptionMessages.UN_SUCCESSFUL_SIGNUP,CoreConstantExceptionErrorCode.EMAIL_ALREADY_USED,"user created already by email");
 		}
 		
 		

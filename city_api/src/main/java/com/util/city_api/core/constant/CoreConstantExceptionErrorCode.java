@@ -59,7 +59,6 @@ public class CoreConstantExceptionErrorCode {
     
      */
 	
-	public static Integer convertCode(String errorCode) {return Integer.parseInt(errorCode);}
 	
 	//-Error_MainGroupCodeList :
 	
@@ -99,25 +98,25 @@ public class CoreConstantExceptionErrorCode {
      
     //-Error_ExceptionMessageCodeList :
     
-    public static String NOT_FOUND_EXCEPTION_ERROR_CODE = NOT + FOUND;
-    public static String ALREADY_EXIST_EXCEPTION_ERROR_CODE = ALREADY + EXIST;
-    public static String ALREADY_ACCEPTED_EXCEPTION_ERROR_CODE = ALREADY + ACCEPT;
-    public static String FORBIDDEN_EXCEPTION_ERROR_CODE = FORBIDDEN + "00";
-    public static String UN_AUTHORIZE_EXCEPTION_ERROR_CODE = UN + AUTHORIZE;
-    public static String UN_SUCCESSFUL_EXCEPTION_ERROR_CODE = UN + SUCCESS;
-    public static String UN_ACCEPTABLE_EXCEPTION_ERROR_CODE = UN + ACCEPT;
-    public static String NOT_VALID_EXCEPTION_ERROR_CODE = NOT +VALID;
+    public static String NOT_FOUND_EXCEPTION_ERROR_CODE                      = NOT + FOUND;
+    public static String ALREADY_EXIST_EXCEPTION_ERROR_CODE                  = ALREADY + EXIST;
+    public static String ALREADY_ACCEPTED_EXCEPTION_ERROR_CODE               = ALREADY + ACCEPT;
+    public static String FORBIDDEN_EXCEPTION_ERROR_CODE                      = FORBIDDEN + "00";
+    public static String UN_AUTHORIZE_EXCEPTION_ERROR_CODE                   = UN + AUTHORIZE;
+    public static String UN_SUCCESSFUL_EXCEPTION_ERROR_CODE                  = UN + SUCCESS;
+    public static String UN_ACCEPTABLE_EXCEPTION_ERROR_CODE                  = UN + ACCEPT;
+    public static String NOT_VALID_EXCEPTION_ERROR_CODE                      = NOT +VALID;
 	
     
     
     //-Error_EventCodeList :
 
-    public static String EMAIL_ALREADY_USED = "0001";
-    public static String USERNAME_ALREADY_USED = "0002";
-    public static String EMAIL_AND_USERNAME_ALREADY_USED = "0003";
+    public static String EMAIL_ALREADY_USED                                  = "0001";
+    public static String USERNAME_ALREADY_USED                               = "0002";
+    public static String EMAIL_AND_USERNAME_ALREADY_USED                     = "0003";
     
     // USER
-    public static String USER_NOT_CREATED = "0010";
+    public static String USER_NOT_CREATED                                    = "0010";
     
 
 }

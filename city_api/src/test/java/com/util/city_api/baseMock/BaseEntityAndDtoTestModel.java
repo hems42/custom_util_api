@@ -1,4 +1,4 @@
-package com.util.city_api.baseMockModel;
+package com.util.city_api.baseMock;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
