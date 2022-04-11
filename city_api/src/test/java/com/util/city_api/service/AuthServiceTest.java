@@ -48,13 +48,14 @@ public class AuthServiceTest extends BaseMockServiceAndServiceAndRequestModel{
 	
 	     // signup metod :
 	@Test
-	void WhenUserAlReadyCreatedByUsernameThenItMustThrowUnSuccessFulException() {
+	void WhenUserAlReadyCreatedByEmailThenItMustThrowUnSuccessFulException() {
 
 		authService = new AuthService(getMockUserService(),getMockAccesTokenService(),getMockRefreshTokenService(),getMockConfirmationTokenService());
 		
      	Mockito.when(getMockUserService().isExistUserByEmail(getSignupRequestModel().getEmail())).thenReturn(true);
 		
      	BaseExceptionModel  exceptionModel = Assertions.assertThrows(UnSuccessfulException.class,()->{
+		
      		authService.signup(getSignupRequestModel());
 	});
 
@@ -62,53 +63,25 @@ public class AuthServiceTest extends BaseMockServiceAndServiceAndRequestModel{
 	assertEquals(exceptionModel.getErrorCode(), UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + SIGNUP + EMAIL_ALREADY_USED);
 	
 	}
+	
 
+	@Test
+	void WhenUserAlReadyCreatedByUsernameThenItMustThrowUnSuccessFulException() {
 
-	@Test
-	void t1() {}
+		authService = new AuthService(getMockUserService(),getMockAccesTokenService(),getMockRefreshTokenService(),getMockConfirmationTokenService());
+		
+     	Mockito.when(getMockUserService().isExistUserByEmail(getSignupRequestModel().getEmail())).thenReturn(false);
+     	Mockito.when(getMockUserService().isExistUserByUserName(getSignupRequestModel().getUsername())).thenReturn(true);
+		
+     	BaseExceptionModel  exceptionModel = Assertions.assertThrows(UnSuccessfulException.class,()->{
+		
+     		authService.signup(getSignupRequestModel());
+	});
+
+    assertEquals(exceptionModel.getErrorMessage(),UN_SUCCESSFUL_SIGNUP.getExceptionMessage());
+	assertEquals(exceptionModel.getErrorCode(), UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + SIGNUP + USERNAME_ALREADY_USED);
 	
-	@Test
-	void t2() {}
+	}
 	
-	@Test
-	void t3() {}
 	
-	@Test
-	void t4() {}
-	
-	@Test
-	void t5() {}
-	
-	@Test
-	void t6() {}
-	
-	@Test
-	void t7() {}
-	
-	@Test
-	void t8() {}
-	
-	@Test
-	void t9() {}
-	
-	@Test
-	void t10() {}
-	
-	@Test
-	void t11() {}
-	
-	@Test
-	void t12() {}
-	
-	@Test
-	void t13() {}
-	
-	@Test
-	void t14() {}
-	
-	@Test
-	void t15() {}
-	
-	@Test
-	void t16() {}
 }
