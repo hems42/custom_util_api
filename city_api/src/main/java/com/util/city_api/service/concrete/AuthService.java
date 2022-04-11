@@ -69,11 +69,11 @@ public class AuthService implements IAuthService{
 		 
 	
 	
-		if(userService.isExistUserByEmail(signupRequest.getEmail()))
+		if(!userService.isExistUserByEmail(signupRequest.getEmail()))
 		{
 			log.info("user not allready created by email");
 			
-			if(userService.isExistUserByEmail(signupRequest.getUsername()))
+			if(!userService.isExistUserByUserName(signupRequest.getUsername()))
 			{
 				log.info("user not allready created by username");
 				
@@ -90,11 +90,13 @@ public class AuthService implements IAuthService{
 					
 					
 				} else {
+					
 					log.error("user not created");
 					
 					throw new UnSuccessfulException(CoreEnumExceptionMessages.UN_SUCCESSFUL_SIGNUP,CoreConstantExceptionErrorCode.USER_NOT_CREATED,"user not created");
 				}
 			} else {
+				
 				log.error("user created allready by username");
 				
 				throw new UnSuccessfulException(CoreEnumExceptionMessages.UN_SUCCESSFUL_SIGNUP,CoreConstantExceptionErrorCode.USERNAME_ALREADY_USED,"user created allready by username");

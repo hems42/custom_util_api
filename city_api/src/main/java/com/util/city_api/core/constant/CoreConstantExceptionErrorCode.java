@@ -106,7 +106,7 @@ public class CoreConstantExceptionErrorCode {
     public static String UN_SUCCESSFUL_EXCEPTION_ERROR_CODE                  = UN + SUCCESS;
     public static String UN_ACCEPTABLE_EXCEPTION_ERROR_CODE                  = UN + ACCEPT;
     public static String NOT_VALID_EXCEPTION_ERROR_CODE                      = NOT +VALID;
-	
+
     
     
     //-Error_EventCodeList :

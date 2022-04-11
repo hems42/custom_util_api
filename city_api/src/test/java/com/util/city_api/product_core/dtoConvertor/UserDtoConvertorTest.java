@@ -26,7 +26,7 @@ public class UserDtoConvertorTest extends BaseEntityAndDtoTestModel{
     @Test
     void WhenUserConvertedToUserDtoThenReturnUserDtoThatAllParametersMustBeSameWithUserParamaters() {
     	
-    	UserDto userDtoResult = userDtoConvertor.convert(user);
+    	UserDto userDtoResult = userDtoConvertor.convert(user); 
     	
     	assertEquals(userDtoResult.getUserId(), user.getUserId());
     	assertEquals(userDtoResult.getUserName(),user.getUserName());

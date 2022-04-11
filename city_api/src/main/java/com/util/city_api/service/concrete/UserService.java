@@ -181,7 +181,6 @@ public class UserService implements IUserService{
 	@Override
 	public Boolean isExistUserByEmail(String email) {
 		return userRepository.getUserByEmail(email)!=null;
-	//return false;
 	}
 
 

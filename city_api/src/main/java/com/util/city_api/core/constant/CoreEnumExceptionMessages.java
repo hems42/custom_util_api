@@ -6,7 +6,7 @@ public enum CoreEnumExceptionMessages {
  
 
     //AUTHENTICATION***
-       
+        
      // ACCESS TOKEN
     NOT_VALID_ACCESS_TOKEN("ACCESS_TOKEN_EXPIRED",ACCESS_TOKEN),
     NOT_FOUND_ACCESS_TOKEN("ACCESS_TOKEN_NOT_FOUND",""),
