@@ -71,7 +71,6 @@ public class AuthServiceTest extends BaseMockServiceAndServiceAndRequestModel{
 	assertEquals(exceptionModel.getErrorCode(), UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + SIGNUP + EMAIL_ALREADY_USED);
 	
 	} 
-	
 
 	@Test
 	void WhenUserAlReadyCreatedByUsernameThenItMustThrowUnSuccessFulException() {
@@ -117,7 +116,6 @@ public class AuthServiceTest extends BaseMockServiceAndServiceAndRequestModel{
 	assertEquals(exceptionModel.getErrorCode(), UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + SIGNUP + USER_NOT_CREATED);
 	}
 	
-
 	@Test
 	void WhenRefreshTokenNotCreatedOrNotSavedSuccessfullyThenItMustThrowUnSuccessFulException() {
 		
