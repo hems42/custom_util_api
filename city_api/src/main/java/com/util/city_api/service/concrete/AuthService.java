@@ -107,9 +107,9 @@ public class AuthService implements IAuthService{
 		            	
 		            } else {
 		            	
-		            	log.error(logMetodTitle + "refreshToken not saved");
+		            	log.error(logMetodTitle + "refreshToken not created or saved");
 						
-						throw new UnSuccessfulException(UN_SUCCESSFUL_SIGNUP,REFRESH_TOKEN_NOT_CREATED_OR_SAVED,"refreshToken not saved");
+						throw new UnSuccessfulException(UN_SUCCESSFUL_SIGNUP,REFRESH_TOKEN_NOT_CREATED_OR_SAVED,"refreshToken not created or saved");
 		            	
 		            }				
 					
