@@ -118,5 +118,8 @@ public class CoreConstantExceptionErrorCode {
     // USER
     public static String USER_NOT_CREATED                                    = "0010";
     
+    // AUTHENTICATION
+    public static String REFRESH_TOKEN_NOT_CREATED_OR_SAVED                  = "0020";
+    
 
 }

@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
+@AllArgsConstructor 
 @Entity
 @Table(name = "Cities")
 public class City {

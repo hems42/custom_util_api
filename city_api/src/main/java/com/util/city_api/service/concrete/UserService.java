@@ -30,7 +30,7 @@ public class UserService implements IUserService{
 		this.userDtoConvertor = userDtoConvertor;
 		this.logUserService = logUserService;
 	}
-
+ 
 	
 	
 	// CREATE
@@ -162,7 +162,7 @@ public class UserService implements IUserService{
 	@Override
 	public UserDto updateUserIsRegistered(Boolean isRegistered) {
 		// TODO Auto-generated method stub
-		return null;
+		return null; 
 	}
 
 

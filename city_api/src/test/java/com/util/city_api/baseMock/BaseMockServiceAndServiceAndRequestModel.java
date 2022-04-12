@@ -2,12 +2,15 @@ package com.util.city_api.baseMock;
 
 import org.mockito.Mockito;
 
+import com.util.city_api.entity._core.User;
+import com.util.city_api.product_core.dto._coreDto.UserDto;
 import com.util.city_api.product_core.dtoConvertor.LogRoleDtoConvertor;
 import com.util.city_api.product_core.dtoConvertor.LogUserDtoConvertor;
 import com.util.city_api.product_core.dtoConvertor.RoleDtoConvertor;
 import com.util.city_api.product_core.dtoConvertor.UserDtoConvertor;
 import com.util.city_api.product_core.request.createRequest.SignupRequest;
 import com.util.city_api.product_core.request.createRequest.UserCreateRequest;
+import com.util.city_api.product_core.response.SignupReponse;
 import com.util.city_api.service._abstract.IAccesTokenService;
 import com.util.city_api.service._abstract.IConfirmationTokenService;
 import com.util.city_api.service._abstract.ILogRoleService;
@@ -24,6 +27,9 @@ import com.util.city_api.service.concrete.UserService;
 
 public class BaseMockServiceAndServiceAndRequestModel extends BaseMockDaoAndDao{
 
+	final private BaseEntityAndDtoTestModel models = new BaseEntityAndDtoTestModel();
+	
+	
 	
 	// request model
 	
@@ -32,8 +38,47 @@ public class BaseMockServiceAndServiceAndRequestModel extends BaseMockDaoAndDao{
 	}
 	
 	public UserCreateRequest getUserCreateRequest(){
-		return new UserCreateRequest("username","email@email","password");
+		return new UserCreateRequest("username","email@email","password"); 
 	}
+	
+	
+	
+	
+	// response model
+	
+	public SignupReponse getSignupResponse() { 
+		return new SignupReponse(
+				"username",
+				"email",
+				"accessToken",
+				"refreshToken",
+				"expireTimeAccessToken",
+				"expireTimeRefreshToken");
+	}
+	
+	
+	
+	
+	// entity and dto model
+	
+	public User getUserModel() {
+		return models.getUser();
+	}
+	
+	public User getMockUserModel() {
+		return Mockito.mock(User.class);
+	}
+	
+	public UserDto getUserDtoModel() {
+		return models.getUserDto();
+	}
+	
+	public UserDto getMockUserDtoModel() {
+		return Mockito.mock(UserDto.class);
+	}
+	
+	
+	
 	
 	
 	// dto convertor
