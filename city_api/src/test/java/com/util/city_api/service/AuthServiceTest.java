@@ -7,6 +7,8 @@ import org.mockito.Mockito;
 import com.util.city_api.baseMock.BaseMockServiceAndServiceAndRequestModel;
 import com.util.city_api.core.exception.abstracts.BaseExceptionModel;
 import com.util.city_api.core.exception.exceptionModels.UnSuccessfulException;
+import com.util.city_api.entity._core.User;
+import com.util.city_api.product_core.dto._coreDto.UserDto;
 import com.util.city_api.product_core.dtoConvertor.UserDtoConvertor;
 import com.util.city_api.service._abstract.IAccesTokenService;
 import com.util.city_api.service._abstract.IAuthService;
@@ -31,7 +33,11 @@ public class AuthServiceTest extends BaseMockServiceAndServiceAndRequestModel{
     IConfirmationTokenService mockConfirmationTokenService = getMockConfirmationTokenService();
     UserDtoConvertor userDtoConvertor = getUserDtoConvertor();
     UserDtoConvertor mockUserDtoConvertor = getMockUserDtoConvertor();
-	IAuthService authService;
+	User userModel = getUserModel();
+	User mockUsermodel = getMockUserModel();
+	UserDto userDto = getUserDtoModel();
+	UserDto mockUserDto = getMockUserDtoModel();
+    IAuthService authService;
 		
 
 	
