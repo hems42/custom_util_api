@@ -4,12 +4,14 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import com.util.city_api.baseMock.BaseMockServiceAndServiceAndRequestModel;
+import com.util.city_api.baseMockModel.BaseMockServiceAndServiceModel;
 import com.util.city_api.core.exception.abstracts.BaseExceptionModel;
 import com.util.city_api.core.exception.exceptionModels.UnSuccessfulException;
 import com.util.city_api.entity._core.User;
+import com.util.city_api.entity.security.RefreshToken;
 import com.util.city_api.product_core.dto._coreDto.UserDto;
 import com.util.city_api.product_core.dtoConvertor.UserDtoConvertor;
+import com.util.city_api.product_core.request.createRequest.UserCreateRequest;
 import com.util.city_api.service._abstract.IAccesTokenService;
 import com.util.city_api.service._abstract.IAuthService;
 import com.util.city_api.service._abstract.IConfirmationTokenService;
@@ -18,11 +20,16 @@ import com.util.city_api.service._abstract.IUserService;
 import com.util.city_api.service.concrete.AuthService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.time.LocalDateTime;
+
 import static com.util.city_api.core.constant.CoreConstantExceptionErrorCode.*;
 import static com.util.city_api.core.constant.CoreEnumExceptionMessages.*;
 
-public class AuthServiceTest extends BaseMockServiceAndServiceAndRequestModel{
+public class AuthServiceTest extends BaseMockServiceAndServiceModel{
 	
+	// service
+	IAuthService authService;
 	IUserService userService = getUserService();
 	IUserService mockUserService = getMockUserService();
     IAccesTokenService accessTokenService = getAccesTokenService();
@@ -31,13 +38,23 @@ public class AuthServiceTest extends BaseMockServiceAndServiceAndRequestModel{
     IRefreshTokenService mockRefreshTokenService = getMockRefreshTokenService();
     IConfirmationTokenService confirmationTokenService = getConfirmationtokenService();
     IConfirmationTokenService mockConfirmationTokenService = getMockConfirmationTokenService();
+    
+    // convertor
     UserDtoConvertor userDtoConvertor = getUserDtoConvertor();
     UserDtoConvertor mockUserDtoConvertor = getMockUserDtoConvertor();
-	User userModel = getUserModel();
+	
+    // model
+    User userModel = getUserModel();
 	User mockUsermodel = getMockUserModel();
-	UserDto userDto = getUserDtoModel();
-	UserDto mockUserDto = getMockUserDtoModel();
-    IAuthService authService;
+	UserDto userDtoModel = getUserDtoModel();
+	UserDto mockUserDtoModel = getMockUserDtoModel();
+	RefreshToken refreshTokenModel = getRefreshToken();
+	UserCreateRequest userCreateRequestModel = getUserCreateRequest();
+	
+	
+	// util
+	LocalDateTime time = getDateTime();
+    
 		
 
 	
@@ -111,7 +128,7 @@ public class AuthServiceTest extends BaseMockServiceAndServiceAndRequestModel{
 		
      	Mockito.when(mockUserService.isExistUserByEmail(getSignupRequestModel().getEmail())).thenReturn(false);
      	Mockito.when(mockUserService.isExistUserByUserName(getSignupRequestModel().getUsername())).thenReturn(false);
-     	Mockito.when(mockUserService.createUser(getUserCreateRequest())).thenReturn(null);
+     	Mockito.when(mockUserService.createUser(getUserCreateRequest())).thenReturn(userDtoModel);
 		
      	BaseExceptionModel  exceptionModel = Assertions.assertThrows(UnSuccessfulException.class,()->{
 		
@@ -123,7 +140,7 @@ public class AuthServiceTest extends BaseMockServiceAndServiceAndRequestModel{
 	}
 	
 	@Test
-	void WhenRefreshTokenNotCreatedOrNotSavedSuccessfullyThenItMustThrowUnSuccessFulException() {
+	void WhenRefreshTokenNotCreatedSuccessfullyThenItMustThrowUnSuccessFulException() {
 		
 		authService = new AuthService(mockUserService,
 				mockAccessTokenService,
@@ -133,17 +150,41 @@ public class AuthServiceTest extends BaseMockServiceAndServiceAndRequestModel{
 		
      	Mockito.when(mockUserService.isExistUserByEmail(getSignupRequestModel().getEmail())).thenReturn(false);
      	Mockito.when(mockUserService.isExistUserByUserName(getSignupRequestModel().getUsername())).thenReturn(false);
-     	Mockito.when(mockUserService.createUser(getUserCreateRequest())).thenReturn(getUserDtoModel());
-		//Mockito.mock(mockRefreshTokenService.createRefreshToken(getMockUserModel()))
+     	Mockito.when(mockUserService.createUser(userCreateRequestModel)).thenReturn(userDtoModel);
+		Mockito.when(mockRefreshTokenService.createRefreshToken(userModel)).thenReturn(null);
+		
      	BaseExceptionModel  exceptionModel = Assertions.assertThrows(UnSuccessfulException.class,()->{
 		
      		authService.signup(getSignupRequestModel());
 	});
 
     assertEquals(exceptionModel.getErrorMessage(),UN_SUCCESSFUL_SIGNUP.getExceptionMessage());
-	assertEquals(exceptionModel.getErrorCode(), UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + SIGNUP + USER_NOT_CREATED);
+	assertEquals(exceptionModel.getErrorCode(), UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + SIGNUP + REFRESH_TOKEN_NOT_CREATED_OR_SAVED);
 	}
 	
+	@Test
+	void WhenRefreshTokenNotSavedSuccessfullyThenItMustThrowUnSuccessFulException() {
+		
+		authService = new AuthService(mockUserService,
+				mockAccessTokenService,
+				mockRefreshTokenService,
+				mockConfirmationTokenService,
+				mockUserDtoConvertor);
+		
+     	Mockito.when(mockUserService.isExistUserByEmail(getSignupRequestModel().getEmail())).thenReturn(false);
+     	Mockito.when(mockUserService.isExistUserByUserName(getSignupRequestModel().getUsername())).thenReturn(false);
+     	Mockito.when(mockUserService.createUser(getUserCreateRequest())).thenReturn(userDtoModel);
+		Mockito.when(mockRefreshTokenService.createRefreshToken(getMockUserModel())).thenReturn(refreshTokenModel);
+		Mockito.when(mockRefreshTokenService.saveRefreshToken(refreshTokenModel)).thenReturn(null);
+		
+     	BaseExceptionModel  exceptionModel = Assertions.assertThrows(UnSuccessfulException.class,()->{
+		
+     		authService.signup(getSignupRequestModel());
+	});
 
+    assertEquals(exceptionModel.getErrorMessage(),UN_SUCCESSFUL_SIGNUP.getExceptionMessage());
+	assertEquals(exceptionModel.getErrorCode(), UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + SIGNUP + REFRESH_TOKEN_NOT_CREATED_OR_SAVED);
+	}
+	
 	
 }

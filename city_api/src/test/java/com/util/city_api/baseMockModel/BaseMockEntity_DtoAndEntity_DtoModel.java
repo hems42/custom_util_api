@@ -1,16 +1,22 @@
-package com.util.city_api.baseMock;
+package com.util.city_api.baseMockModel;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
 
+import org.mockito.Mockito;
+
 import com.util.city_api.entity._core.*;
 import com.util.city_api.entity.log.*;
+import com.util.city_api.entity.security.RefreshToken;
 import com.util.city_api.product_core.dto._coreDto.*;
 import com.util.city_api.product_core.dto.logDto.*;
+import com.util.city_api.product_core.request.createRequest.SignupRequest;
+import com.util.city_api.product_core.request.createRequest.UserCreateRequest;
+import com.util.city_api.product_core.response.SignupReponse;
 
 import static com.util.city_api.product_core.enums.EnumLogOperations.*;
 
-public class BaseEntityAndDtoTestModel {
+public class BaseMockEntity_DtoAndEntity_DtoModel {
 
    // utilities...................
    public LocalDateTime getTime()
@@ -327,4 +333,66 @@ public class BaseEntityAndDtoTestModel {
 				   getUser(),
 				   getTime());
    }
+
+   
+   
+   //------------------------------------
+   
+   // request
+   public SignupRequest getSignupRequestModel() {
+		return new SignupRequest("username","email@email","password","");
+   }
+	
+   public UserCreateRequest getUserCreateRequest(){
+		return new UserCreateRequest("username","email@email","password"); 
+   }
+	
+	
+	
+	
+    // response model
+	public SignupReponse getSignupResponse() { 
+		return new SignupReponse(
+				"username",
+				"email",
+				"accessToken",
+				"refreshToken",
+				"expireTimeAccessToken",
+				"expireTimeRefreshToken");
+	}
+	
+	public SignupReponse getMockSignupResponse() {
+		return Mockito.mock(SignupReponse.class);
+	}
+	
+	public RefreshToken getRefreshToken() {
+		return new RefreshToken(0,getUser(),"refreshToken",getTime(),getTime());
+	}
+	
+	public RefreshToken getMockRefreshToken() {
+		return Mockito.mock(RefreshToken.class);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	// constructor
+	private static BaseMockEntity_DtoAndEntity_DtoModel _baseMockEntity_DtoAndEntity_DtoModel;
+    
+	public BaseMockEntity_DtoAndEntity_DtoModel() {}
+
+	public static BaseMockEntity_DtoAndEntity_DtoModel getInsatnce() {
+		if(_baseMockEntity_DtoAndEntity_DtoModel==null)
+		{
+			_baseMockEntity_DtoAndEntity_DtoModel= new BaseMockEntity_DtoAndEntity_DtoModel();
+		}
+		
+		return _baseMockEntity_DtoAndEntity_DtoModel;
+	}
+    
+
 }

@@ -6,11 +6,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import com.util.city_api.baseMock.BaseEntityAndDtoTestModel;
+import com.util.city_api.baseMockModel.BaseMockEntity_DtoAndEntity_DtoModel;
 import com.util.city_api.entity._core.Role;
 import com.util.city_api.product_core.dto._coreDto.RoleDto;
 
-public class RoleDtoConvertorTest extends BaseEntityAndDtoTestModel{
+public class RoleDtoConvertorTest extends BaseMockEntity_DtoAndEntity_DtoModel{
 	
 	private RoleDtoConvertor roleDtoConvertor;
 	private Role role;

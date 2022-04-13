@@ -115,7 +115,7 @@ public class AuthService implements IAuthService{
 					
 				} else {
 					
-					log.error(logMetodTitle + "user not created");
+					log.error(logMetodTitle + "user not created successfuly");
 					
 					throw new UnSuccessfulException(UN_SUCCESSFUL_SIGNUP,USER_NOT_CREATED,"user not created");
 				}

@@ -6,11 +6,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import com.util.city_api.baseMock.BaseEntityAndDtoTestModel;
+import com.util.city_api.baseMockModel.BaseMockEntity_DtoAndEntity_DtoModel;
 import com.util.city_api.entity._core.Territory;
 import com.util.city_api.product_core.dto._coreDto.TerritoryDto;
 
-public class TerritoryDtoConvertorTest extends BaseEntityAndDtoTestModel{
+public class TerritoryDtoConvertorTest extends BaseMockEntity_DtoAndEntity_DtoModel{
 
 	private TerritoryDtoConvertor territoryDtoConvertor;	
 	private Territory territory;	

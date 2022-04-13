@@ -1,4 +1,4 @@
-package com.util.city_api.baseMock;
+package com.util.city_api.baseMockModel;
 
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,24 +8,19 @@ import com.util.city_api.dao.LogUserDao;
 import com.util.city_api.dao.RoleDao;
 import com.util.city_api.dao.UserDao;
 
-public class BaseMockDaoAndDao {
-
+public class BaseMockDaoAndDaoModel {
 	
-	       @Autowired
-   private UserDao userDao;
+	@Autowired
+    private UserDao userDao;
     
-	       @Autowired
-   private LogUserDao logUserDao;
+	@Autowired
+    private LogUserDao logUserDao;
 	
-	       @Autowired
-   private RoleDao roleDao;
+	@Autowired
+    private RoleDao roleDao;
     
-	       @Autowired
-   private LogRoleDao logRoleDao;
-	
-	
-	
-	
+	@Autowired
+    private LogRoleDao logRoleDao;
 	
 	
 	public UserDao getUserDao() {
@@ -58,5 +53,21 @@ public class BaseMockDaoAndDao {
 	
 	public LogRoleDao getMockLogRoleDao () {
 		return Mockito.mock(LogRoleDao.class);
+	}
+	
+	
+	
+	
+	// constructor
+	private static BaseMockDaoAndDaoModel _baseMockDaoAndDaoModel;
+	
+	public BaseMockDaoAndDaoModel() {}
+	
+	public static BaseMockDaoAndDaoModel getInsatnce() {
+		if(_baseMockDaoAndDaoModel==null)
+		{
+			_baseMockDaoAndDaoModel = new BaseMockDaoAndDaoModel();
+		}
+		return _baseMockDaoAndDaoModel;
 	}
 }

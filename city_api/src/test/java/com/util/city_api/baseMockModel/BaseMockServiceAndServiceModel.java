@@ -1,8 +1,11 @@
-package com.util.city_api.baseMock;
+package com.util.city_api.baseMockModel;
+
+import java.time.LocalDateTime;
 
 import org.mockito.Mockito;
 
 import com.util.city_api.entity._core.User;
+import com.util.city_api.entity.security.RefreshToken;
 import com.util.city_api.product_core.dto._coreDto.UserDto;
 import com.util.city_api.product_core.dtoConvertor.LogRoleDtoConvertor;
 import com.util.city_api.product_core.dtoConvertor.LogUserDtoConvertor;
@@ -25,42 +28,44 @@ import com.util.city_api.service.concrete.RefreshTokenService;
 import com.util.city_api.service.concrete.RoleService;
 import com.util.city_api.service.concrete.UserService;
 
-public class BaseMockServiceAndServiceAndRequestModel extends BaseMockDaoAndDao{
+public class BaseMockServiceAndServiceModel extends BaseMockDaoAndDaoModel{
 
-	final private BaseEntityAndDtoTestModel models = new BaseEntityAndDtoTestModel();
+	final private BaseMockEntity_DtoAndEntity_DtoModel models = new BaseMockEntity_DtoAndEntity_DtoModel();
 	
 	
 	
 	// request model
-	
 	public SignupRequest getSignupRequestModel() {
-		return new SignupRequest("username","email@email","password","");
+		return models.getSignupRequestModel();
 	}
 	
 	public UserCreateRequest getUserCreateRequest(){
-		return new UserCreateRequest("username","email@email","password"); 
+		return models.getUserCreateRequest(); 
 	}
-	
 	
 	
 	
 	// response model
-	
 	public SignupReponse getSignupResponse() { 
-		return new SignupReponse(
-				"username",
-				"email",
-				"accessToken",
-				"refreshToken",
-				"expireTimeAccessToken",
-				"expireTimeRefreshToken");
+		return models.getSignupResponse();
+	}
+	
+	public SignupReponse getMockSignupResponse() {
+		return models.getMockSignupResponse();
+	}
+	
+	public RefreshToken getRefreshToken() {
+		return models.getRefreshToken();
+	}
+	
+	public RefreshToken getMockRefreshToken() {
+		return models.getMockRefreshToken();
 	}
 	
 	
 	
 	
 	// entity and dto model
-	
 	public User getUserModel() {
 		return models.getUser();
 	}
@@ -134,7 +139,6 @@ public class BaseMockServiceAndServiceAndRequestModel extends BaseMockDaoAndDao{
 		return Mockito.mock(RefreshTokenService.class);
 	}
 	
-	
 	public IConfirmationTokenService getConfirmationtokenService() {
 		return new ConfirmationTokenService();
 	}
@@ -187,6 +191,31 @@ public class BaseMockServiceAndServiceAndRequestModel extends BaseMockDaoAndDao{
 		return Mockito.mock(RoleService.class);
 	}
 	
+
+	
+	// util
+	
+	public LocalDateTime getDateTime() {
+		return models.getTime();
+	}
+
+	
+	
+	
+	
+	// constructor
+	private static BaseMockServiceAndServiceModel _baseMockServiceAndServiceModel;
+	
+	public BaseMockServiceAndServiceModel() {}
+    
+    public static BaseMockServiceAndServiceModel getInsance()
+    {
+    	if(_baseMockServiceAndServiceModel==null)
+    	{
+    		_baseMockServiceAndServiceModel = new BaseMockServiceAndServiceModel();
+    	}
+    	return _baseMockServiceAndServiceModel;
+    }
 
 
 }
