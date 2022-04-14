@@ -1,51 +1,19 @@
 package com.util.city_api.baseMockModel;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
-
-import org.mockito.Mockito;
+import java.util.Set;
 
 import com.util.city_api.entity._core.*;
 import com.util.city_api.entity.log.*;
-import com.util.city_api.entity.security.RefreshToken;
 import com.util.city_api.product_core.dto._coreDto.*;
 import com.util.city_api.product_core.dto.logDto.*;
-import com.util.city_api.product_core.request.createRequest.SignupRequest;
-import com.util.city_api.product_core.request.createRequest.UserCreateRequest;
-import com.util.city_api.product_core.response.SignupReponse;
 
 import static com.util.city_api.product_core.enums.EnumLogOperations.*;
 
 public class BaseMockEntity_DtoAndEntity_DtoModel {
-
-   // utilities...................
-   public LocalDateTime getTime()
-	{
-		return LocalDateTime.of(2013, 11, 30, 22, 32, 34, 0);
-	}
-   
-   public HashSet<Role> getRoleList()
-   {
-	  HashSet<Role> roles = new HashSet<Role>();
-	  
-	  roles.add(getRole());
-	  
-	  roles.add(getRole());
-	  
-	  roles.add(getRole());
-	  
-	  roles.add(getRole());
-	  
-	  roles.add(getRole());
-	   
-	   return roles;
-   }
-    
-   
-   
-   
+     
    //----------------------
-   public User getUser() {
+   public User getUser(Set<Role> roles, LocalDateTime createdDateTime, LocalDateTime updatedDateTime) {
 		return new User(
 				null,
 				"userName",
@@ -54,13 +22,13 @@ public class BaseMockEntity_DtoAndEntity_DtoModel {
 				true,
 				true,
 				true,
-				getRoleList(),
-				getTime(),
-				getTime()
+				roles,
+				createdDateTime,
+				updatedDateTime
 				);
 	}
    
-   public UserDto getUserDto()
+   public UserDto getUserDto(Set<Role> roles, LocalDateTime createdDateTime, LocalDateTime updatedDateTime)
    {
 	   return new UserDto(
 				null,
@@ -70,313 +38,273 @@ public class BaseMockEntity_DtoAndEntity_DtoModel {
 				true,
 				true,
 				true,
-				getRoleList(),
-				getTime(),
-				getTime()
+				roles,
+				createdDateTime,
+				updatedDateTime
 			   );
    }
  
-   public Role getRole()
+   public Role getRole(LocalDateTime createdDateTime, LocalDateTime updatedDateTime)
    {
 	   return new Role (
 			   null,
 			   "roleName",
 			   "rolDescription",
-			   getTime(),
-			   getTime()
+			   createdDateTime,
+			   updatedDateTime
 			   );
    }
 
-   public RoleDto getRoleDto()
+   public RoleDto getRoleDto(LocalDateTime createdDateTime, LocalDateTime updatedDateTime)
    {
 	   return new RoleDto (
 			   null,
 			   "roleName",
 			   "rolDescription",
-			   getTime(),
-			   getTime()
+			   createdDateTime,
+			   updatedDateTime
 			   );
    }
   
    
    //------------------------------
-   public Territory getTerritory()
+   public Territory getTerritory(LocalDateTime createdDateTime, LocalDateTime updatedDateTime)
    {
 	   return new Territory(
 			   null,
 			   "territorName",
 			   "territoryDescription",
-			   getTime(),
-			   getTime()
+			   createdDateTime,
+			   updatedDateTime
 			   );
    }
    
-   public TerritoryDto getTerritoryDto()
+   public TerritoryDto getTerritoryDto(LocalDateTime createdDateTime, LocalDateTime updatedDateTime)
    {
 	   return new TerritoryDto(
 			   null,
 			   "territorName",
 			   "territoryDescription",
-			   getTime(),
-			   getTime()
+			   createdDateTime,
+			   updatedDateTime
 			   );
    }
    
-   public City getCity()
+   public City getCity(Territory territory,LocalDateTime createdDateTime, LocalDateTime updatedDateTime)
    {
 	   return new City(
 			   null,
-			   getTerritory(),
+			   territory,
 			   "cityName",
 			   "plateCode",
 			   "postCode",
 			   "phoneNumberCode",
 			   "cityDescription",
-			   getTime(),
-			   getTime()
+			   createdDateTime,
+			   updatedDateTime
 			   );
    }
    
-   public CityDto getCityDto()
+   public CityDto getCityDto(Territory territory,LocalDateTime createdDateTime, LocalDateTime updatedDateTime)
    {
 	   return new CityDto(
 			   null,
-			   getTerritory(),
+			   territory,
 			   "cityName",
 			   "plateCode",
 			   "postCode",
 			   "phoneNumberCode",
 			   "cityDescription",
-			   getTime(),
-			   getTime()			   
+			   createdDateTime,
+			   updatedDateTime			   
 			   );
    }
    
-   public District getDistrict()
+   public District getDistrict(City city,LocalDateTime createdDateTime, LocalDateTime updatedDateTime)
    {
 	   return new District(
 			   null,
-			   getCity(),
+			   city,
 			   "districtName",
 			   "postCode",
 			   "districtDescription",
-			   getTime(),
-			   getTime()
+			   createdDateTime,
+			   updatedDateTime
 			   );
    }
 
-   public DistrictDto getDistrictDto()
+   public DistrictDto getDistrictDto(City city,LocalDateTime createdDateTime, LocalDateTime updatedDateTime)
    {
 	   return new DistrictDto(
 			   null,
-			   getCity(),
+			   city,
 			   "districtName",
 			   "postCode",
 			   "districtDescription",
-			   getTime(),
-			   getTime()
+			   createdDateTime,
+			   updatedDateTime
 			   );
    }
    
-   public Town getTown()
+   public Town getTown(District district,LocalDateTime createdDateTime, LocalDateTime updatedDateTime)
    {
 	   return new Town(
 			   null,
-			   getDistrict(),
+			   district,
 			   "townName",
 			   "townDescription",
-			   getTime(),
-			   getTime()
+			   createdDateTime,
+			   updatedDateTime
 			   );
    }
 
-   public TownDto getTownDto()
+   public TownDto getTownDto(District district,LocalDateTime createdDateTime, LocalDateTime updatedDateTime)
    {
 	   return new TownDto(
 			   null,
-			   getDistrict(),
+			   district,
 			   "townName",
 			   "townDescription",
-			   getTime(),
-			   getTime()
+			   createdDateTime,
+			   updatedDateTime
 			   );
    }
 
 
    //------------------------------------
-   public LogTerritory getLogTerritory()
+   public LogTerritory getLogTerritory(Territory territory, User performingTransactionBy, LocalDateTime createdDateTime)
    {
 	   return new LogTerritory(
 			   null,
 			   CREATED,
-			   getTerritory(),
-			   getUser(),
-			   getTime()
+			   territory,
+			   performingTransactionBy,
+			   createdDateTime
 			   );
    }
    
-   public LogTerritoryDto getLogTerritoryDto()
+   public LogTerritoryDto getLogTerritoryDto(Territory territory, User performingTransactionBy, LocalDateTime createdDateTime)
    {
 	   return new LogTerritoryDto(
 			   null,
 			   CREATED,
-			   getTerritory(),
-			   getUser(),
-			   getTime()
+			   territory,
+			   performingTransactionBy,
+			   createdDateTime
 			   );
    }
    
-   public LogCity getLogCity()
+   public LogCity getLogCity(City city, User performingTransactionBy, LocalDateTime createdDateTime)
    {
 	   return new LogCity(
 			   null,
 			   CREATED,
-			   getCity(),
-			   getUser(),
-			   getTime()
+			   city,
+			   performingTransactionBy,
+			   createdDateTime
 			   );
    }
    
-   public LogCityDto getLogCityDto()
+   public LogCityDto getLogCityDto(City city, User performingTransactionBy, LocalDateTime createdDateTime)
    {
 	   return new LogCityDto(
 			   null,
 			   CREATED,
-			   getCity(),
-			   getUser(),
-			   getTime()
+			   city,
+			   performingTransactionBy,
+			   createdDateTime
 			   );
    }
    
-   public LogDistrict getLogDistrict()
+   public LogDistrict getLogDistrict(District district, User performingTransactionBy, LocalDateTime createdDateTime)
    {
 	   return new LogDistrict(
 			   null,
 			   CREATED,
-			   getDistrict(),
-			   getUser(),
-			   getTime()
+			   district,
+			   performingTransactionBy,
+			   createdDateTime
 			   );
    }
 
-   public LogDistrictDto getLogDistrictDto()
+   public LogDistrictDto getLogDistrictDto(District district, User performingTransactionBy, LocalDateTime createdDateTime)
    {
 	   return new LogDistrictDto(
 			   null,
 			   CREATED,
-			   getDistrict(),
-			   getUser(),
-			   getTime()
+			   district,
+			   performingTransactionBy,
+			   createdDateTime
 			   );
    }
    
-   public LogTown getLogTown()
+   public LogTown getLogTown(Town town, User performingTransactionBy, LocalDateTime createdDateTime)
    {
 	   return new LogTown(
 			   null,
 			   CREATED,
-			   getTown(),
-			   getUser(),
-			   getTime()
+			   town,
+			   performingTransactionBy,
+			   createdDateTime
 			   );
    }
 
-   public LogTownDto getLogTownDto()
+   public LogTownDto getLogTownDto(Town town, User performingTransactionBy, LocalDateTime createdDateTime)
    {
 	   return new LogTownDto(
 			   null,
 			   CREATED,
-			   getTown(),
-			   getUser(),
-			   getTime()
+			   town,
+			   performingTransactionBy,
+			   createdDateTime
 			   );
    }
 
-   public LogUser getLogUser() {
+   public LogUser getLogUser(User user, User performingTransactionBy, LocalDateTime createdDateTime) {
 	   
 	   return new LogUser(
 			   null,
 			   CREATED,
-			   getUser(),
-			   getUser(),
-			   getTime()
+			   user,
+			   performingTransactionBy,
+			   createdDateTime
 			   );
 	   }
    
-   public LogUserDto getLogUserDto()
+   public LogUserDto getLogUserDto(User user, User performingTransactionBy, LocalDateTime createdDateTime)
    {
 	   return new LogUserDto(
 			   null,
 			   CREATED,
-			   getUser(),
-			   getUser(),
-			   getTime()
+			   user,
+			   performingTransactionBy,
+			   createdDateTime
 			   );
    }
 
-   public LogRole getLogRole()
+   public LogRole getLogRole(Role role, User performingTransactionBy, LocalDateTime createdDateTime)
    {
 	   return new LogRole(
 			   null,
 			   CREATED,
-			   getRole(),
-			   getUser(),
-			   getTime());
+			   role,
+			   performingTransactionBy,
+			   createdDateTime
+			   );
    }
    
-   public LogRoleDto getLogRoleDto()
+   public LogRoleDto getLogRoleDto(Role role, User performingTransactionBy, LocalDateTime createdDateTime)
    {
 	    return new LogRoleDto(
 	    		   null,
 				   CREATED,
-				   getRole(),
-				   getUser(),
-				   getTime());
+				   role,
+				   performingTransactionBy,
+				   createdDateTime
+				   );
    }
 
-   
-   
    //------------------------------------
-   
-   // request
-   public SignupRequest getSignupRequestModel() {
-		return new SignupRequest("username","email@email","password","");
-   }
-	
-   public UserCreateRequest getUserCreateRequest(){
-		return new UserCreateRequest("username","email@email","password"); 
-   }
-	
-	
-	
-	
-    // response model
-	public SignupReponse getSignupResponse() { 
-		return new SignupReponse(
-				"username",
-				"email",
-				"accessToken",
-				"refreshToken",
-				"expireTimeAccessToken",
-				"expireTimeRefreshToken");
-	}
-	
-	public SignupReponse getMockSignupResponse() {
-		return Mockito.mock(SignupReponse.class);
-	}
-	
-	public RefreshToken getRefreshToken() {
-		return new RefreshToken(0,getUser(),"refreshToken",getTime(),getTime());
-	}
-	
-	public RefreshToken getMockRefreshToken() {
-		return Mockito.mock(RefreshToken.class);
-	}
-	
-	
-	
-	
-	
 	
 	
 	
@@ -385,7 +313,7 @@ public class BaseMockEntity_DtoAndEntity_DtoModel {
     
 	public BaseMockEntity_DtoAndEntity_DtoModel() {}
 
-	public static BaseMockEntity_DtoAndEntity_DtoModel getInsatnce() {
+	public static BaseMockEntity_DtoAndEntity_DtoModel getInstance() {
 		if(_baseMockEntity_DtoAndEntity_DtoModel==null)
 		{
 			_baseMockEntity_DtoAndEntity_DtoModel= new BaseMockEntity_DtoAndEntity_DtoModel();
@@ -393,6 +321,4 @@ public class BaseMockEntity_DtoAndEntity_DtoModel {
 		
 		return _baseMockEntity_DtoAndEntity_DtoModel;
 	}
-    
-
 }

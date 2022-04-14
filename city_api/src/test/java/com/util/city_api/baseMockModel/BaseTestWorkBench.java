@@ -2,15 +2,15 @@ package com.util.city_api.baseMockModel;
 
 public class BaseTestWorkBench {
 
-	private BaseMockDaoAndDaoModel baseMockDaoAndDaoModel = BaseMockDaoAndDaoModel.getInsatnce();
+	private BaseMockDaoAndDaoModel baseMockDaoAndDaoModel = BaseMockDaoAndDaoModel.getInstance();
 	
-	private BaseMockDtoConvertorAndDtoConvertorModel baseMockDtoConvertorAndDtoConvertorModel = BaseMockDtoConvertorAndDtoConvertorModel.getInsatnce();
+	private BaseMockDtoConvertorAndDtoConvertorModel baseMockDtoConvertorAndDtoConvertorModel = BaseMockDtoConvertorAndDtoConvertorModel.getInstance();
 	
-	private BaseMockEntity_DtoAndEntity_DtoModel baseMockEntity_DtoAndEntity_DtoModel = BaseMockEntity_DtoAndEntity_DtoModel.getInsatnce();
+	private BaseMockEntity_DtoAndEntity_DtoModel baseMockEntity_DtoAndEntity_DtoModel = BaseMockEntity_DtoAndEntity_DtoModel.getInstance();
 	
 	private BaseMockRequest_ResponseAndRequest_ResponseModel baseMockRequest_ResponseAndRequest_ResponseModel = BaseMockRequest_ResponseAndRequest_ResponseModel.getInstance();
 	
-	private BaseMockServiceAndServiceModel baseMockServiceAndServiceModel = BaseMockServiceAndServiceModel.getInsance();
+	private BaseMockServiceAndServiceModel baseMockServiceAndServiceModel = BaseMockServiceAndServiceModel.getInstance();
 	
 	private BaseUtilityModel baseUtilityModel = BaseUtilityModel.getInstance();
 	
@@ -24,7 +24,7 @@ public class BaseTestWorkBench {
 		return baseMockDtoConvertorAndDtoConvertorModel;
 	}
 	
-	public BaseMockEntity_DtoAndEntity_DtoModel getEntitymModels() {
+	public BaseMockEntity_DtoAndEntity_DtoModel getEntityDtoModels() {
 		return baseMockEntity_DtoAndEntity_DtoModel;
 	}
 	

@@ -3,24 +3,19 @@ package com.util.city_api.product_core.dtoConvertor;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
-import com.util.city_api.baseMockModel.BaseMockEntity_DtoAndEntity_DtoModel;
 import com.util.city_api.entity._core.User;
 import com.util.city_api.product_core.dto._coreDto.UserDto;
+import com.util.city_api.product_core.dtoConvertor.mockWorkbench.DtoConvertorTestWorkBench;
 
-public class UserDtoConvertorTest extends BaseMockEntity_DtoAndEntity_DtoModel{
+public class UserDtoConvertorTest extends DtoConvertorTestWorkBench{
 
 	private UserDtoConvertor userDtoConvertor;
-	private User user;
-	private UserDto userDto;
 	
 	@BeforeEach
 	void setup()
 	{
 		this.userDtoConvertor = new UserDtoConvertor();
-		user = super.getUser();
-		userDto = super.getUserDto();
 	}
 	
     @Test

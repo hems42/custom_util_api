@@ -4,60 +4,19 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import com.util.city_api.baseMockModel.BaseMockServiceAndServiceModel;
 import com.util.city_api.core.exception.abstracts.BaseExceptionModel;
 import com.util.city_api.core.exception.exceptionModels.UnSuccessfulException;
-import com.util.city_api.entity._core.User;
-import com.util.city_api.entity.security.RefreshToken;
-import com.util.city_api.product_core.dto._coreDto.UserDto;
-import com.util.city_api.product_core.dtoConvertor.UserDtoConvertor;
-import com.util.city_api.product_core.request.createRequest.UserCreateRequest;
-import com.util.city_api.service._abstract.IAccesTokenService;
-import com.util.city_api.service._abstract.IAuthService;
-import com.util.city_api.service._abstract.IConfirmationTokenService;
-import com.util.city_api.service._abstract.IRefreshTokenService;
-import com.util.city_api.service._abstract.IUserService;
 import com.util.city_api.service.concrete.AuthService;
+import com.util.city_api.service.mockWorkbench.AuthServiceTestWorkBench;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.time.LocalDateTime;
 
 import static com.util.city_api.core.constant.CoreConstantExceptionErrorCode.*;
 import static com.util.city_api.core.constant.CoreEnumExceptionMessages.*;
 
-public class AuthServiceTest extends BaseMockServiceAndServiceModel{
-	
-	// service
-	IAuthService authService;
-	IUserService userService = getUserService();
-	IUserService mockUserService = getMockUserService();
-    IAccesTokenService accessTokenService = getAccesTokenService();
-    IAccesTokenService mockAccessTokenService = getMockAccesTokenService();
-    IRefreshTokenService refreshTokenService = getRefreshTokenService();
-    IRefreshTokenService mockRefreshTokenService = getMockRefreshTokenService();
-    IConfirmationTokenService confirmationTokenService = getConfirmationtokenService();
-    IConfirmationTokenService mockConfirmationTokenService = getMockConfirmationTokenService();
-    
-    // convertor
-    UserDtoConvertor userDtoConvertor = getUserDtoConvertor();
-    UserDtoConvertor mockUserDtoConvertor = getMockUserDtoConvertor();
-	
-    // model
-    User userModel = getUserModel();
-	User mockUsermodel = getMockUserModel();
-	UserDto userDtoModel = getUserDtoModel();
-	UserDto mockUserDtoModel = getMockUserDtoModel();
-	RefreshToken refreshTokenModel = getRefreshToken();
-	UserCreateRequest userCreateRequestModel = getUserCreateRequest();
-	
-	
-	// util
-	LocalDateTime time = getDateTime();
-    
+public class AuthServiceTest extends AuthServiceTestWorkBench{
 		
-
-	
    	   //singup metod logic...
 	/*	
 	 *  
@@ -83,11 +42,11 @@ public class AuthServiceTest extends BaseMockServiceAndServiceModel{
 				mockConfirmationTokenService,
 				mockUserDtoConvertor);
 		
-     	Mockito.when(mockUserService.isExistUserByEmail(getSignupRequestModel().getEmail())).thenReturn(true);
+     	Mockito.when(mockUserService.isExistUserByEmail(signupRequestModel.getEmail())).thenReturn(true);
 		
      	BaseExceptionModel  exceptionModel = Assertions.assertThrows(UnSuccessfulException.class,()->{
 		
-     		authService.signup(getSignupRequestModel());
+     		authService.signup(signupRequestModel);
 	});
 
     assertEquals(exceptionModel.getErrorMessage(),UN_SUCCESSFUL_SIGNUP.getExceptionMessage());
@@ -104,12 +63,12 @@ public class AuthServiceTest extends BaseMockServiceAndServiceModel{
 				mockConfirmationTokenService,
 				mockUserDtoConvertor);
 		
-     	Mockito.when(mockUserService.isExistUserByEmail(getSignupRequestModel().getEmail())).thenReturn(false);
-     	Mockito.when(mockUserService.isExistUserByUserName(getSignupRequestModel().getUsername())).thenReturn(true);
+     	Mockito.when(mockUserService.isExistUserByEmail(signupRequestModel.getEmail())).thenReturn(false);
+     	Mockito.when(mockUserService.isExistUserByUserName(signupRequestModel.getUsername())).thenReturn(true);
 		
      	BaseExceptionModel  exceptionModel = Assertions.assertThrows(UnSuccessfulException.class,()->{
 		
-     		authService.signup(getSignupRequestModel());
+     		authService.signup(signupRequestModel);
 	});
 
     assertEquals(exceptionModel.getErrorMessage(),UN_SUCCESSFUL_SIGNUP.getExceptionMessage());
@@ -126,13 +85,13 @@ public class AuthServiceTest extends BaseMockServiceAndServiceModel{
 				mockConfirmationTokenService,
 				mockUserDtoConvertor);
 		
-     	Mockito.when(mockUserService.isExistUserByEmail(getSignupRequestModel().getEmail())).thenReturn(false);
-     	Mockito.when(mockUserService.isExistUserByUserName(getSignupRequestModel().getUsername())).thenReturn(false);
-     	Mockito.when(mockUserService.createUser(getUserCreateRequest())).thenReturn(userDtoModel);
+     	Mockito.when(mockUserService.isExistUserByEmail(signupRequestModel.getEmail())).thenReturn(false);
+     	Mockito.when(mockUserService.isExistUserByUserName(signupRequestModel.getUsername())).thenReturn(false);
+     	Mockito.when(mockUserService.createUser(userCreateRequestModel)).thenReturn(userDtoModel);
 		
      	BaseExceptionModel  exceptionModel = Assertions.assertThrows(UnSuccessfulException.class,()->{
 		
-     		authService.signup(getSignupRequestModel());
+     		authService.signup(signupRequestModel);
 	});
 
     assertEquals(exceptionModel.getErrorMessage(),UN_SUCCESSFUL_SIGNUP.getExceptionMessage());
@@ -148,14 +107,14 @@ public class AuthServiceTest extends BaseMockServiceAndServiceModel{
 				mockConfirmationTokenService,
 				mockUserDtoConvertor);
 		
-     	Mockito.when(mockUserService.isExistUserByEmail(getSignupRequestModel().getEmail())).thenReturn(false);
-     	Mockito.when(mockUserService.isExistUserByUserName(getSignupRequestModel().getUsername())).thenReturn(false);
+     	Mockito.when(mockUserService.isExistUserByEmail(signupRequestModel.getEmail())).thenReturn(false);
+     	Mockito.when(mockUserService.isExistUserByUserName(signupRequestModel.getUsername())).thenReturn(false);
      	Mockito.when(mockUserService.createUser(userCreateRequestModel)).thenReturn(userDtoModel);
 		Mockito.when(mockRefreshTokenService.createRefreshToken(userModel)).thenReturn(null);
 		
      	BaseExceptionModel  exceptionModel = Assertions.assertThrows(UnSuccessfulException.class,()->{
 		
-     		authService.signup(getSignupRequestModel());
+     		authService.signup(signupRequestModel);
 	});
 
     assertEquals(exceptionModel.getErrorMessage(),UN_SUCCESSFUL_SIGNUP.getExceptionMessage());
@@ -171,15 +130,16 @@ public class AuthServiceTest extends BaseMockServiceAndServiceModel{
 				mockConfirmationTokenService,
 				mockUserDtoConvertor);
 		
-     	Mockito.when(mockUserService.isExistUserByEmail(getSignupRequestModel().getEmail())).thenReturn(false);
-     	Mockito.when(mockUserService.isExistUserByUserName(getSignupRequestModel().getUsername())).thenReturn(false);
-     	Mockito.when(mockUserService.createUser(getUserCreateRequest())).thenReturn(userDtoModel);
-		Mockito.when(mockRefreshTokenService.createRefreshToken(getMockUserModel())).thenReturn(refreshTokenModel);
+     	Mockito.when(mockUserService.isExistUserByEmail(signupRequestModel.getEmail())).thenReturn(false);
+     	Mockito.when(mockUserService.isExistUserByUserName(signupRequestModel.getUsername())).thenReturn(false);
+     	
+     	Mockito.when(mockUserService.createUser(userCreateRequestModel)).thenReturn(userDtoModel);
+		Mockito.when(mockRefreshTokenService.createRefreshToken(userModel)).thenReturn(refreshTokenModel);
 		Mockito.when(mockRefreshTokenService.saveRefreshToken(refreshTokenModel)).thenReturn(null);
 		
      	BaseExceptionModel  exceptionModel = Assertions.assertThrows(UnSuccessfulException.class,()->{
 		
-     		authService.signup(getSignupRequestModel());
+     		authService.signup(signupRequestModel);
 	});
 
     assertEquals(exceptionModel.getErrorMessage(),UN_SUCCESSFUL_SIGNUP.getExceptionMessage());

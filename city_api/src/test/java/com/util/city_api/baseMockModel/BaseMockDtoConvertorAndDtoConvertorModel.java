@@ -45,20 +45,12 @@ public class BaseMockDtoConvertorAndDtoConvertorModel {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
 	// constructor
 	private static BaseMockDtoConvertorAndDtoConvertorModel _baseMockDtoConvertorAndDtoConvertorModel;
 
 	public BaseMockDtoConvertorAndDtoConvertorModel() {}
 
-	public static BaseMockDtoConvertorAndDtoConvertorModel getInsatnce() {
+	public static BaseMockDtoConvertorAndDtoConvertorModel getInstance() {
 		if(_baseMockDtoConvertorAndDtoConvertorModel==null)
 		{
 			_baseMockDtoConvertorAndDtoConvertorModel = new BaseMockDtoConvertorAndDtoConvertorModel();

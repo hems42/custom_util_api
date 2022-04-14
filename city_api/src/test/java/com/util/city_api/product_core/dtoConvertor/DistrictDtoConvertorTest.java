@@ -4,24 +4,19 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
-import com.util.city_api.baseMockModel.BaseMockEntity_DtoAndEntity_DtoModel;
 import com.util.city_api.entity._core.District;
 import com.util.city_api.product_core.dto._coreDto.DistrictDto;
+import com.util.city_api.product_core.dtoConvertor.mockWorkbench.DtoConvertorTestWorkBench;
 
-public class DistrictDtoConvertorTest extends BaseMockEntity_DtoAndEntity_DtoModel{
+public class DistrictDtoConvertorTest extends DtoConvertorTestWorkBench{
 
 	private DistrictDtoConvertor districtDtoConvertor;
-	private District district;
-	private DistrictDto districtDto;
 	
 	@BeforeEach
 	void setup()
 	{
 		this.districtDtoConvertor = new DistrictDtoConvertor();
-		district = super.getDistrict();
-		districtDto = super.getDistrictDto();
 	}
 	
     @Test

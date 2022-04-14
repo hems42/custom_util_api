@@ -4,24 +4,20 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
-import com.util.city_api.baseMockModel.BaseMockEntity_DtoAndEntity_DtoModel;
 import com.util.city_api.entity._core.Role;
 import com.util.city_api.product_core.dto._coreDto.RoleDto;
+import com.util.city_api.product_core.dtoConvertor.mockWorkbench.DtoConvertorTestWorkBench;
 
-public class RoleDtoConvertorTest extends BaseMockEntity_DtoAndEntity_DtoModel{
+public class RoleDtoConvertorTest extends DtoConvertorTestWorkBench{
 	
 	private RoleDtoConvertor roleDtoConvertor;
-	private Role role;
-	private RoleDto roleDto;
 	
 	@BeforeEach
 	void setup()
 	{
 		this.roleDtoConvertor = new RoleDtoConvertor();
-		role = super.getRole();
-		roleDto = super.getRoleDto();
+
 	}
  
     @Test

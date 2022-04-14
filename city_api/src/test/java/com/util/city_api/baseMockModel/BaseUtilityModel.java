@@ -10,9 +10,6 @@ public class BaseUtilityModel {
 
 	 
 	 
-	 
-	 
-	 
 	 // constructor
 	 private static BaseUtilityModel _baseUtilityModel;
 	 
@@ -26,6 +23,5 @@ public class BaseUtilityModel {
 		 }
 		 
 		 return _baseUtilityModel;
-	 }
-	
+	 }	
 }

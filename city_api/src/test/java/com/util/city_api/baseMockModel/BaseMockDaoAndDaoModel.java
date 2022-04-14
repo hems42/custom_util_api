@@ -57,13 +57,12 @@ public class BaseMockDaoAndDaoModel {
 	
 	
 	
-	
 	// constructor
 	private static BaseMockDaoAndDaoModel _baseMockDaoAndDaoModel;
 	
 	public BaseMockDaoAndDaoModel() {}
 	
-	public static BaseMockDaoAndDaoModel getInsatnce() {
+	public static BaseMockDaoAndDaoModel getInstance() {
 		if(_baseMockDaoAndDaoModel==null)
 		{
 			_baseMockDaoAndDaoModel = new BaseMockDaoAndDaoModel();
