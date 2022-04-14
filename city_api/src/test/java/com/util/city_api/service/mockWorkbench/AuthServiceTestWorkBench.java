@@ -6,6 +6,7 @@ import java.util.HashSet;
 import com.util.city_api.baseMockModel.BaseMockDtoConvertorAndDtoConvertorModel;
 import com.util.city_api.baseMockModel.BaseMockEntity_DtoAndEntity_DtoModel;
 import com.util.city_api.baseMockModel.BaseMockRequest_ResponseAndRequest_ResponseModel;
+import com.util.city_api.baseMockModel.BaseMockServiceAndServiceModel;
 import com.util.city_api.baseMockModel.BaseTestWorkBench;
 import com.util.city_api.entity._core.Role;
 import com.util.city_api.entity._core.User;
@@ -23,18 +24,18 @@ import com.util.city_api.service._abstract.IUserService;
 public class AuthServiceTestWorkBench extends BaseTestWorkBench{
 
 	private BaseMockEntity_DtoAndEntity_DtoModel entityModel = getEntityDtoModels();
+	private BaseMockServiceAndServiceModel serviceModel = getServiceModels();
 	private BaseMockRequest_ResponseAndRequest_ResponseModel requestResponsemodel = getRequestRensponseModels();
 	private BaseMockDtoConvertorAndDtoConvertorModel dtoConvertorModel = getDtoConvertorModels();
 	
 	public LocalDateTime localDateTime = getUtilityModels().getTime();
-	
 	public HashSet<Role> roles;
 	
     // model
 	public User userModel = entityModel.getUser(roles,localDateTime,localDateTime);
-	//User mockUsermodel = entityModel.getMockUserModel(roles,localDateTime,localDateTime);
+	public User mockUsermodel = entityModel.getMockUser();
     public UserDto userDtoModel = entityModel.getUserDto(roles,localDateTime,localDateTime);
-	//UserDto mockUserDtoModel = getEntitymModels().getMockUserDtoModel();
+	public UserDto mockUserDtoModel = entityModel.getMockUserDto();
 	public RefreshToken refreshTokenModel =requestResponsemodel.getRefreshToken(userModel,localDateTime,localDateTime);
 	public UserCreateRequest userCreateRequestModel = requestResponsemodel.getUserCreateRequest();
 	public SignupRequest signupRequestModel = requestResponsemodel.getSignupRequestModel();
@@ -43,16 +44,14 @@ public class AuthServiceTestWorkBench extends BaseTestWorkBench{
 	public UserDtoConvertor userDtoConvertor = dtoConvertorModel.getUserDtoConvertor();
 	public UserDtoConvertor mockUserDtoConvertor = dtoConvertorModel.getMockUserDtoConvertor();
 
-	
 	// service
 	public IAuthService authService;
-	public IUserService userService = getServiceModels().getUserService(userDtoConvertor);
-	public IUserService mockUserService = getServiceModels().getMockUserService();
-	public IAccesTokenService accessTokenService = getServiceModels().getAccesTokenService();
-	public IAccesTokenService mockAccessTokenService = getServiceModels().getMockAccesTokenService();
-	public IRefreshTokenService refreshTokenService = getServiceModels().getRefreshTokenService();
-	public IRefreshTokenService mockRefreshTokenService = getServiceModels().getMockRefreshTokenService();
-	public IConfirmationTokenService confirmationTokenService = getServiceModels().getConfirmationtokenService();
-	public IConfirmationTokenService mockConfirmationTokenService = getServiceModels().getMockConfirmationTokenService();
-
+	public IUserService userService = serviceModel.getUserService(userDtoConvertor);
+	public IUserService mockUserService = serviceModel.getMockUserService();
+	public IAccesTokenService accessTokenService = serviceModel.getAccesTokenService();
+	public IAccesTokenService mockAccessTokenService = serviceModel.getMockAccesTokenService();
+	public IRefreshTokenService refreshTokenService = serviceModel.getRefreshTokenService();
+	public IRefreshTokenService mockRefreshTokenService = serviceModel.getMockRefreshTokenService();
+	public IConfirmationTokenService confirmationTokenService = serviceModel.getConfirmationtokenService();
+	public IConfirmationTokenService mockConfirmationTokenService = serviceModel.getMockConfirmationTokenService();
 }

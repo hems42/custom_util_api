@@ -3,6 +3,8 @@ package com.util.city_api.baseMockModel;
 import java.time.LocalDateTime;
 import java.util.Set;
 
+import org.mockito.Mockito;
+
 import com.util.city_api.entity._core.*;
 import com.util.city_api.entity.log.*;
 import com.util.city_api.product_core.dto._coreDto.*;
@@ -27,6 +29,10 @@ public class BaseMockEntity_DtoAndEntity_DtoModel {
 				updatedDateTime
 				);
 	}
+
+   public User getMockUser() {
+	   return Mockito.mock(User.class);
+   }
    
    public UserDto getUserDto(Set<Role> roles, LocalDateTime createdDateTime, LocalDateTime updatedDateTime)
    {
@@ -44,6 +50,10 @@ public class BaseMockEntity_DtoAndEntity_DtoModel {
 			   );
    }
  
+   public UserDto getMockUserDto() {
+	   return Mockito.mock(UserDto.class);
+   }
+   
    public Role getRole(LocalDateTime createdDateTime, LocalDateTime updatedDateTime)
    {
 	   return new Role (

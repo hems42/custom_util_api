@@ -132,8 +132,8 @@ public class AuthServiceTest extends AuthServiceTestWorkBench{
 		
      	Mockito.when(mockUserService.isExistUserByEmail(signupRequestModel.getEmail())).thenReturn(false);
      	Mockito.when(mockUserService.isExistUserByUserName(signupRequestModel.getUsername())).thenReturn(false);
-     	
-     	Mockito.when(mockUserService.createUser(userCreateRequestModel)).thenReturn(userDtoModel);
+  
+     	Mockito.when(mockUserService.createUser(userCreateRequestModel)).thenReturn(mockUserDtoModel);
 		Mockito.when(mockRefreshTokenService.createRefreshToken(userModel)).thenReturn(refreshTokenModel);
 		Mockito.when(mockRefreshTokenService.saveRefreshToken(refreshTokenModel)).thenReturn(null);
 		
