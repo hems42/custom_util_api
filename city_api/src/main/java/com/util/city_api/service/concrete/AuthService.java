@@ -88,42 +88,12 @@ public class AuthService implements IAuthService{
 			if(!userService.isExistUserByUserName(signupRequest.getUsername()))
 			{
 				log.info(logMetodTitle + "user not already created by username");
-				
-				_userDto = userService.createUser(new UserCreateRequest(signupRequest.getEmail(),signupRequest.getUsername(),signupRequest.getPassword()));
-				_user = userDtoConvertor.convert(_userDto);
-				
-				if(_userDto != null)
-				{
-					log.info(logMetodTitle + "user created succesfully");
-					
-					_refreshToken = refreshTokenService.createRefreshToken(_user);
-		            RefreshToken savedRefreshToken = refreshTokenService.saveRefreshToken(_refreshToken);
-					
-		            if(savedRefreshToken!=null)
-		            {
-		            	log.info(logMetodTitle + "refreshToken created and saved");
 
-		            	
-		            	
-		            } else {
-		            	
-		            	log.error(logMetodTitle + "refreshToken not created or saved");
-						
-						throw new UnSuccessfulException(UN_SUCCESSFUL_SIGNUP,REFRESH_TOKEN_NOT_CREATED_OR_SAVED,"refreshToken not created or saved");
-		            	
-		            }				
-					
-				} else {
-					
-					log.error(logMetodTitle + "user not created successfuly");
-					
-					throw new UnSuccessfulException(UN_SUCCESSFUL_SIGNUP,USER_NOT_CREATED,"user not created");
-				}
 			} else {
 				
 				log.error(logMetodTitle + "user created already by username");
 				
-				throw new UnSuccessfulException(UN_SUCCESSFUL_SIGNUP,USERNAME_ALREADY_USED,"user created allready by username");
+				throw new UnSuccessfulException(UN_SUCCESSFUL_SIGNUP,USERNAME_ALREADY_USED,"user created already by username");
 			}
 		} else {
 			
@@ -132,8 +102,45 @@ public class AuthService implements IAuthService{
 			throw new UnSuccessfulException(UN_SUCCESSFUL_SIGNUP,EMAIL_ALREADY_USED,"user created already by email");
 		}
 		
-
 		
+		
+		
+		_userDto = userService.createUser(new UserCreateRequest(signupRequest.getEmail(),
+				signupRequest.getUsername(),
+				signupRequest.getPassword()));
+		
+		_user = userDtoConvertor.convert(_userDto);
+		
+		if(_userDto != null)
+		{
+			log.info(logMetodTitle + "user created succesfully");			
+			
+		} else {
+			
+			log.error(logMetodTitle + "user not created successfuly");
+			
+			throw new UnSuccessfulException(UN_SUCCESSFUL_SIGNUP,USER_NOT_CREATED,"user not created");
+		}
+		
+		
+		
+		
+		_refreshToken = refreshTokenService.saveRefreshToken(
+				refreshTokenService.createRefreshToken(_user));
+		
+        if(_refreshToken!=null)
+        {
+        	log.info(logMetodTitle + "refreshToken created and saved");	
+        	
+        } else {
+        	
+        	log.error(logMetodTitle + "refreshToken not created or saved");
+			
+			throw new UnSuccessfulException(UN_SUCCESSFUL_SIGNUP,REFRESH_TOKEN_NOT_CREATED_OR_SAVED,"refreshToken not created or saved");
+        	
+        }	
+
+        
 		
 		
 		
