@@ -203,7 +203,7 @@ public class AuthServiceTest extends AuthServiceTestWorkBench{
 	assertEquals(exceptionModel.getErrorCode(), UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + SIGNUP + ACCESS_TOKEN_NOT_CREATED_OR_SAVED);
 	}
 
-	void WhenSignupSuccesfullyThenItMustReturnSignupResponseThatContainsSameInformationwithSignupRequest() {
+	void WhenSignupSuccesfullyThenItMustReturnSignupResponseThatContainsSameInformationWithSignupRequest() {
 		
 	}
 
