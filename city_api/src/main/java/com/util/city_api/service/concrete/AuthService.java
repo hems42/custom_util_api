@@ -50,24 +50,21 @@ public class AuthService implements IAuthService{
 		this.userDtoConvertor = userDtoconvertor;
 	}
 	
-	 /*  IUserService 
-    UserDtoConvertor userDtoConvertor,
-    IRegistrationService registrationService,
-    IAccessTokenService accessTokenService,
-    IRefreshTokenService refreshTokenService,
-    IConfirmationTokenService confirmationTokenService */
+	
+	
 
 	@Override
 	public SignupReponse signup(SignupRequest signupRequest) {
 		
 		String logMetodTitle ="signup metod : -> ";
-		UserDto  _userDto;
-		User _user;
-		RefreshToken _refreshToken;
-		ConfirmationToken _confirmationToken;
+		UserDto  _userDto =null;
+		User _user = null;
+		String _accessToken = null;
+		RefreshToken _refreshToken = null;
+		ConfirmationToken _confirmationToken = null;
 		
 		
-		/* LOGIC ONION
+		/* Logic Onion
 		 * 
 		 * request ok
 		 * user created allready ??
@@ -141,11 +138,58 @@ public class AuthService implements IAuthService{
         }	
 
         
+ 
+        _accessToken =accessTokenService.saveAccessToken(accessTokenService.createAccessToken(_user));
+        
+        if(_accessToken != null)
+        {
+        	log.info(logMetodTitle+ "acces token created and saved");
+        
+        } else  {
+             
+        	log.error(logMetodTitle + "acces token not created and saved");
+        
+			throw new UnSuccessfulException(UN_SUCCESSFUL_SIGNUP,ACCESS_TOKEN_NOT_CREATED_OR_SAVED,"acces token not created and saved");
+        }
+        
+        
+        
+        
+        _confirmationToken = confirmationTokenService.saveConfirmationToken(
+        		confirmationTokenService.createConfirmationToken(_user));
+        
+        if(_confirmationToken != null)
+        {
+        	log.info(logMetodTitle+ "confirmationToken created and saved");
+        
+        }
+        else {
+        	
+        	log.error(logMetodTitle +"confirmationToken not created and saved");
+        	
+        	throw new UnSuccessfulException(UN_SUCCESSFUL_SIGNUP,CONFIRMATION_TOKEN_NOT_CREATED_OR_SAVED,"confirmationToken created and saved"); 
+        }
 		
+        
+        
+        
+        // TODO : I will send confirmation token by  email and it will be procced asyncronyous 
 		
 		
 		// NOTE : user device platfrom checking and modifying user creating...
-		return null;
+	
+    
+
+        
+        return new SignupReponse(
+				_userDto.getUserName(),
+				_userDto.getEMail(),
+				_accessToken,
+				_refreshToken.getRefreshToken(),
+				"expireTime access token",
+				"expireTimeRefreshToken"
+				);
+   
 	}
 
 	@Override
@@ -155,6 +199,18 @@ public class AuthService implements IAuthService{
 		
 		String logMetodTitle ="registration metod : -> ";
 
+
+		/* Logic Onion
+		 * 
+		 * confirmation token ok
+		 * confirmation token valid ??
+		 * confirmation token already used ??
+		 * confirmation token user is exist ??
+		 * confirmation token update registered ??
+		 * user update registered ??
+		 * 
+		 */
+		
 		
 		return null;
 	}
@@ -162,6 +218,17 @@ public class AuthService implements IAuthService{
 	@Override
 	public LoginRequest login(LoginRequest loginRequest) {
 
+		/* Logic Onion
+		 * 
+		 * login request ok ??
+		 * login request ??
+		 * user exist by login request information ??
+		 * already login user ??
+		 * confirmation token procced ??
+		 * user update registered ??
+		 * 
+		 */
+		
 		String logMetodTitle ="login metod : -> ";
 
 		return null;
@@ -170,6 +237,19 @@ public class AuthService implements IAuthService{
 	@Override
 	public RefreshTokenResponse refreshToken(String refreshToken, String accessToken) {
 		
+		/* Logic Onion
+		 * 
+		 * access token ok ??
+		 * refresh token ok ??
+		 * access token is valid - has a user ??
+		 * access token is expired ??
+		 * refresh token is valid - still current and has a user ??
+		 * refresh token is expired - if not return response
+		 * refresh token if expired -  delete refresh token and create new refresh token 
+		 * 
+		 */
+
+		
 		String logMetodTitle ="refreshTokenResponse metod : -> ";
 
 		return null;
@@ -177,6 +257,14 @@ public class AuthService implements IAuthService{
 
 	@Override
 	public LogOutResponse logout(String refreshToken) {
+		
+		/* Logic Onion
+		 * 
+		 * refresh token is valid - still current and has a user ??
+		 * refresh token is expired - logout
+		 * refresh token if is not expired -  delete refresh token and logout 
+		 * 
+		 */
 		
 		String logMetodTitle ="logOutResponse metod : -> ";
 

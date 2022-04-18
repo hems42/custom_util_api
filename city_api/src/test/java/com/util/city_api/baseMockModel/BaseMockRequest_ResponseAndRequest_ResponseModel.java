@@ -48,6 +48,14 @@ public class BaseMockRequest_ResponseAndRequest_ResponseModel {
 		}
 		
 		
+		public String getAccessToken() {
+			return "accessToken";
+		}
+		
+		public String getMockAccessToken() {
+			return Mockito.mock(String.class);
+		}
+		
 		
 		// constructor
 		private static BaseMockRequest_ResponseAndRequest_ResponseModel _requestAndResponseModel;

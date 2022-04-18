@@ -33,12 +33,13 @@ public class AuthServiceTestWorkBench extends BaseTestWorkBench{
 	
     // model
 	public User userModel = entityModel.getUser(roles,localDateTime,localDateTime);
-	public User mockUsermodel = entityModel.getMockUser();
+	public User mockUserModel = entityModel.getMockUser();
     public UserDto userDtoModel = entityModel.getUserDto(roles,localDateTime,localDateTime);
 	public UserDto mockUserDtoModel = entityModel.getMockUserDto();
 	public RefreshToken refreshTokenModel =requestResponsemodel.getRefreshToken(userModel,localDateTime,localDateTime);
 	public UserCreateRequest userCreateRequestModel = requestResponsemodel.getUserCreateRequest();
 	public SignupRequest signupRequestModel = requestResponsemodel.getSignupRequestModel();
+	public String accesToken = requestResponsemodel.getAccessToken();
 	
     // convertor
 	public UserDtoConvertor userDtoConvertor = dtoConvertorModel.getUserDtoConvertor();

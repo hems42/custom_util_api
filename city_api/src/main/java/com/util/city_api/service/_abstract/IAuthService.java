@@ -19,7 +19,7 @@ public interface IAuthService {
 
     LogOutResponse logout(String refreshToken);
 
-    //void forgetPassword();
+    //void forgetPassword(String user);
 
-    //void reSendEmail();
+    //void reSendEmail(String userId);
 }
