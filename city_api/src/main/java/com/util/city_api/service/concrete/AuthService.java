@@ -203,13 +203,40 @@ public class AuthService implements IAuthService{
 		/* Logic Onion
 		 * 
 		 * confirmation token ok
-		 * confirmation token valid ??
-		 * confirmation token already used ??
+		 * confirmation token is exist ??
+		 * confirmation token is valid ??
 		 * confirmation token user is exist ??
 		 * confirmation token update registered ??
 		 * user update registered ??
 		 * 
 		 */
+	
+		
+		
+		if(confirmationTokenService.isExistConfirmationToken(confirmationToken))
+		{
+			log.info(logMetodTitle+ " confirmation token found");
+			
+			if(confirmationTokenService.isValidConfirmationToken(confirmationToken))
+			{
+				log.info(logMetodTitle + "confirmation token is valid");
+		
+				
+			} else {
+				
+				log.error(logMetodTitle + "confirmation token is not valid -expired");
+				
+				throw new UnSuccessfulException(UN_SUCCESSFUL_REGISTRATION, CONFIRMATION_TOKEN_EXPIRED, "confirmation token is not valid -expired");
+				
+			}
+		
+		} else {
+			
+			log.info(logMetodTitle + "confirmation token not found");
+			
+			throw new UnSuccessfulException(UN_SUCCESSFUL_REGISTRATION, CONFIRMATION_TOKEN_NOT_FOUND, "confirmation token not found");
+		}
+		
 		
 		
 		return null;

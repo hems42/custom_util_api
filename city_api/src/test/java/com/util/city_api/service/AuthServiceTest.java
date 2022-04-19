@@ -7,9 +7,11 @@ import org.mockito.Mockito;
 import com.util.city_api.core.exception.abstracts.BaseExceptionModel;
 import com.util.city_api.core.exception.exceptionModels.UnSuccessfulException;
 import com.util.city_api.product_core.request.createRequest.UserCreateRequest;
+import com.util.city_api.product_core.response.SignupReponse;
 import com.util.city_api.service.concrete.AuthService;
 import com.util.city_api.service.mockWorkbench.AuthServiceTestWorkBench;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
@@ -30,8 +32,6 @@ public class AuthServiceTest extends AuthServiceTestWorkBench{
 	 * 
 	 * NOTE : user device platfrom checking and modifying user creating...
 	 */
-	
-	
 	
 	     // signup metod :
 	@Test
@@ -205,6 +205,48 @@ public class AuthServiceTest extends AuthServiceTestWorkBench{
 
 	void WhenSignupSuccesfullyThenItMustReturnSignupResponseThatContainsSameInformationWithSignupRequest() {
 		
+		authService = new AuthService(mockUserService,
+				mockAccessTokenService,
+				mockRefreshTokenService,
+				mockConfirmationTokenService,
+				mockUserDtoConvertor);
+		
+     	Mockito.when(mockUserService.isExistUserByEmail(signupRequestModel.getEmail())).thenReturn(false);
+     	Mockito.when(mockUserService.isExistUserByUserName(signupRequestModel.getUsername())).thenReturn(false);
+     	Mockito.when(mockUserService.createUser(new UserCreateRequest(signupRequestModel.getEmail(),signupRequestModel.getUsername(),signupRequestModel.getPassword()))).thenReturn(userDtoModel);
+		Mockito.when(mockUserDtoConvertor.convert(userDtoModel)).thenReturn(userModel);
+     	Mockito.when(mockRefreshTokenService.createRefreshToken(userModel)).thenReturn(refreshTokenModel);
+		Mockito.when(mockRefreshTokenService.saveRefreshToken(refreshTokenModel)).thenReturn(refreshTokenModel);
+		Mockito.when(mockAccessTokenService.createAccessToken(userModel)).thenReturn(accesToken);
+		Mockito.when(mockAccessTokenService.saveAccessToken(accesToken)).thenReturn(accesToken);
+		
+     	SignupReponse signupReponse =	authService.signup(signupRequestModel);
+
+    assertEquals(signupReponse.getUsername(),signupRequestModel.getUsername());
+    assertEquals(signupReponse.getEmail(),signupRequestModel.getEmail());
+    assertNotNull(signupReponse.getRefreshToken());
 	}
 
+	
+	
+	
+	   //register metod logic...
+	/* 
+	 * 
+	 * confirmation token ok
+	 * confirmation token valid ??
+	 * confirmation token already used ??
+	 * confirmation token user is exist ??
+	 * confirmation token update registered ??
+	 * user update registered ??
+	 * 
+	 */
+	
+	
+	// register metod :
+	
+	void When () {
+		
+	}
+	
 }

@@ -21,6 +21,18 @@ public class ConfirmationTokenService implements IConfirmationTokenService{
 		return null;
 	}
 
+	@Override
+	public Boolean isExistConfirmationToken(String confirmationToken) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Boolean isValidConfirmationToken(String confirmationToken) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 
 }

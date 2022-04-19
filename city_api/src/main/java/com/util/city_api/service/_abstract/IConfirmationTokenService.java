@@ -9,4 +9,8 @@ public interface IConfirmationTokenService {
 	ConfirmationToken createConfirmationToken(User user);
 	
 	ConfirmationToken saveConfirmationToken(ConfirmationToken confirmationToken);
+	
+	Boolean isExistConfirmationToken(String confirmationToken);
+	
+	Boolean isValidConfirmationToken(String confirmationToken);
 }
