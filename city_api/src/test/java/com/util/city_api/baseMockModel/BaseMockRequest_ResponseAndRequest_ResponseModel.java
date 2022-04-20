@@ -21,7 +21,9 @@ public class BaseMockRequest_ResponseAndRequest_ResponseModel {
 			return new UserCreateRequest("username","email@email","password"); 
 	   }
 		
-		
+	   public String confirmationTokenRequest() {
+		   return "confirmationTokenRequest";
+	   }
 		
 		
 	    // response model

@@ -193,19 +193,19 @@ public class AuthService implements IAuthService{
 	}
 
 	@Override
-
-
 	public RegistrationResponse register(String confirmationToken) {
 		
-		String logMetodTitle ="registration metod : -> ";
+		String logMetodTitle ="register metod : -> ";
+		User _user = null;
+		ConfirmationToken _confirmationToken = null;
 
-
+		
 		/* Logic Onion
 		 * 
 		 * confirmation token ok
 		 * confirmation token is exist ??
-		 * confirmation token is valid ??
-		 * confirmation token user is exist ??
+		 * confirmation token is valid -is expired or -is already used ??
+		 * is user registered already ??
 		 * confirmation token update registered ??
 		 * user update registered ??
 		 * 
@@ -213,13 +213,28 @@ public class AuthService implements IAuthService{
 	
 		
 		
-		if(confirmationTokenService.isExistConfirmationToken(confirmationToken))
+		_confirmationToken = confirmationTokenService.getConfirmationTokenByConfirmationToken(confirmationToken);
+		
+		if(_confirmationToken != null)
 		{
 			log.info(logMetodTitle+ " confirmation token found");
 			
-			if(confirmationTokenService.isValidConfirmationToken(confirmationToken))
+			if(confirmationTokenService.isExpiredConfirmationToken(confirmationToken))
 			{
-				log.info(logMetodTitle + "confirmation token is valid");
+				log.info(logMetodTitle + "confirmation token is valid - not yet expired");
+				
+				if(confirmationTokenService.isAlreadyUsed(confirmationToken))
+				{
+					
+					log.info(logMetodTitle +  "confirmation token is not used already");
+					
+				} else {
+					
+					log.error(logMetodTitle + "confirmation token used already");
+					
+					throw new UnSuccessfulException(UN_SUCCESSFUL_REGISTRATION, CONFIRMATION_TOKEN_ALREADY_USED, "confirmation token is not valid -already used");
+					
+				}
 		
 				
 			} else {
@@ -232,19 +247,65 @@ public class AuthService implements IAuthService{
 		
 		} else {
 			
-			log.info(logMetodTitle + "confirmation token not found");
+			log.error(logMetodTitle + "confirmation token not found");
 			
 			throw new UnSuccessfulException(UN_SUCCESSFUL_REGISTRATION, CONFIRMATION_TOKEN_NOT_FOUND, "confirmation token not found");
 		}
 		
 		
+		_user = _confirmationToken.getUser();
 		
-		return null;
+		if(!_user.getIsRegistered())
+		{
+			
+			log.info(logMetodTitle + "user is not registered already");
+			
+			if(userService.updateRegisteredUser(_user))
+			{
+				
+				log.info(logMetodTitle + "user registered succesfully");
+				 
+				if(confirmationTokenService.updateRegisteredConfirmationToken(_confirmationToken))
+				{
+					
+					log.info(logMetodTitle + "confirmation token is registered succesfully");
+
+					
+				} else {
+					
+					log.error(logMetodTitle + "confirmation token is not registered");
+				
+				   throw new UnSuccessfulException(UN_SUCCESSFUL_REGISTRATION, CONFIRMATION_TOKEN_NOT_REGISTERED, "confirmation token is not registered"); 
+					
+				}
+				
+			} else {
+				
+				log.error(logMetodTitle + "user is not registered");
+				
+				throw new UnSuccessfulException(UN_SUCCESSFUL_REGISTRATION, USER_NOT_REGISTERED, "user is not registered");
+
+			}
+			
+		} else {
+			
+			log.error(logMetodTitle + "user is registered already");
+			
+			throw new UnSuccessfulException(UN_SUCCESSFUL_REGISTRATION, USER_ALREADY_REGISTERED, "user is registered already");
+			
+		}
+		
+		
+		return new RegistrationResponse(
+				);
 	}
 
 	@Override
 	public LoginRequest login(LoginRequest loginRequest) {
 
+		String logMetodTitle ="login metod : -> ";
+		
+		
 		/* Logic Onion
 		 * 
 		 * login request ok ??
@@ -256,13 +317,16 @@ public class AuthService implements IAuthService{
 		 * 
 		 */
 		
-		String logMetodTitle ="login metod : -> ";
+		
 
 		return null;
 	}
 
 	@Override
 	public RefreshTokenResponse refreshToken(String refreshToken, String accessToken) {
+		
+		String logMetodTitle ="refreshTokenResponse metod : -> ";
+
 		
 		/* Logic Onion
 		 * 
@@ -277,13 +341,15 @@ public class AuthService implements IAuthService{
 		 */
 
 		
-		String logMetodTitle ="refreshTokenResponse metod : -> ";
 
 		return null;
 	}
 
 	@Override
 	public LogOutResponse logout(String refreshToken) {
+		
+		String logMetodTitle ="logOutResponse metod : -> ";
+
 		
 		/* Logic Onion
 		 * 
@@ -293,12 +359,14 @@ public class AuthService implements IAuthService{
 		 * 
 		 */
 		
-		String logMetodTitle ="logOutResponse metod : -> ";
 
 		return null;
 	}
 
+	
+	// TODO forget password
 
+	// TODO resend email
 	
 
 }

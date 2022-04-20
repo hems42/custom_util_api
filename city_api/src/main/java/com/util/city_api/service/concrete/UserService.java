@@ -164,6 +164,13 @@ public class UserService implements IUserService{
 		// TODO Auto-generated method stub
 		return null; 
 	}
+	
+	
+	@Override
+	public Boolean updateRegisteredUser(User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 
 	@Override
@@ -238,6 +245,9 @@ public class UserService implements IUserService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+
 	
 	
 	

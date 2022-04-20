@@ -7,6 +7,8 @@ import org.mockito.Mockito;
 
 import com.util.city_api.entity._core.*;
 import com.util.city_api.entity.log.*;
+import com.util.city_api.entity.security.ConfirmationToken;
+import com.util.city_api.entity.security.RefreshToken;
 import com.util.city_api.product_core.dto._coreDto.*;
 import com.util.city_api.product_core.dto.logDto.*;
 
@@ -76,6 +78,41 @@ public class BaseMockEntity_DtoAndEntity_DtoModel {
 			   );
    }
   
+   public ConfirmationToken getConfirmationToken(User performingTransactionBy,
+		   LocalDateTime createdDateTime,
+		   LocalDateTime expiresAt,
+		   LocalDateTime confirmedAt) {
+	   return new ConfirmationToken(
+			   0,
+			   performingTransactionBy,
+			   "confirmationToken",
+			   createdDateTime,
+			   expiresAt,
+			   confirmedAt
+			   );
+   }
+   
+   public ConfirmationToken getMockConfirmationToken() {
+	   return Mockito.mock(ConfirmationToken.class);
+   }
+   
+   public RefreshToken getRefreshToken(
+		   User performingTransactionBy,
+		   LocalDateTime createdDateTime,
+		   LocalDateTime expireDateTime) {
+	   return new RefreshToken(
+			   0,
+			   performingTransactionBy,
+			   "refreshToken",
+			   expireDateTime,
+			   createdDateTime
+			   );
+   }
+   
+   public RefreshToken getRefreshToken() {
+	   return Mockito.mock(RefreshToken.class);
+   }
+
    
    //------------------------------
    public Territory getTerritory(LocalDateTime createdDateTime, LocalDateTime updatedDateTime)

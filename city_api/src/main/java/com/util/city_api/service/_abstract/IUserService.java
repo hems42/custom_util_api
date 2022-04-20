@@ -48,6 +48,8 @@ public interface IUserService {
 	
 	UserDto updateUserIsRegistered(Boolean isRegistered);
 	
+	Boolean updateRegisteredUser(User user);
+	
 	
 	//----------
 	

@@ -27,8 +27,27 @@ public class ConfirmationTokenService implements IConfirmationTokenService{
 		return null;
 	}
 
+
 	@Override
-	public Boolean isValidConfirmationToken(String confirmationToken) {
+	public Boolean isExpiredConfirmationToken(String confirmationToken) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Boolean isAlreadyUsed(String confirmationToken) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ConfirmationToken getConfirmationTokenByConfirmationToken(String confirmationToken) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Boolean updateRegisteredConfirmationToken(ConfirmationToken confirmationToken) {
 		// TODO Auto-generated method stub
 		return null;
 	}

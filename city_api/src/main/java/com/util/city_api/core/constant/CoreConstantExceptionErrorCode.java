@@ -117,13 +117,17 @@ public class CoreConstantExceptionErrorCode {
     
     // USER
     public static String USER_NOT_CREATED                                    = "0010";
+    public static String USER_ALREADY_REGISTERED                             = "0011";
+    public static String USER_NOT_REGISTERED                             = "0012";
     
     // AUTHENTICATION
     public static String ACCESS_TOKEN_NOT_CREATED_OR_SAVED                   = "0020";
     public static String REFRESH_TOKEN_NOT_CREATED_OR_SAVED                  = "0024";
     public static String CONFIRMATION_TOKEN_NOT_CREATED_OR_SAVED             = "0030";
     public static String CONFIRMATION_TOKEN_NOT_FOUND                        = "0031";
-    public static String CONFIRMATION_TOKEN_EXPIRED                = "0031";
+    public static String CONFIRMATION_TOKEN_EXPIRED                          = "0032";
+    public static String CONFIRMATION_TOKEN_ALREADY_USED                     = "0033";
+    public static String CONFIRMATION_TOKEN_NOT_REGISTERED                   = "0034";
 
 
     

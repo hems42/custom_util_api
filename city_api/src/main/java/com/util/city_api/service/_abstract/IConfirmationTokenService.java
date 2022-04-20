@@ -5,12 +5,42 @@ import com.util.city_api.entity.security.ConfirmationToken;
 
 public interface IConfirmationTokenService {
 
-	
+	// create
 	ConfirmationToken createConfirmationToken(User user);
-	
+		
 	ConfirmationToken saveConfirmationToken(ConfirmationToken confirmationToken);
 	
+	//----------
+	
+	
+	// select
+	ConfirmationToken getConfirmationTokenByConfirmationToken(String confirmationToken);
+		
+	//----------
+	
+		
+	// update	
+	Boolean updateRegisteredConfirmationToken(ConfirmationToken confirmationToken);	
+		
+	//----------
+		
+		
+	// delete
+		
+	//----------	
+		
+		
+		
+		
+		
+	// isCheck
 	Boolean isExistConfirmationToken(String confirmationToken);
 	
-	Boolean isValidConfirmationToken(String confirmationToken);
+	Boolean isExpiredConfirmationToken(String confirmationToken);
+
+	Boolean isAlreadyUsed(String confirmationToken);
+	
+	//----------
+	
+	
 }

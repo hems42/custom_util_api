@@ -10,6 +10,7 @@ import com.util.city_api.baseMockModel.BaseMockServiceAndServiceModel;
 import com.util.city_api.baseMockModel.BaseTestWorkBench;
 import com.util.city_api.entity._core.Role;
 import com.util.city_api.entity._core.User;
+import com.util.city_api.entity.security.ConfirmationToken;
 import com.util.city_api.entity.security.RefreshToken;
 import com.util.city_api.product_core.dto._coreDto.UserDto;
 import com.util.city_api.product_core.dtoConvertor.UserDtoConvertor;
@@ -34,12 +35,15 @@ public class AuthServiceTestWorkBench extends BaseTestWorkBench{
     // model
 	public User userModel = entityModel.getUser(roles,localDateTime,localDateTime);
 	public User mockUserModel = entityModel.getMockUser();
+	public ConfirmationToken confirmationToken = entityModel.getConfirmationToken(mockUserModel, localDateTime, localDateTime, localDateTime);
+	public ConfirmationToken mockConfirmationToken = entityModel.getMockConfirmationToken();
     public UserDto userDtoModel = entityModel.getUserDto(roles,localDateTime,localDateTime);
 	public UserDto mockUserDtoModel = entityModel.getMockUserDto();
 	public RefreshToken refreshTokenModel =requestResponsemodel.getRefreshToken(userModel,localDateTime,localDateTime);
 	public UserCreateRequest userCreateRequestModel = requestResponsemodel.getUserCreateRequest();
 	public SignupRequest signupRequestModel = requestResponsemodel.getSignupRequestModel();
 	public String accesToken = requestResponsemodel.getAccessToken();
+	public String confirmationTokenRequestModel = requestResponsemodel.confirmationTokenRequest();
 	
     // convertor
 	public UserDtoConvertor userDtoConvertor = dtoConvertorModel.getUserDtoConvertor();
