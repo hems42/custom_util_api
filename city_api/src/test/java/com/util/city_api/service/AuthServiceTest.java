@@ -420,4 +420,21 @@ public class AuthServiceTest extends AuthServiceTestWorkBench{
 
 	
 	
+        //login metod logic...
+	 /* 
+	  * 
+	  * login request ok ??
+	  * user is exist ??
+	  * user is active ??
+	  * user is already login ??
+	  * refresh token create  and save ??
+	  * access token create and save ??
+	  * 
+	  */
+	
+	
+	 void When() {}
+	
+	
+
 }

@@ -20,7 +20,7 @@ public class ConfirmationToken  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer tokenId;
+    private String tokenId;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(

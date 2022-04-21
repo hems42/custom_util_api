@@ -311,27 +311,119 @@ public class AuthService implements IAuthService{
 	public LoginResponse login(LoginRequest loginRequest) {
 
 		String logMetodTitle ="login metod : -> ";
-		
+		UserDto  _userDto =null;
+		User _user = null;
+		String _accessToken = null;
+		RefreshToken _refreshToken = null;
 		
 		/* Logic Onion
 		 * 
 		 * login request ok ??
-		 * login request ??
-		 * user exist by login request information ??
-		 * already login user ??
-		 * confirmation token procced ??
+		 * user is exist ??
+		 * user is active ??
+		 * user is already login ??
+		 * refresh token create  and save ??
+		 * access token create and save ??
 		 * 
 		 */
 		
 		
+		
+		_userDto = userService.getUserByUserName(loginRequest.getUserName());
+		
+		if(_userDto != null)
+		{
+			
+			log.info(logMetodTitle + "user found by username");
+			
+			if(_userDto.getIsActive())
+			{
+				
+				log.info(logMetodTitle + "user is active");
+				
+			} else {
+				
+				log.error(logMetodTitle + "user is not active");
+				
+				throw new UnSuccessfulException(UN_SUCCESSFUL_LOGIN, USER_NOT_ACTIVE, "user is not active");
+			}
+			
+		} else {
+			
+			log.error(logMetodTitle + "user not found by username");
+			
+			throw new UnSuccessfulException(UN_SUCCESSFUL_LOGIN, USER_NOT_FOUND, "user not found by username");
+			
+		}
+		
+		
+		_user = userDtoConvertor.convert(_userDto);
+		_refreshToken = refreshTokenService.getRefreshTokenByUser(_user);
 
-		return new LoginResponse();
+		if(_refreshToken == null)
+		{			
+			log.info(logMetodTitle + "user not already login");
+		
+			_refreshToken =refreshTokenService.saveRefreshToken(
+					refreshTokenService.createRefreshToken(_user));
+			
+			if(_refreshToken != null)
+			{
+				
+				log.info(logMetodTitle + "refresh token created and saved succesfully");
+				
+			} else {
+				
+				log.error(logMetodTitle + "refresh token not created or saved succesfully");
+				
+				throw new UnSuccessfulException(UN_SUCCESSFUL_LOGIN, REFRESH_TOKEN_NOT_CREATED_OR_SAVED, "refresh token not created succesfully");
+
+			}
+			
+		} else {
+			
+			log.error(logMetodTitle + "user already login");
+			
+			throw new UnSuccessfulException(UN_SUCCESSFUL_LOGIN, USER_NOT_FOUND, "user already login");
+			
+		}
+		
+		
+		  _accessToken =accessTokenService.saveAccessToken(accessTokenService.createAccessToken(_user));
+		
+		  if(_accessToken != null)
+		  {
+			  
+			  log.info(logMetodTitle + "access token created and saved successfully");
+		
+	   	  } else {
+			
+			log.error(logMetodTitle + "access token not created and saved successfully");
+		
+			throw new UnSuccessfulException(UN_SUCCESSFUL_LOGIN, ACCESS_TOKEN_NOT_CREATED_OR_SAVED, "access token not created and saved successfully");
+	
+		  }
+		  
+		  
+		
+		return new LoginResponse(
+				_userDto.getUserId(),
+	            _userDto.getUserName(),
+	            _userDto.getEMail(),
+	            _userDto.getIsActive(),
+	            _userDto.getIsRegistered(),
+	            _userDto.getRoles(),
+	            LocalDateTime.now(),
+	            null,
+	            _accessToken,
+	            _refreshToken.getRefreshToken()
+				);
 	}
 
 	@Override
 	public RefreshTokenResponse refreshToken(String refreshToken, String accessToken) {
 		
-		String logMetodTitle ="refreshTokenResponse metod : -> ";
+		String logMetodTitle ="refreshToken metod : -> ";
 
 		
 		/* Logic Onion

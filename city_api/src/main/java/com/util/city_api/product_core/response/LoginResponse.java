@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class LoginResponse {
 
-	private String id;
+	private String userId;
     private String userName;
     private String email;
     private Boolean isActive;

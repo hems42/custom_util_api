@@ -12,13 +12,13 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 
 @Data
-@NoArgsConstructor
+@NoArgsConstructor 
 @AllArgsConstructor
 @Entity(name = "RefreshTokens")
 public class RefreshToken {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer tokenId;
+  private String tokenId;
 
   @OneToOne
   @JoinColumn(name = "UserId", referencedColumnName = "userId", unique = true)

@@ -42,7 +42,7 @@ public class BaseMockRequest_ResponseAndRequest_ResponseModel {
 		}
 		
 		public RefreshToken getRefreshToken(User user, LocalDateTime expiryDateTime, LocalDateTime createdDateTime  ) {
-			return new RefreshToken(0,user,"refreshToken",expiryDateTime,createdDateTime);
+			return new RefreshToken("refreshTokenId",user,"refreshToken",expiryDateTime,createdDateTime);
 		}
 		
 		public RefreshToken getMockRefreshToken() {

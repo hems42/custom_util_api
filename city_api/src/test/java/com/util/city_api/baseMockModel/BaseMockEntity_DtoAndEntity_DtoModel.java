@@ -83,7 +83,7 @@ public class BaseMockEntity_DtoAndEntity_DtoModel {
 		   LocalDateTime expiresAt,
 		   LocalDateTime confirmedAt) {
 	   return new ConfirmationToken(
-			   0,
+			   "confirmationTokenId",
 			   performingTransactionBy,
 			   "confirmationToken",
 			   createdDateTime,
@@ -101,7 +101,7 @@ public class BaseMockEntity_DtoAndEntity_DtoModel {
 		   LocalDateTime createdDateTime,
 		   LocalDateTime expireDateTime) {
 	   return new RefreshToken(
-			   0,
+			   "refrehTokenId",
 			   performingTransactionBy,
 			   "refreshToken",
 			   expireDateTime,

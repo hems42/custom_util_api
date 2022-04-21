@@ -9,4 +9,6 @@ public interface IRefreshTokenService {
 
 	RefreshToken saveRefreshToken(RefreshToken refreshToken);
 
+	RefreshToken getRefreshTokenByUser(User _user); 
+
 }
