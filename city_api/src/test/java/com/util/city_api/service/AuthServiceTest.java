@@ -416,8 +416,8 @@ public class AuthServiceTest extends AuthServiceTestWorkBench{
      	assertEquals(registrationResponseReturned.getUserNickName(), "userName");
      	assertNotNull(registrationResponseReturned.getRegistredAt());
      	
-     	System.out.println(registrationResponseReturned.toString());
-     	
 	}
+
+	
 	
 }

@@ -228,7 +228,7 @@ public class AuthService implements IAuthService{
 				if(confirmationTokenService.isAlreadyUsed(confirmationToken))
 				{
 					
-					log.info(logMetodTitle +  "confirmation token is not used already");
+					log.info(logMetodTitle +  "confirmation token is valid - not used already");
 					
 				} else {
 					
