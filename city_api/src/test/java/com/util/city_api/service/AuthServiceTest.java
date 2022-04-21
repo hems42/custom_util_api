@@ -413,7 +413,7 @@ public class AuthServiceTest extends AuthServiceTestWorkBench{
      	RegistrationResponse registrationResponseReturned = authService.register(confirmationTokenRequestModel);
 	
      	assertEquals(registrationResponseReturned.getEmail(), "email@email");
-     	assertEquals(registrationResponseReturned.getUserNickName(), "userName");
+     	assertEquals(registrationResponseReturned.getUserName(), "userName");
      	assertNotNull(registrationResponseReturned.getRegistredAt());
      	
 	}

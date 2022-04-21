@@ -118,7 +118,7 @@ public class CoreConstantExceptionErrorCode {
     // USER
     public static String USER_NOT_CREATED                                    = "0010";
     public static String USER_ALREADY_REGISTERED                             = "0011";
-    public static String USER_NOT_REGISTERED                             = "0012";
+    public static String USER_NOT_REGISTERED                                 = "0012";
     
     // AUTHENTICATION
     public static String ACCESS_TOKEN_NOT_CREATED_OR_SAVED                   = "0020";

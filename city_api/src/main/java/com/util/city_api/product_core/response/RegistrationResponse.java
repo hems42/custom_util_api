@@ -13,6 +13,6 @@ public class RegistrationResponse {
 	
 	    private String registryMessage;
 	    private String email;
-	    private String userNickName;
+	    private String userName;
 	    private LocalDateTime registredAt;
 }

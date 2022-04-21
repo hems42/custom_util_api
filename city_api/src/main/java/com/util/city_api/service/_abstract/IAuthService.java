@@ -3,6 +3,7 @@ package com.util.city_api.service._abstract;
 import com.util.city_api.product_core.request.createRequest.LoginRequest;
 import com.util.city_api.product_core.request.createRequest.SignupRequest;
 import com.util.city_api.product_core.response.LogOutResponse;
+import com.util.city_api.product_core.response.LoginResponse;
 import com.util.city_api.product_core.response.RefreshTokenResponse;
 import com.util.city_api.product_core.response.RegistrationResponse;
 import com.util.city_api.product_core.response.SignupReponse;
@@ -13,7 +14,7 @@ public interface IAuthService {
 	
     RegistrationResponse register(String confirmationToken);
 
-    LoginRequest login(LoginRequest loginRequest);
+    LoginResponse login(LoginRequest loginRequest);
 
     RefreshTokenResponse refreshToken(String refreshToken, String accessToken);
 
