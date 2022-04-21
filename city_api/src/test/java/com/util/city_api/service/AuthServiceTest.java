@@ -3,10 +3,12 @@ package com.util.city_api.service;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import org.mockito.internal.matchers.NotNull;
 
 import com.util.city_api.core.exception.abstracts.BaseExceptionModel;
 import com.util.city_api.core.exception.exceptionModels.UnSuccessfulException;
 import com.util.city_api.product_core.request.createRequest.UserCreateRequest;
+import com.util.city_api.product_core.response.RegistrationResponse;
 import com.util.city_api.product_core.response.SignupReponse;
 import com.util.city_api.service.concrete.AuthService;
 import com.util.city_api.service.mockWorkbench.AuthServiceTestWorkBench;
@@ -287,8 +289,7 @@ public class AuthServiceTest extends AuthServiceTestWorkBench{
 	assertEquals(exceptionModel.getErrorCode(), UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + REGISTRATION + CONFIRMATION_TOKEN_EXPIRED);
 	
 	}
-	
-	
+
 	@Test
 	void WhenConfirmationTokenIsAlreadyUsedThenItMustThrowUnSuccessFulException() {
 
@@ -311,6 +312,112 @@ public class AuthServiceTest extends AuthServiceTestWorkBench{
     assertEquals(exceptionModel.getErrorMessage(),UN_SUCCESSFUL_REGISTRATION.getExceptionMessage());
 	assertEquals(exceptionModel.getErrorCode(), UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + REGISTRATION + CONFIRMATION_TOKEN_ALREADY_USED);
 	
+	}
+	
+	@Test
+	void WhenUserAlreadyRegisteredThenItMustThrowUnSuccessFulException() {
+
+		authService = new AuthService(mockUserService,
+				mockAccessTokenService,
+				mockRefreshTokenService,
+				mockConfirmationTokenService,
+				mockUserDtoConvertor);
+		
+     	Mockito.when(mockConfirmationTokenService.getConfirmationTokenByConfirmationToken(confirmationTokenRequestModel)).thenReturn(confirmationToken);
+     	Mockito.when(mockConfirmationTokenService.isExpiredConfirmationToken(confirmationTokenRequestModel)).thenReturn(true);
+     	Mockito.when(mockConfirmationTokenService.isAlreadyUsed(confirmationTokenRequestModel)).thenReturn(true);
+     	Mockito.when(mockUserModel.getIsRegistered()).thenReturn(true);
+
+     	
+     	BaseExceptionModel  exceptionModel = Assertions.assertThrows(UnSuccessfulException.class,()->{
+    		
+     		authService.register(confirmationTokenRequestModel);
+	});
+
+    assertEquals(exceptionModel.getErrorMessage(),UN_SUCCESSFUL_REGISTRATION.getExceptionMessage());
+	assertEquals(exceptionModel.getErrorCode(), UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + REGISTRATION + USER_ALREADY_REGISTERED);
+	
+	}
+	
+	@Test
+	void WhenUserNotUptadedRegisteredThenItMustThrowUnSuccessFulException() {
+
+		authService = new AuthService(mockUserService,
+				mockAccessTokenService,
+				mockRefreshTokenService,
+				mockConfirmationTokenService,
+				mockUserDtoConvertor);
+		
+     	Mockito.when(mockConfirmationTokenService.getConfirmationTokenByConfirmationToken(confirmationTokenRequestModel)).thenReturn(confirmationToken);
+     	Mockito.when(mockConfirmationTokenService.isExpiredConfirmationToken(confirmationTokenRequestModel)).thenReturn(true);
+     	Mockito.when(mockConfirmationTokenService.isAlreadyUsed(confirmationTokenRequestModel)).thenReturn(true);
+     	Mockito.when(mockUserModel.getIsRegistered()).thenReturn(false);
+     	Mockito.when(mockUserService.updateRegisteredUser(mockUserModel)).thenReturn(false);
+
+     	
+     	BaseExceptionModel  exceptionModel = Assertions.assertThrows(UnSuccessfulException.class,()->{
+    		
+     		authService.register(confirmationTokenRequestModel);
+	});
+
+    assertEquals(exceptionModel.getErrorMessage(),UN_SUCCESSFUL_REGISTRATION.getExceptionMessage());
+	assertEquals(exceptionModel.getErrorCode(), UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + REGISTRATION + USER_NOT_REGISTERED);
+	
+	}
+	
+	@Test
+	void WhenConfirmationTokenNotUptadedRegisteredThenItMustThrowUnSuccessFulException() {
+
+		authService = new AuthService(mockUserService,
+				mockAccessTokenService,
+				mockRefreshTokenService,
+				mockConfirmationTokenService,
+				mockUserDtoConvertor);
+		
+     	Mockito.when(mockConfirmationTokenService.getConfirmationTokenByConfirmationToken(confirmationTokenRequestModel)).thenReturn(confirmationToken);
+     	Mockito.when(mockConfirmationTokenService.isExpiredConfirmationToken(confirmationTokenRequestModel)).thenReturn(true);
+     	Mockito.when(mockConfirmationTokenService.isAlreadyUsed(confirmationTokenRequestModel)).thenReturn(true);
+     	Mockito.when(mockUserModel.getIsRegistered()).thenReturn(false);
+     	Mockito.when(mockUserService.updateRegisteredUser(mockUserModel)).thenReturn(true);
+     	Mockito.when(mockConfirmationTokenService.updateRegisteredConfirmationToken(confirmationToken)).thenReturn(false);
+     	
+     	BaseExceptionModel  exceptionModel = Assertions.assertThrows(UnSuccessfulException.class,()->{
+    		
+     		authService.register(confirmationTokenRequestModel);
+	});
+
+    assertEquals(exceptionModel.getErrorMessage(),UN_SUCCESSFUL_REGISTRATION.getExceptionMessage());
+	assertEquals(exceptionModel.getErrorCode(), UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + REGISTRATION + CONFIRMATION_TOKEN_NOT_REGISTERED);
+	
+	}
+	
+	@Test
+	void WhenRegisterSuccessfullyThenItMustReturnRegistrationResponseThatContainsAboutRegistrationKnowledge() {
+
+		authService = new AuthService(mockUserService,
+				mockAccessTokenService,
+				mockRefreshTokenService,
+				mockConfirmationTokenService,
+				mockUserDtoConvertor);
+		
+     	Mockito.when(mockConfirmationTokenService.getConfirmationTokenByConfirmationToken(confirmationTokenRequestModel)).thenReturn(confirmationToken);
+     	Mockito.when(mockConfirmationTokenService.isExpiredConfirmationToken(confirmationTokenRequestModel)).thenReturn(true);
+     	Mockito.when(mockConfirmationTokenService.isAlreadyUsed(confirmationTokenRequestModel)).thenReturn(true);
+     	Mockito.when(mockUserModel.getIsRegistered()).thenReturn(false);
+     	Mockito.when(mockUserService.updateRegisteredUser(mockUserModel)).thenReturn(true);
+     	Mockito.when(mockConfirmationTokenService.updateRegisteredConfirmationToken(confirmationToken)).thenReturn(true);
+     	Mockito.when(mockUserModel.getEMail()).thenReturn("email@email");
+     	Mockito.when(mockUserModel.getUserName()).thenReturn("userName");
+
+     
+     	RegistrationResponse registrationResponseReturned = authService.register(confirmationTokenRequestModel);
+	
+     	assertEquals(registrationResponseReturned.getEmail(), "email@email");
+     	assertEquals(registrationResponseReturned.getUserNickName(), "userName");
+     	assertNotNull(registrationResponseReturned.getRegistredAt());
+     	
+     	System.out.println(registrationResponseReturned.toString());
+     	
 	}
 	
 }

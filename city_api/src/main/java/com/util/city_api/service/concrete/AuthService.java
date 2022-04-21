@@ -26,6 +26,8 @@ import lombok.extern.slf4j.Slf4j;
 import static com.util.city_api.core.constant.CoreConstantExceptionErrorCode.*;
 import static com.util.city_api.core.constant.CoreEnumExceptionMessages.*;
 
+import java.time.LocalDateTime;
+
 @Service
 @Slf4j(topic = "authService")
 public class AuthService implements IAuthService{
@@ -273,17 +275,17 @@ public class AuthService implements IAuthService{
 					
 				} else {
 					
-					log.error(logMetodTitle + "confirmation token is not registered");
+					log.error(logMetodTitle + "confirmation token is not registered succesfully");
 				
-				   throw new UnSuccessfulException(UN_SUCCESSFUL_REGISTRATION, CONFIRMATION_TOKEN_NOT_REGISTERED, "confirmation token is not registered"); 
+				   throw new UnSuccessfulException(UN_SUCCESSFUL_REGISTRATION, CONFIRMATION_TOKEN_NOT_REGISTERED, "confirmation token is not registered succesfully"); 
 					
 				}
 				
 			} else {
 				
-				log.error(logMetodTitle + "user is not registered");
+				log.error(logMetodTitle + "user is not registered succesfully");
 				
-				throw new UnSuccessfulException(UN_SUCCESSFUL_REGISTRATION, USER_NOT_REGISTERED, "user is not registered");
+				throw new UnSuccessfulException(UN_SUCCESSFUL_REGISTRATION, USER_NOT_REGISTERED, "user is not registered succesfully");
 
 			}
 			
@@ -297,6 +299,10 @@ public class AuthService implements IAuthService{
 		
 		
 		return new RegistrationResponse(
+				"user registry is  success !!!",
+				_user.getEMail(),
+				_user.getUserName(),
+				LocalDateTime.now()
 				);
 	}
 

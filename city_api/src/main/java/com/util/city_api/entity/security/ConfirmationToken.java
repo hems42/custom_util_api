@@ -22,11 +22,10 @@ public class ConfirmationToken  {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer tokenId;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(
-            name = "UserId",
-            nullable = false
-    )
+            name     = "UserId",
+            nullable = false )
     private User user;
 
     @Column(name ="ConfirmationToken",nullable = false,unique = true )
