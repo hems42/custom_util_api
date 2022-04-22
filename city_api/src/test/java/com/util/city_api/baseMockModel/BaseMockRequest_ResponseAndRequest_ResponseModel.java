@@ -6,6 +6,7 @@ import org.mockito.Mockito;
 
 import com.util.city_api.entity._core.User;
 import com.util.city_api.entity.security.RefreshToken;
+import com.util.city_api.product_core.request.createRequest.LoginRequest;
 import com.util.city_api.product_core.request.createRequest.SignupRequest;
 import com.util.city_api.product_core.request.createRequest.UserCreateRequest;
 import com.util.city_api.product_core.response.SignupReponse;
@@ -13,7 +14,7 @@ import com.util.city_api.product_core.response.SignupReponse;
 public class BaseMockRequest_ResponseAndRequest_ResponseModel {
 
 	   // request model
-	   public SignupRequest getSignupRequestModel() {
+	   public SignupRequest getSignupRequestModel() { 
 			return new SignupRequest("username","email@email","password","");
 	   }
 		
@@ -25,6 +26,18 @@ public class BaseMockRequest_ResponseAndRequest_ResponseModel {
 		   return "confirmationTokenRequest";
 	   }
 		
+	   public LoginRequest getLoginRequestModel() {
+		   return new LoginRequest(
+				   "userName",
+				   "email",
+				   "password"
+				   );
+	   }
+	   
+	   public LoginRequest getMockLoginRequestModel() {
+		   return Mockito.mock(LoginRequest.class);
+	   }
+	   
 		
 	    // response model
 		public SignupReponse getSignupResponse() { 

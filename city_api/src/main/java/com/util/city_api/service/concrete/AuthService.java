@@ -70,7 +70,7 @@ public class AuthService implements IAuthService{
 		/* Logic Onion
 		 * 
 		 * request ok
-		 * user created allready ??
+		 * user created allready ?? 
 		 * user created successfuly ??
 		 * refresh token create and saved
 		 * accesstoken create and saved
@@ -384,7 +384,7 @@ public class AuthService implements IAuthService{
 			
 			log.error(logMetodTitle + "user already login");
 			
-			throw new UnSuccessfulException(UN_SUCCESSFUL_LOGIN, USER_NOT_FOUND, "user already login");
+			throw new UnSuccessfulException(UN_SUCCESSFUL_LOGIN, USER_ALREADY_LOGIN, "user already login");
 			
 		}
 		

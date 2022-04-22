@@ -14,6 +14,7 @@ import com.util.city_api.entity.security.ConfirmationToken;
 import com.util.city_api.entity.security.RefreshToken;
 import com.util.city_api.product_core.dto._coreDto.UserDto;
 import com.util.city_api.product_core.dtoConvertor.UserDtoConvertor;
+import com.util.city_api.product_core.request.createRequest.LoginRequest;
 import com.util.city_api.product_core.request.createRequest.SignupRequest;
 import com.util.city_api.product_core.request.createRequest.UserCreateRequest;
 import com.util.city_api.service._abstract.IAccesTokenService;
@@ -33,21 +34,31 @@ public class AuthServiceTestWorkBench extends BaseTestWorkBench{
 	public HashSet<Role> roles;
 	
     // model
-	public User userModel = entityModel.getUser(roles,localDateTime,localDateTime);
+	     // entity model
+	public User userModel = entityModel.getUser(roles,localDateTime,localDateTime); 
 	public User mockUserModel = entityModel.getMockUser();
 	public ConfirmationToken confirmationToken = entityModel.getConfirmationToken(mockUserModel, localDateTime, localDateTime, localDateTime);
 	public ConfirmationToken mockConfirmationToken = entityModel.getMockConfirmationToken();
-    public UserDto userDtoModel = entityModel.getUserDto(roles,localDateTime,localDateTime);
+	public RefreshToken refreshTokenModel =requestResponsemodel.getRefreshToken(userModel,localDateTime,localDateTime); 
+	public RefreshToken mockRefreshtokenModel = requestResponsemodel.getMockRefreshToken();
+	     // dto model
+	public UserDto userDtoModel = entityModel.getUserDto(roles,localDateTime,localDateTime);
 	public UserDto mockUserDtoModel = entityModel.getMockUserDto();
-	public RefreshToken refreshTokenModel =requestResponsemodel.getRefreshToken(userModel,localDateTime,localDateTime);
+	
+	     // request model
 	public UserCreateRequest userCreateRequestModel = requestResponsemodel.getUserCreateRequest();
 	public SignupRequest signupRequestModel = requestResponsemodel.getSignupRequestModel();
-	public String accesToken = requestResponsemodel.getAccessToken();
-	public String confirmationTokenRequestModel = requestResponsemodel.confirmationTokenRequest();
+    public LoginRequest loginRequestModel = requestResponsemodel.getLoginRequestModel();
+    public LoginRequest mockLoginRequestModel = requestResponsemodel.getMockLoginRequestModel();
+    public String confirmationTokenRequestModel = requestResponsemodel.confirmationTokenRequest();   
+    public String accesToken = requestResponsemodel.getAccessToken();
+	
+    
+    
 	
     // convertor
 	public UserDtoConvertor userDtoConvertor = dtoConvertorModel.getUserDtoConvertor();
-	public UserDtoConvertor mockUserDtoConvertor = dtoConvertorModel.getMockUserDtoConvertor();
+	public UserDtoConvertor mockUserDtoConvertor = dtoConvertorModel.getMockUserDtoConvertor(); 
 
 	// service
 	public IAuthService authService;
