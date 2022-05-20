@@ -578,7 +578,6 @@ public class AuthServiceTest extends AuthServiceTestWorkBench{
 		 
 	 }
 
-
 	@Test
 	 void Login_WhenAccessTokenNotSavedThenItMustThrowUnSuccessFulException() {
 
@@ -629,5 +628,21 @@ public class AuthServiceTest extends AuthServiceTestWorkBench{
      	
      	
 	}
+
 	
+	
+	
+	 //refreshToken metod logic...
+	/* Logic Onion
+	 * 
+	 * access token ok ??
+	 * refresh token ok ??
+	 * access token is valid - has a user ??
+	 * access token is expired ??
+	 * refresh token is valid - still current and has a user ??
+	 * refresh token is expired - if not return response
+	 * refresh token if expired -  delete refresh token and create new refresh token 
+	 * 
+	 */
+
 }
