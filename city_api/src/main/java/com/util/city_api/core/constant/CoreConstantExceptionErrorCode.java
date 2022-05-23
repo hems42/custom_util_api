@@ -126,7 +126,10 @@ public class CoreConstantExceptionErrorCode {
     
     // AUTHENTICATION
     public static String ACCESS_TOKEN_NOT_CREATED_OR_SAVED                   = "0020";
+    public static String ACCESS_TOKEN_STILL_VALID                            = "0021";
     public static String REFRESH_TOKEN_NOT_CREATED_OR_SAVED                  = "0024";
+    public static String REFRESH_TOKEN_NOT_FOUND                             = "0025";
+    public static String REFRESH_TOKEN_NOT_VALID                             = "0026";
     public static String CONFIRMATION_TOKEN_NOT_CREATED_OR_SAVED             = "0030";
     public static String CONFIRMATION_TOKEN_NOT_FOUND                        = "0031";
     public static String CONFIRMATION_TOKEN_EXPIRED                          = "0032";

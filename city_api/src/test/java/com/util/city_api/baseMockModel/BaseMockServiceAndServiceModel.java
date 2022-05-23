@@ -2,6 +2,7 @@ package com.util.city_api.baseMockModel;
 
 import org.mockito.Mockito;
 
+import com.util.city_api.dao.RefreshTokenDao;
 import com.util.city_api.product_core.dtoConvertor.UserDtoConvertor;
 import com.util.city_api.service._abstract.IAccesTokenService;
 import com.util.city_api.service._abstract.IConfirmationTokenService;
@@ -29,8 +30,8 @@ public class BaseMockServiceAndServiceModel extends BaseMockDaoAndDaoModel{
 		return Mockito.mock(AccesTokenService.class);
 	}
 	
-	public IRefreshTokenService getRefreshTokenService() {
-		return new RefreshTokenService();
+	public IRefreshTokenService getRefreshTokenService(RefreshTokenDao refreshTokenDao) {
+		return new RefreshTokenService(refreshTokenDao);
 	}
 	
 	public IRefreshTokenService getMockRefreshTokenService() {

@@ -3,11 +3,14 @@ package com.util.city_api.service.mockWorkbench;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 
+import org.mockito.Mockito;
+
 import com.util.city_api.baseMockModel.BaseMockDtoConvertorAndDtoConvertorModel;
 import com.util.city_api.baseMockModel.BaseMockEntity_DtoAndEntity_DtoModel;
 import com.util.city_api.baseMockModel.BaseMockRequest_ResponseAndRequest_ResponseModel;
 import com.util.city_api.baseMockModel.BaseMockServiceAndServiceModel;
 import com.util.city_api.baseMockModel.BaseTestWorkBench;
+import com.util.city_api.dao.RefreshTokenDao;
 import com.util.city_api.entity._core.Role;
 import com.util.city_api.entity._core.User;
 import com.util.city_api.entity.security.ConfirmationToken;
@@ -66,7 +69,7 @@ public class AuthServiceTestWorkBench extends BaseTestWorkBench{
 	public IUserService mockUserService = serviceModel.getMockUserService();
 	public IAccesTokenService accessTokenService = serviceModel.getAccesTokenService();
 	public IAccesTokenService mockAccessTokenService = serviceModel.getMockAccesTokenService();
-	public IRefreshTokenService refreshTokenService = serviceModel.getRefreshTokenService();
+	public IRefreshTokenService refreshTokenService = serviceModel.getRefreshTokenService(Mockito.mock(RefreshTokenDao.class));
 	public IRefreshTokenService mockRefreshTokenService = serviceModel.getMockRefreshTokenService();
 	public IConfirmationTokenService confirmationTokenService = serviceModel.getConfirmationtokenService();
 	public IConfirmationTokenService mockConfirmationTokenService = serviceModel.getMockConfirmationTokenService();

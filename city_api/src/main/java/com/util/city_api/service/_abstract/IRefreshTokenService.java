@@ -5,10 +5,16 @@ import com.util.city_api.entity.security.RefreshToken;
 
 public interface IRefreshTokenService {
 
-	RefreshToken createRefreshToken(User _user);
+	RefreshToken createRefreshToken(User user);
 
 	RefreshToken saveRefreshToken(RefreshToken refreshToken);
 
-	RefreshToken getRefreshTokenByUser(User _user); 
+	RefreshToken getRefreshTokenByUser(User user);
+
+	RefreshToken getRefreshTokenByRefreshToken(String refreshToken);
+
+	Boolean verifyRefreshToken(String refreshToken);
+
+	void deleteRefreshTokenByRefreshToken(RefreshToken refreshToken); 
 
 }

@@ -7,4 +7,8 @@ public interface IAccesTokenService {
 	String createAccessToken(User user);
 	
 	String saveAccessToken(String accessToken);
+	
+	String getAccessTokenByAccessToken(String accessToken);
+	
+	Boolean verifyAccessToken(String accessToken);
 }

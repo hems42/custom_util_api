@@ -20,4 +20,16 @@ public class AccesTokenService implements IAccesTokenService{
 		return null;
 	}
 
+	@Override
+	public String getAccessTokenByAccessToken(String accessToken) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Boolean verifyAccessToken(String accessToken) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

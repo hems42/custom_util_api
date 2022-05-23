@@ -13,5 +13,12 @@ public interface RefreshTokenDao extends JpaRepository<RefreshToken, String> {
             "WHERE r.user = ?1",
             nativeQuery = true 
             )
-    RefreshToken getRefreshTokenByuser(User user);
+    RefreshToken getRefreshTokenByUser(User user);
+	
+	@Query( value = "SELECT r " +
+            "FROM  RefreshToken r " +
+            "WHERE r.refreshToken = ?1",
+            nativeQuery = true 
+            )
+    RefreshToken getRefreshTokenByRefreshToken(String refreshToken);
 }

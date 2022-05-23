@@ -9,12 +9,14 @@ import com.util.city_api.entity.security.RefreshToken;
 import com.util.city_api.product_core.dto._coreDto.UserDto;
 import com.util.city_api.product_core.dtoConvertor.UserDtoConvertor;
 import com.util.city_api.product_core.request.createRequest.LoginRequest;
+import com.util.city_api.product_core.request.createRequest.ResetPasswordRequest;
 import com.util.city_api.product_core.request.createRequest.SignupRequest;
 import com.util.city_api.product_core.request.createRequest.UserCreateRequest;
-import com.util.city_api.product_core.response.LogOutResponse;
+import com.util.city_api.product_core.response.LogoutResponse;
 import com.util.city_api.product_core.response.LoginResponse;
 import com.util.city_api.product_core.response.RefreshTokenResponse;
 import com.util.city_api.product_core.response.RegistrationResponse;
+import com.util.city_api.product_core.response.ResetPasswordResponse;
 import com.util.city_api.product_core.response.SignupReponse;
 import com.util.city_api.service._abstract.IAccesTokenService;
 import com.util.city_api.service._abstract.IAuthService;
@@ -423,47 +425,142 @@ public class AuthService implements IAuthService{
 	public RefreshTokenResponse refreshToken(String refreshToken, String accessToken) {
 		
 		String logMetodTitle ="refreshToken metod : -> ";
-
+		UserDto  _userDto =null;
+		User _user = null;
+		String _accessToken = null;
+		RefreshToken _refreshToken = null;
 		
 		/* Logic Onion
 		 * 
 		 * access token ok ??
+		 * access token is not still valid ??
 		 * refresh token ok ??
-		 * access token is valid - has a user ??
-		 * access token is expired ??
-		 * refresh token is valid - still current and has a user ??
-		 * refresh token is expired - if not return response
-		 * refresh token if expired -  delete refresh token and create new refresh token 
+		 * refresh token is still valid ??
+		 * refresh token if not still valid -  delete refresh token 
+		 * access token create and save
 		 * 
 		 */
+		
+		
+		if(accessTokenService.getAccessTokenByAccessToken(accessToken) !=null) 
+		{
+			
+			log.info(logMetodTitle + "access token found");
+			
+			if(!accessTokenService.verifyAccessToken(_accessToken)) 
+			{
+				
+				log.info(logMetodTitle + "accesss token is not valid");
+				
+				
+			} else {
+				
+				
+                log.error(logMetodTitle + "access is still valid");
+				
+				throw new UnSuccessfulException(UN_SUCCESSFUL_RENEW_REFRESH_TOKEN, ACCESS_TOKEN_STILL_VALID, "access still valid");
+			}
+			
+			
+		} else {
+			
+			
+			log.info(logMetodTitle + "access token not found");
+		
+		}
 
 		
-
-		return null;
+		
+		_refreshToken = refreshTokenService.getRefreshTokenByRefreshToken(refreshToken);
+		
+		if(_refreshToken != null)
+		{
+			
+			log.info(logMetodTitle + " refresh token found"); 
+		
+			if(refreshTokenService.verifyRefreshToken(_refreshToken.getRefreshToken()))
+			{
+				log.info(logMetodTitle + "refresh token is valid");
+				
+				_user = _refreshToken.getUser();
+				
+			String createdAccessToken =	accessTokenService.createAccessToken(_user);
+			
+			return new RefreshTokenResponse(
+					_refreshToken.getRefreshToken(),
+					createdAccessToken
+					);
+					
+				
+			} else {
+				
+				log.error(logMetodTitle + "refresh token is not valid");
+				
+				refreshTokenService.deleteRefreshTokenByRefreshToken(_refreshToken);
+				
+				log.info(logMetodTitle + "refresh token deleted");
+				
+				throw new UnSuccessfulException(UN_SUCCESSFUL_RENEW_REFRESH_TOKEN, REFRESH_TOKEN_NOT_VALID, "refresh token is not valid");
+			}
+		
+		} else {
+			
+			log.error(logMetodTitle + "refresh token not found");
+			
+			throw new UnSuccessfulException(UN_SUCCESSFUL_RENEW_REFRESH_TOKEN, REFRESH_TOKEN_NOT_FOUND, "refresh token not found");
+		
+		}
+		
 	}
 
 	@Override
-	public LogOutResponse logout(String refreshToken) {
+	public LogoutResponse logout(String refreshToken) {
 		
-		String logMetodTitle ="logOutResponse metod : -> ";
-
+		String logMetodTitle ="logoutResponse metod : -> ";
+		RefreshToken _refreshToken = null;
 		
 		/* Logic Onion
 		 * 
-		 * refresh token is valid - still current and has a user ??
-		 * refresh token is expired - logout
-		 * refresh token if is not expired -  delete refresh token and logout 
+		 * refresh token ok ??
+		 * refresh token is exist - delete??
 		 * 
 		 */
 		
+		
+		_refreshToken = refreshTokenService.getRefreshTokenByRefreshToken(refreshToken);
+		
+		if(_refreshToken != null)
+		{
+			log.info(logMetodTitle + " refresh token found");
+			
+			return new LogoutResponse("true");
 
+			
+		} else {
+			
+			log.error(logMetodTitle + " refresh token not found");
+			
+			return new LogoutResponse("true");
+
+		}
+
+	}
+
+
+
+	@Override
+	public ResetPasswordResponse resetPassword(ResetPasswordRequest resetPasswordRequest) {
+		
+		String logMetodTitle ="resetPassword metod : -> ";
+		RefreshToken _refreshToken = null;
+		
+		/* Logic Onion
+		 * 
+		 * 
+		 */
 		return null;
 	}
 
-	
-	// TODO forget password
-
-	// TODO resend email
 	
 
 }

@@ -1,11 +1,13 @@
 package com.util.city_api.service._abstract;
 
 import com.util.city_api.product_core.request.createRequest.LoginRequest;
+import com.util.city_api.product_core.request.createRequest.ResetPasswordRequest;
 import com.util.city_api.product_core.request.createRequest.SignupRequest;
-import com.util.city_api.product_core.response.LogOutResponse;
+import com.util.city_api.product_core.response.LogoutResponse;
 import com.util.city_api.product_core.response.LoginResponse;
 import com.util.city_api.product_core.response.RefreshTokenResponse;
 import com.util.city_api.product_core.response.RegistrationResponse;
+import com.util.city_api.product_core.response.ResetPasswordResponse;
 import com.util.city_api.product_core.response.SignupReponse;
 
 public interface IAuthService {
@@ -18,9 +20,8 @@ public interface IAuthService {
 
     RefreshTokenResponse refreshToken(String refreshToken, String accessToken);
 
-    LogOutResponse logout(String refreshToken);
+    LogoutResponse logout(String refreshToken);
 
-    //void forgetPassword(String user);
+    ResetPasswordResponse resetPassword(ResetPasswordRequest resetPasswordRequest);
 
-    //void reSendEmail(String userId);
 }
