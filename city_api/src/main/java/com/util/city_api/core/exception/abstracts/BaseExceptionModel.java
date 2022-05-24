@@ -11,7 +11,7 @@ import com.util.city_api.core.constant.CoreEnumExceptionMessages;
 public class BaseExceptionModel extends RuntimeException {
 
 	    private LocalDateTime timeStamp;
-	    private String errorCode;
+	    private String errorTopicCode;
 	    private String errorDetailCode;
 	    private String errorMessage;
 	    private String errorDescription;
@@ -26,7 +26,7 @@ public class BaseExceptionModel extends RuntimeException {
 	                              HttpStatus baseStatusCode) {
 	        super(errorDescription); 
 	        this.coreEnumExceptionMessages = coreEnumExceptionMessages;
-	        errorCode = coreEnumExceptionMessages.getExceptionCode();
+	        errorTopicCode = coreEnumExceptionMessages.getExceptionCode();
 	        errorMessage = coreEnumExceptionMessages.getExceptionMessage();
 	        this.errorDescription = errorDescription;
 	        this.baseErrorCode = baseErrorCode;
@@ -53,8 +53,10 @@ public class BaseExceptionModel extends RuntimeException {
 	    }
 
 	    private String convertToSuperErrorCode() {
-	        String foundErrorCode = coreEnumExceptionMessages.getExceptionCode();
-	        return baseErrorCode + foundErrorCode + errorDetailCode;
+	        
+	        return baseErrorCode + 
+	        	   coreEnumExceptionMessages.getExceptionCode() + 
+	        	   errorDetailCode;
 	    }
 
 	    public HttpStatus getBaseStatusCode() {
