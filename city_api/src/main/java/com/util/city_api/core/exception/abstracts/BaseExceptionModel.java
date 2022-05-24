@@ -55,7 +55,7 @@ public class BaseExceptionModel extends RuntimeException {
 	    private String convertToSuperErrorCode() {
 	        
 	        return baseErrorCode + 
-	        	   coreEnumExceptionMessages.getExceptionCode() + 
+	        	   errorTopicCode + 
 	        	   errorDetailCode;
 	    }
 
