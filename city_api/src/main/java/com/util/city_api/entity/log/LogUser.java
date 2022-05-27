@@ -43,10 +43,9 @@ public class LogUser {
     private User user;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "PerformedTransactionBy", nullable = false)
+    @JoinColumn(name = "PerformedTransactionBy")
     private User PerformingTransactionBy;
 
     @Column(name = "CreatedDate", updatable = false)
-    private LocalDateTime createdDate;
-
-}
+    private LocalDateTime createdDate; 
+    }
