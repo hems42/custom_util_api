@@ -1,4 +1,4 @@
-package com.util.city_api.entity._core;
+package com.util.city_api.entity.primary;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

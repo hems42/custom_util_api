@@ -10,10 +10,8 @@ public class UnSuccessfulException extends BaseExceptionModel {
     public UnSuccessfulException(CoreEnumExceptionMessages coreEnumExceptionMessages,
     		                     String errorDetailCode, 
                                  String errorDescription) {
-        super(coreEnumExceptionMessages,
-                UN_SUCCESSFUL_EXCEPTION_ERROR_CODE,
-                errorDetailCode,
-                errorDescription,
-                HttpStatus.NOT_ACCEPTABLE);
-    }
-}
+                                 super(coreEnumExceptionMessages,
+                                       B_UN_SUCCESSFUL_EXCEPTION_ERROR_CODE,
+                                       errorDetailCode,
+                                       errorDescription,
+                                       HttpStatus.NOT_ACCEPTABLE);}}

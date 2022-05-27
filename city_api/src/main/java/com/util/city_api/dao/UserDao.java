@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.util.city_api.entity._core.User;
+import com.util.city_api.entity.primary.User;
 
 public interface UserDao extends JpaRepository<User,String> {
 

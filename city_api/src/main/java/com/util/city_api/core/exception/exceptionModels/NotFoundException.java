@@ -7,13 +7,13 @@ import com.util.city_api.core.exception.abstracts.BaseExceptionModel;
 
 import static com.util.city_api.core.constant.CoreConstantExceptionErrorCode.*;
 
-/*
+
 public class NotFoundException extends BaseExceptionModel {
-    public NotFoundException(CoreEnumExceptionMessages coreEnumExceptionMessages, String errorDescription) {
-        super(coreEnumExceptionMessages,
-                NOT_FOUND_EXCEPTION_ERROR_CODE,
-                errorDescription,
-                HttpStatus.NOT_FOUND);
-    }
-}
-*/
+    public NotFoundException(CoreEnumExceptionMessages coreEnumExceptionMessages,
+                             String errorDetailCode, 
+                             String errorDescription) {
+                             super(coreEnumExceptionMessages,
+                            	   B_NOT_FOUND_EXCEPTION_ERROR_CODE,
+                                   errorDetailCode,
+                                   errorDescription,
+                                   HttpStatus.NOT_FOUND);}}

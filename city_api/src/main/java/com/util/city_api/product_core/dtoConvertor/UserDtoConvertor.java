@@ -4,8 +4,8 @@ import java.util.HashSet;
 
 import org.springframework.stereotype.Component;
 
-import com.util.city_api.entity._core.User;
-import com.util.city_api.product_core.dto._coreDto.UserDto;
+import com.util.city_api.entity.primary.User;
+import com.util.city_api.product_core.dto.primaryDto.UserDto;
 
 @Component
 public class UserDtoConvertor {

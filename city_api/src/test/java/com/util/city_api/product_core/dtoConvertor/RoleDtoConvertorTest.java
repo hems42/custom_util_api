@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.util.city_api.entity._core.Role;
-import com.util.city_api.product_core.dto._coreDto.RoleDto;
+import com.util.city_api.entity.primary.Role;
+import com.util.city_api.product_core.dto.primaryDto.RoleDto;
 import com.util.city_api.product_core.dtoConvertor.mockWorkbench.DtoConvertorTestWorkBench;
 
 public class RoleDtoConvertorTest extends DtoConvertorTestWorkBench{

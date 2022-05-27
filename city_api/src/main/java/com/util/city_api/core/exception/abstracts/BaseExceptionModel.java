@@ -1,5 +1,6 @@
 package com.util.city_api.core.exception.abstracts;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import org.springframework.http.HttpStatus;
@@ -8,9 +9,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import com.util.city_api.core.constant.CoreEnumExceptionMessages;
 
 @ResponseStatus
-public class BaseExceptionModel extends RuntimeException {
+public class BaseExceptionModel extends RuntimeException implements Serializable{
 
-	    private LocalDateTime timeStamp;
+	   	private static final long serialVersionUID = 1L;
+		
+	   	private LocalDateTime timeStamp;
 	    private String errorTopicCode;
 	    private String errorDetailCode;
 	    private String errorMessage;

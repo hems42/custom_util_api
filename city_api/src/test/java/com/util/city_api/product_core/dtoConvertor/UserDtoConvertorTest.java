@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.util.city_api.entity._core.User;
-import com.util.city_api.product_core.dto._coreDto.UserDto;
+import com.util.city_api.entity.primary.User;
+import com.util.city_api.product_core.dto.primaryDto.UserDto;
 import com.util.city_api.product_core.dtoConvertor.mockWorkbench.DtoConvertorTestWorkBench;
 
 public class UserDtoConvertorTest extends DtoConvertorTestWorkBench{

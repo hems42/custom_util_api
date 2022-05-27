@@ -15,8 +15,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import com.util.city_api.entity._core.Territory;
-import com.util.city_api.entity._core.User;
+import com.util.city_api.entity.primary.Territory;
+import com.util.city_api.entity.primary.User;
 import com.util.city_api.product_core.enums.EnumLogOperations;
 
 import lombok.AllArgsConstructor;

@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 import org.mockito.Mockito;
 
-import com.util.city_api.entity._core.User;
+import com.util.city_api.entity.primary.User;
 import com.util.city_api.entity.security.RefreshToken;
 import com.util.city_api.product_core.request.createRequest.LoginRequest;
 import com.util.city_api.product_core.request.createRequest.SignupRequest;

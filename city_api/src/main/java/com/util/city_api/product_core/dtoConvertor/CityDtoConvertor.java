@@ -2,8 +2,8 @@ package com.util.city_api.product_core.dtoConvertor;
 
 import org.springframework.stereotype.Component;
 
-import com.util.city_api.entity._core.City;
-import com.util.city_api.product_core.dto._coreDto.CityDto;
+import com.util.city_api.entity.primary.City;
+import com.util.city_api.product_core.dto.primaryDto.CityDto;
 
 import lombok.extern.slf4j.Slf4j;
 

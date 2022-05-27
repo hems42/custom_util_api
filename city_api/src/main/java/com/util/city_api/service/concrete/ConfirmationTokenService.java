@@ -2,7 +2,7 @@ package com.util.city_api.service.concrete;
 
 import org.springframework.stereotype.Service;
 
-import com.util.city_api.entity._core.User;
+import com.util.city_api.entity.primary.User;
 import com.util.city_api.entity.security.ConfirmationToken;
 import com.util.city_api.service._abstract.IConfirmationTokenService;
 

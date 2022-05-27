@@ -5,12 +5,12 @@ import java.util.Set;
 
 import org.mockito.Mockito;
 
-import com.util.city_api.entity._core.*;
 import com.util.city_api.entity.log.*;
+import com.util.city_api.entity.primary.*;
 import com.util.city_api.entity.security.ConfirmationToken;
 import com.util.city_api.entity.security.RefreshToken;
-import com.util.city_api.product_core.dto._coreDto.*;
 import com.util.city_api.product_core.dto.logDto.*;
+import com.util.city_api.product_core.dto.primaryDto.*;
 
 import static com.util.city_api.product_core.enums.EnumLogOperations.*;
 

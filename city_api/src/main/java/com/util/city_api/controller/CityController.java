@@ -20,7 +20,7 @@ public class CityController {
     public ResponseEntity<?> signup() {
  
    
-    	 throw new UnSuccessfulException(CoreEnumExceptionMessages.UN_SUCCESSFUL_SIGNUP,CoreConstantExceptionErrorCode.EMAIL_ALREADY_USED, "email adresi daha önce kullanılmış");
+    	 throw new UnSuccessfulException(CoreEnumExceptionMessages.UN_SUCCESSFUL_SIGNUP,CoreConstantExceptionErrorCode.D_EMAIL_ALREADY_USED, "email adresi daha önce kullanılmış");
     	
     	//return ResponseEntity.ok("anan anan ...");
     }

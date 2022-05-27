@@ -2,7 +2,7 @@ package com.util.city_api.service._abstract;
 
 import java.util.List;
 
-import com.util.city_api.entity._core.User;
+import com.util.city_api.entity.primary.User;
 import com.util.city_api.product_core.dto.logDto.LogUserDto;
 import com.util.city_api.product_core.enums.EnumLogOperations;
 

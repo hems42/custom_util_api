@@ -7,7 +7,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 
-import com.util.city_api.entity._core.User;
+import com.util.city_api.entity.primary.User;
 
 import java.time.LocalDateTime;
 

@@ -1,11 +1,10 @@
-package com.util.city_api.product_core.dto._coreDto;
+package com.util.city_api.product_core.dto.primaryDto;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
-
-import com.util.city_api.entity._core.Role;
+import com.util.city_api.entity.primary.Role;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

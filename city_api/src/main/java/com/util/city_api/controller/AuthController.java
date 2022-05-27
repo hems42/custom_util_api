@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.util.city_api.core.constant.CoreConstantExceptionErrorCode;
 import com.util.city_api.core.constant.CoreEnumExceptionMessages;
 import com.util.city_api.core.exception.exceptionModels.UnSuccessfulException;
-import com.util.city_api.product_core.dto._coreDto.UserDto;
+import com.util.city_api.product_core.dto.primaryDto.UserDto;
 import com.util.city_api.product_core.request.createRequest.UserCreateRequest;
 import com.util.city_api.service._abstract.IUserService;
 
@@ -35,7 +35,7 @@ public class AuthController {
 		   	}
 		   	else {
 		   		
-		   		throw new UnSuccessfulException(CoreEnumExceptionMessages.UN_SUCCESSFUL_SIGNUP,CoreConstantExceptionErrorCode.EMAIL_ALREADY_USED,"emial adresi ddaha önce kullanılmış başkan");
+		   		throw new UnSuccessfulException(CoreEnumExceptionMessages.UN_SUCCESSFUL_SIGNUP,CoreConstantExceptionErrorCode.D_EMAIL_ALREADY_USED,"emial adresi ddaha önce kullanılmış başkan");
 		   	}
 	   
 	    	

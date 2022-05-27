@@ -3,10 +3,10 @@ package com.util.city_api.service.concrete;
 import org.springframework.stereotype.Service;
 
 import com.util.city_api.core.exception.exceptionModels.UnSuccessfulException;
-import com.util.city_api.entity._core.User;
+import com.util.city_api.entity.primary.User;
 import com.util.city_api.entity.security.ConfirmationToken;
 import com.util.city_api.entity.security.RefreshToken;
-import com.util.city_api.product_core.dto._coreDto.UserDto;
+import com.util.city_api.product_core.dto.primaryDto.UserDto;
 import com.util.city_api.product_core.dtoConvertor.UserDtoConvertor;
 import com.util.city_api.product_core.request.createRequest.LoginRequest;
 import com.util.city_api.product_core.request.createRequest.ResetPasswordRequest;
@@ -56,7 +56,6 @@ public class AuthService implements IAuthService{
 	}
 	
 	
-
 	@Override
 	public SignupReponse signup(SignupRequest signupRequest) {
 		
@@ -94,13 +93,13 @@ public class AuthService implements IAuthService{
 				
 				log.error(logMetodTitle + "user created already by username");
 				
-				throw new UnSuccessfulException(UN_SUCCESSFUL_SIGNUP,USERNAME_ALREADY_USED,"user created already by username");
+				throw new UnSuccessfulException(UN_SUCCESSFUL_SIGNUP,D_USERNAME_ALREADY_USED,"user created already by username");
 			}
 		} else {
 			
 			log.error(logMetodTitle + "user created already by email");
 			
-			throw new UnSuccessfulException(UN_SUCCESSFUL_SIGNUP,EMAIL_ALREADY_USED,"user created already by email");
+			throw new UnSuccessfulException(UN_SUCCESSFUL_SIGNUP,D_EMAIL_ALREADY_USED,"user created already by email");
 		}
 		
 		
@@ -120,7 +119,7 @@ public class AuthService implements IAuthService{
 			
 			log.error(logMetodTitle + "user not created successfuly");
 			
-			throw new UnSuccessfulException(UN_SUCCESSFUL_SIGNUP,USER_NOT_CREATED,"user not created");
+			throw new UnSuccessfulException(UN_SUCCESSFUL_SIGNUP,D_USER_NOT_CREATED,"user not created");
 		}
 		
 		
@@ -137,7 +136,7 @@ public class AuthService implements IAuthService{
         	
         	log.error(logMetodTitle + "refreshToken not created or saved");
 			
-			throw new UnSuccessfulException(UN_SUCCESSFUL_SIGNUP,REFRESH_TOKEN_NOT_CREATED_OR_SAVED,"refreshToken not created or saved");
+			throw new UnSuccessfulException(UN_SUCCESSFUL_SIGNUP,D_REFRESH_TOKEN_NOT_CREATED_OR_SAVED,"refreshToken not created or saved");
         	
         }	
 
@@ -153,7 +152,7 @@ public class AuthService implements IAuthService{
              
         	log.error(logMetodTitle + "acces token not created and saved");
         
-			throw new UnSuccessfulException(UN_SUCCESSFUL_SIGNUP,ACCESS_TOKEN_NOT_CREATED_OR_SAVED,"acces token not created and saved");
+			throw new UnSuccessfulException(UN_SUCCESSFUL_SIGNUP,D_ACCESS_TOKEN_NOT_CREATED_OR_SAVED,"acces token not created and saved");
         }
         
         
@@ -171,7 +170,7 @@ public class AuthService implements IAuthService{
         	
         	log.error(logMetodTitle +"confirmationToken not created and saved");
         	
-        	throw new UnSuccessfulException(UN_SUCCESSFUL_SIGNUP,CONFIRMATION_TOKEN_NOT_CREATED_OR_SAVED,"confirmationToken created and saved"); 
+        	throw new UnSuccessfulException(UN_SUCCESSFUL_SIGNUP,D_CONFIRMATION_TOKEN_NOT_CREATED_OR_SAVED,"confirmationToken created and saved"); 
         }
 		
         
@@ -236,7 +235,7 @@ public class AuthService implements IAuthService{
 					
 					log.error(logMetodTitle + "confirmation token used already");
 					
-					throw new UnSuccessfulException(UN_SUCCESSFUL_REGISTRATION, CONFIRMATION_TOKEN_ALREADY_USED, "confirmation token is not valid -already used");
+					throw new UnSuccessfulException(UN_SUCCESSFUL_REGISTRATION, D_CONFIRMATION_TOKEN_ALREADY_USED, "confirmation token is not valid -already used");
 					
 				}
 		
@@ -245,7 +244,7 @@ public class AuthService implements IAuthService{
 				
 				log.error(logMetodTitle + "confirmation token is not valid -expired");
 				
-				throw new UnSuccessfulException(UN_SUCCESSFUL_REGISTRATION, CONFIRMATION_TOKEN_EXPIRED, "confirmation token is not valid -expired");
+				throw new UnSuccessfulException(UN_SUCCESSFUL_REGISTRATION, D_CONFIRMATION_TOKEN_EXPIRED, "confirmation token is not valid -expired");
 				
 			}
 		
@@ -253,7 +252,7 @@ public class AuthService implements IAuthService{
 			
 			log.error(logMetodTitle + "confirmation token not found");
 			
-			throw new UnSuccessfulException(UN_SUCCESSFUL_REGISTRATION, CONFIRMATION_TOKEN_NOT_FOUND, "confirmation token not found");
+			throw new UnSuccessfulException(UN_SUCCESSFUL_REGISTRATION, D_CONFIRMATION_TOKEN_NOT_FOUND, "confirmation token not found");
 		}
 		
 		
@@ -279,7 +278,7 @@ public class AuthService implements IAuthService{
 					
 					log.error(logMetodTitle + "confirmation token is not registered succesfully");
 				
-				   throw new UnSuccessfulException(UN_SUCCESSFUL_REGISTRATION, CONFIRMATION_TOKEN_NOT_REGISTERED, "confirmation token is not registered succesfully"); 
+				   throw new UnSuccessfulException(UN_SUCCESSFUL_REGISTRATION, D_CONFIRMATION_TOKEN_NOT_REGISTERED, "confirmation token is not registered succesfully"); 
 					
 				}
 				
@@ -287,7 +286,7 @@ public class AuthService implements IAuthService{
 				
 				log.error(logMetodTitle + "user is not registered succesfully");
 				
-				throw new UnSuccessfulException(UN_SUCCESSFUL_REGISTRATION, USER_NOT_REGISTERED, "user is not registered succesfully");
+				throw new UnSuccessfulException(UN_SUCCESSFUL_REGISTRATION, D_USER_NOT_REGISTERED, "user is not registered succesfully");
 
 			}
 			
@@ -295,7 +294,7 @@ public class AuthService implements IAuthService{
 			
 			log.error(logMetodTitle + "user is registered already");
 			
-			throw new UnSuccessfulException(UN_SUCCESSFUL_REGISTRATION, USER_ALREADY_REGISTERED, "user is registered already");
+			throw new UnSuccessfulException(UN_SUCCESSFUL_REGISTRATION, D_USER_ALREADY_REGISTERED, "user is registered already");
 			
 		}
 		
@@ -346,14 +345,14 @@ public class AuthService implements IAuthService{
 				
 				log.error(logMetodTitle + "user is not active");
 				
-				throw new UnSuccessfulException(UN_SUCCESSFUL_LOGIN, USER_NOT_ACTIVE, "user is not active");
+				throw new UnSuccessfulException(UN_SUCCESSFUL_LOGIN, D_USER_NOT_ACTIVE, "user is not active");
 			}
 			
 		} else {
 			
 			log.error(logMetodTitle + "user not found by username");
 			
-			throw new UnSuccessfulException(UN_SUCCESSFUL_LOGIN, USER_NOT_FOUND, "user not found by username");
+			throw new UnSuccessfulException(UN_SUCCESSFUL_LOGIN, D_USER_NOT_FOUND, "user not found by username");
 			
 		}
 		
@@ -377,7 +376,7 @@ public class AuthService implements IAuthService{
 				
 				log.error(logMetodTitle + "refresh token not created or saved succesfully");
 				
-				throw new UnSuccessfulException(UN_SUCCESSFUL_LOGIN, REFRESH_TOKEN_NOT_CREATED_OR_SAVED, "refresh token not created succesfully");
+				throw new UnSuccessfulException(UN_SUCCESSFUL_LOGIN, D_REFRESH_TOKEN_NOT_CREATED_OR_SAVED, "refresh token not created succesfully");
 
 			}
 			
@@ -385,7 +384,7 @@ public class AuthService implements IAuthService{
 			
 			log.error(logMetodTitle + "user already login");
 			
-			throw new UnSuccessfulException(UN_SUCCESSFUL_LOGIN, USER_ALREADY_LOGIN, "user already login");
+			throw new UnSuccessfulException(UN_SUCCESSFUL_LOGIN, D_USER_ALREADY_LOGIN, "user already login");
 			
 		}
 		
@@ -401,7 +400,7 @@ public class AuthService implements IAuthService{
 			
 			log.error(logMetodTitle + "access token not created and saved successfully");
 		
-			throw new UnSuccessfulException(UN_SUCCESSFUL_LOGIN, ACCESS_TOKEN_NOT_CREATED_OR_SAVED, "access token not created and saved successfully");
+			throw new UnSuccessfulException(UN_SUCCESSFUL_LOGIN, D_ACCESS_TOKEN_NOT_CREATED_OR_SAVED, "access token not created and saved successfully");
 	
 		  }
 		  
@@ -442,23 +441,22 @@ public class AuthService implements IAuthService{
 		 */
 		
 		
-		if(accessTokenService.getAccessTokenByAccessToken(accessToken) !=null) 
+		if(accessTokenService.getAccessTokenByAccessToken(accessToken) != null) 
 		{
 			
 			log.info(logMetodTitle + "access token found");
 			
-			if(!accessTokenService.verifyAccessToken(_accessToken)) 
+			if(!accessTokenService.verifyAccessToken(accessToken)) 
 			{
 				
 				log.info(logMetodTitle + "accesss token is not valid");
 				
 				
 			} else {
+								
+                log.error(logMetodTitle + "access token is still valid");
 				
-				
-                log.error(logMetodTitle + "access is still valid");
-				
-				throw new UnSuccessfulException(UN_SUCCESSFUL_RENEW_REFRESH_TOKEN, ACCESS_TOKEN_STILL_VALID, "access still valid");
+				throw new UnSuccessfulException(UN_SUCCESSFUL_RENEW_REFRESH_TOKEN, D_ACCESS_TOKEN_STILL_VALID, "access still valid");
 			}
 			
 			
@@ -500,14 +498,14 @@ public class AuthService implements IAuthService{
 				
 				log.info(logMetodTitle + "refresh token deleted");
 				
-				throw new UnSuccessfulException(UN_SUCCESSFUL_RENEW_REFRESH_TOKEN, REFRESH_TOKEN_NOT_VALID, "refresh token is not valid");
+				throw new UnSuccessfulException(UN_SUCCESSFUL_RENEW_REFRESH_TOKEN, D_REFRESH_TOKEN_NOT_VALID, "refresh token is not valid");
 			}
 		
 		} else {
 			
 			log.error(logMetodTitle + "refresh token not found");
 			
-			throw new UnSuccessfulException(UN_SUCCESSFUL_RENEW_REFRESH_TOKEN, REFRESH_TOKEN_NOT_FOUND, "refresh token not found");
+			throw new UnSuccessfulException(UN_SUCCESSFUL_RENEW_REFRESH_TOKEN, D_REFRESH_TOKEN_NOT_FOUND, "refresh token not found");
 		
 		}
 		
@@ -545,8 +543,6 @@ public class AuthService implements IAuthService{
 		}
 
 	}
-
-
 
 	@Override
 	public ResetPasswordResponse resetPassword(ResetPasswordRequest resetPasswordRequest) {

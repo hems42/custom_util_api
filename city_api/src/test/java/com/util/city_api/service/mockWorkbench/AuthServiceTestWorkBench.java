@@ -11,11 +11,11 @@ import com.util.city_api.baseMockModel.BaseMockRequest_ResponseAndRequest_Respon
 import com.util.city_api.baseMockModel.BaseMockServiceAndServiceModel;
 import com.util.city_api.baseMockModel.BaseTestWorkBench;
 import com.util.city_api.dao.RefreshTokenDao;
-import com.util.city_api.entity._core.Role;
-import com.util.city_api.entity._core.User;
+import com.util.city_api.entity.primary.Role;
+import com.util.city_api.entity.primary.User;
 import com.util.city_api.entity.security.ConfirmationToken;
 import com.util.city_api.entity.security.RefreshToken;
-import com.util.city_api.product_core.dto._coreDto.UserDto;
+import com.util.city_api.product_core.dto.primaryDto.UserDto;
 import com.util.city_api.product_core.dtoConvertor.UserDtoConvertor;
 import com.util.city_api.product_core.request.createRequest.LoginRequest;
 import com.util.city_api.product_core.request.createRequest.SignupRequest;
@@ -55,6 +55,7 @@ public class AuthServiceTestWorkBench extends BaseTestWorkBench{
     public LoginRequest mockLoginRequestModel = requestResponsemodel.getMockLoginRequestModel();
     public String confirmationTokenRequestModel = requestResponsemodel.confirmationTokenRequest();   
     public String accesToken = requestResponsemodel.getAccessToken();
+    public String refreshToken = requestResponsemodel.getRefreshToken(mockUserModel, localDateTime, localDateTime).getRefreshToken();
 	
     
     

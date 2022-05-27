@@ -8,6 +8,7 @@ import com.util.city_api.core.exception.abstracts.BaseExceptionModel;
 import com.util.city_api.core.exception.exceptionModels.UnSuccessfulException;
 import com.util.city_api.product_core.request.createRequest.UserCreateRequest;
 import com.util.city_api.product_core.response.LoginResponse;
+import com.util.city_api.product_core.response.RefreshTokenResponse;
 import com.util.city_api.product_core.response.RegistrationResponse;
 import com.util.city_api.product_core.response.SignupReponse;
 import com.util.city_api.service.concrete.AuthService;
@@ -53,7 +54,7 @@ public class AuthServiceTest extends AuthServiceTestWorkBench{
 	});
 
     assertEquals(exceptionModel.getErrorMessage(),UN_SUCCESSFUL_SIGNUP.getExceptionMessage());
-	assertEquals(exceptionModel.getErrorCode(), UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + SIGNUP + EMAIL_ALREADY_USED);
+	assertEquals(exceptionModel.getErrorCode(), B_UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + T_SIGNUP + D_EMAIL_ALREADY_USED);
 	
 	} 
 
@@ -75,7 +76,7 @@ public class AuthServiceTest extends AuthServiceTestWorkBench{
 	});
 
     assertEquals(exceptionModel.getErrorMessage(),UN_SUCCESSFUL_SIGNUP.getExceptionMessage());
-	assertEquals(exceptionModel.getErrorCode(), UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + SIGNUP + USERNAME_ALREADY_USED);
+	assertEquals(exceptionModel.getErrorCode(), B_UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + T_SIGNUP + D_USERNAME_ALREADY_USED);
 	
 	}
 	
@@ -98,7 +99,7 @@ public class AuthServiceTest extends AuthServiceTestWorkBench{
 	});
 
     assertEquals(exceptionModel.getErrorMessage(),UN_SUCCESSFUL_SIGNUP.getExceptionMessage());
-	assertEquals(exceptionModel.getErrorCode(), UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + SIGNUP + USER_NOT_CREATED);
+	assertEquals(exceptionModel.getErrorCode(), B_UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + T_SIGNUP + D_USER_NOT_CREATED);
 	}
 	
 	@Test
@@ -123,7 +124,7 @@ public class AuthServiceTest extends AuthServiceTestWorkBench{
 	});
 
     assertEquals(exceptionModel.getErrorMessage(),UN_SUCCESSFUL_SIGNUP.getExceptionMessage());
-	assertEquals(exceptionModel.getErrorCode(), UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + SIGNUP + REFRESH_TOKEN_NOT_CREATED_OR_SAVED);
+	assertEquals(exceptionModel.getErrorCode(), B_UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + T_SIGNUP + D_REFRESH_TOKEN_NOT_CREATED_OR_SAVED);
 	}
 	
 	@Test
@@ -148,7 +149,7 @@ public class AuthServiceTest extends AuthServiceTestWorkBench{
 	});
 
     assertEquals(exceptionModel.getErrorMessage(),UN_SUCCESSFUL_SIGNUP.getExceptionMessage());
-	assertEquals(exceptionModel.getErrorCode(), UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + SIGNUP + REFRESH_TOKEN_NOT_CREATED_OR_SAVED);
+	assertEquals(exceptionModel.getErrorCode(), B_UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + T_SIGNUP + D_REFRESH_TOKEN_NOT_CREATED_OR_SAVED);
 	}
 	
 	@Test
@@ -174,7 +175,7 @@ public class AuthServiceTest extends AuthServiceTestWorkBench{
 	});
 
     assertEquals(exceptionModel.getErrorMessage(),UN_SUCCESSFUL_SIGNUP.getExceptionMessage());
-	assertEquals(exceptionModel.getErrorCode(), UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + SIGNUP + ACCESS_TOKEN_NOT_CREATED_OR_SAVED);
+	assertEquals(exceptionModel.getErrorCode(), B_UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + T_SIGNUP + D_ACCESS_TOKEN_NOT_CREATED_OR_SAVED);
 	}
 	
 	@Test
@@ -202,7 +203,7 @@ public class AuthServiceTest extends AuthServiceTestWorkBench{
 	});
 
     assertEquals(exceptionModel.getErrorMessage(), UN_SUCCESSFUL_SIGNUP.getExceptionMessage());
-	assertEquals(exceptionModel.getErrorCode(), UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + SIGNUP + ACCESS_TOKEN_NOT_CREATED_OR_SAVED);
+	assertEquals(exceptionModel.getErrorCode(), B_UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + T_SIGNUP + D_ACCESS_TOKEN_NOT_CREATED_OR_SAVED);
 	}
 
 	void Signup_WhenSignupSuccesfullyThenItMustReturnSignupResponseThatContainsSameInformationWithSignupRequest() {
@@ -263,7 +264,7 @@ public class AuthServiceTest extends AuthServiceTestWorkBench{
 	});
 
     assertEquals(exceptionModel.getErrorMessage(),UN_SUCCESSFUL_REGISTRATION.getExceptionMessage());
-	assertEquals(exceptionModel.getErrorCode(), UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + REGISTRATION + CONFIRMATION_TOKEN_NOT_FOUND);
+	assertEquals(exceptionModel.getErrorCode(), B_UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + T_REGISTRATION + D_CONFIRMATION_TOKEN_NOT_FOUND);
 	
 	}
 	
@@ -286,7 +287,7 @@ public class AuthServiceTest extends AuthServiceTestWorkBench{
 	});
 
     assertEquals(exceptionModel.getErrorMessage(),UN_SUCCESSFUL_REGISTRATION.getExceptionMessage());
-	assertEquals(exceptionModel.getErrorCode(), UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + REGISTRATION + CONFIRMATION_TOKEN_EXPIRED);
+	assertEquals(exceptionModel.getErrorCode(), B_UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + T_REGISTRATION + D_CONFIRMATION_TOKEN_EXPIRED);
 	
 	}
 
@@ -310,7 +311,7 @@ public class AuthServiceTest extends AuthServiceTestWorkBench{
 	});
 
     assertEquals(exceptionModel.getErrorMessage(),UN_SUCCESSFUL_REGISTRATION.getExceptionMessage());
-	assertEquals(exceptionModel.getErrorCode(), UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + REGISTRATION + CONFIRMATION_TOKEN_ALREADY_USED);
+	assertEquals(exceptionModel.getErrorCode(), B_UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + T_REGISTRATION + D_CONFIRMATION_TOKEN_ALREADY_USED);
 	
 	}
 	
@@ -335,7 +336,7 @@ public class AuthServiceTest extends AuthServiceTestWorkBench{
 	});
 
     assertEquals(exceptionModel.getErrorMessage(),UN_SUCCESSFUL_REGISTRATION.getExceptionMessage());
-	assertEquals(exceptionModel.getErrorCode(), UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + REGISTRATION + USER_ALREADY_REGISTERED);
+	assertEquals(exceptionModel.getErrorCode(), B_UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + T_REGISTRATION + D_USER_ALREADY_REGISTERED);
 	
 	}
 	
@@ -361,7 +362,7 @@ public class AuthServiceTest extends AuthServiceTestWorkBench{
 	});
 
     assertEquals(exceptionModel.getErrorMessage(),UN_SUCCESSFUL_REGISTRATION.getExceptionMessage());
-	assertEquals(exceptionModel.getErrorCode(), UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + REGISTRATION + USER_NOT_REGISTERED);
+	assertEquals(exceptionModel.getErrorCode(), B_UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + T_REGISTRATION + D_USER_NOT_REGISTERED);
 	
 	}
 	
@@ -387,7 +388,7 @@ public class AuthServiceTest extends AuthServiceTestWorkBench{
 	});
 
     assertEquals(exceptionModel.getErrorMessage(),UN_SUCCESSFUL_REGISTRATION.getExceptionMessage());
-	assertEquals(exceptionModel.getErrorCode(), UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + REGISTRATION + CONFIRMATION_TOKEN_NOT_REGISTERED);
+	assertEquals(exceptionModel.getErrorCode(), B_UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + T_REGISTRATION + D_CONFIRMATION_TOKEN_NOT_REGISTERED);
 	
 	}
 	
@@ -449,7 +450,7 @@ public class AuthServiceTest extends AuthServiceTestWorkBench{
 		});
 
 	    assertEquals(exceptionModel.getErrorMessage(),UN_SUCCESSFUL_LOGIN.getExceptionMessage());
-		assertEquals(exceptionModel.getErrorCode(), UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + LOGIN + USER_NOT_FOUND);
+		assertEquals(exceptionModel.getErrorCode(), B_UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + T_LOGIN + D_USER_NOT_FOUND);
 		 
 	 }
 	
@@ -471,7 +472,7 @@ public class AuthServiceTest extends AuthServiceTestWorkBench{
 		});
 
 	    assertEquals(exceptionModel.getErrorMessage(),UN_SUCCESSFUL_LOGIN.getExceptionMessage());
-		assertEquals(exceptionModel.getErrorCode(), UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + LOGIN + USER_NOT_ACTIVE);
+		assertEquals(exceptionModel.getErrorCode(), B_UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + T_LOGIN + D_USER_NOT_ACTIVE);
 		 
 	 }
 
@@ -495,7 +496,7 @@ public class AuthServiceTest extends AuthServiceTestWorkBench{
 		});
 
 	    assertEquals(exceptionModel.getErrorMessage(),UN_SUCCESSFUL_LOGIN.getExceptionMessage());
-		assertEquals(exceptionModel.getErrorCode(), UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + LOGIN + USER_ALREADY_LOGIN);
+		assertEquals(exceptionModel.getErrorCode(), B_UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + T_LOGIN + D_USER_ALREADY_LOGIN);
 		 
 	 }
 
@@ -520,7 +521,7 @@ public class AuthServiceTest extends AuthServiceTestWorkBench{
 		});
 
 	    assertEquals(exceptionModel.getErrorMessage(),UN_SUCCESSFUL_LOGIN.getExceptionMessage());
-		assertEquals(exceptionModel.getErrorCode(), UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + LOGIN + REFRESH_TOKEN_NOT_CREATED_OR_SAVED);
+		assertEquals(exceptionModel.getErrorCode(), B_UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + T_LOGIN + D_REFRESH_TOKEN_NOT_CREATED_OR_SAVED);
 		 
 	 }
 
@@ -546,7 +547,7 @@ public class AuthServiceTest extends AuthServiceTestWorkBench{
 	});
 
     assertEquals(exceptionModel.getErrorMessage(),UN_SUCCESSFUL_LOGIN.getExceptionMessage());
-	assertEquals(exceptionModel.getErrorCode(), UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + LOGIN + REFRESH_TOKEN_NOT_CREATED_OR_SAVED);
+	assertEquals(exceptionModel.getErrorCode(), B_UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + T_LOGIN + D_REFRESH_TOKEN_NOT_CREATED_OR_SAVED);
 
 		 
 	 }
@@ -574,7 +575,7 @@ public class AuthServiceTest extends AuthServiceTestWorkBench{
 	});
 
     assertEquals(exceptionModel.getErrorMessage(),UN_SUCCESSFUL_LOGIN.getExceptionMessage());
-	assertEquals(exceptionModel.getErrorCode(), UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + LOGIN + ACCESS_TOKEN_NOT_CREATED_OR_SAVED);
+	assertEquals(exceptionModel.getErrorCode(), B_UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + T_LOGIN + D_ACCESS_TOKEN_NOT_CREATED_OR_SAVED);
 		 
 	 }
 
@@ -602,7 +603,7 @@ public class AuthServiceTest extends AuthServiceTestWorkBench{
 	});
 
     assertEquals(exceptionModel.getErrorMessage(),UN_SUCCESSFUL_LOGIN.getExceptionMessage());
-	assertEquals(exceptionModel.getErrorCode(), UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + LOGIN + ACCESS_TOKEN_NOT_CREATED_OR_SAVED);
+	assertEquals(exceptionModel.getErrorCode(), B_UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + T_LOGIN + D_ACCESS_TOKEN_NOT_CREATED_OR_SAVED);
 		 
 	 }
 
@@ -624,8 +625,7 @@ public class AuthServiceTest extends AuthServiceTestWorkBench{
      	when(mockAccessTokenService.createAccessToken(userModel)).thenReturn(accesToken);
     	when(mockAccessTokenService.saveAccessToken(accesToken)).thenReturn(accesToken);
 
-     	LoginResponse loginResponseReturned = authService.login(loginRequestModel);
-     	
+     	LoginResponse loginResponseReturned = authService.login(loginRequestModel);   
      	
 	}
 
@@ -636,13 +636,112 @@ public class AuthServiceTest extends AuthServiceTestWorkBench{
 	/* Logic Onion
 	 * 
 	 * access token ok ??
+	 * access token is not still valid ??
 	 * refresh token ok ??
-	 * access token is valid - has a user ??
-	 * access token is expired ??
-	 * refresh token is valid - still current and has a user ??
-	 * refresh token is expired - if not return response
-	 * refresh token if expired -  delete refresh token and create new refresh token 
+	 * refresh token is still valid ??
+	 * refresh token if not still valid -  delete refresh token 
+	 * access token create and save
 	 * 
 	 */
+	
+	@Test
+	 void RefreshToken_WhenAccesTokenFoundAndAccessTokenVerifiedThenItMustThrowUnSuccessFulException() {
+
+			authService = new AuthService(mockUserService,
+					mockAccessTokenService,
+					mockRefreshTokenService,
+					mockConfirmationTokenService,
+					mockUserDtoConvertor);
+			
+	     	when(mockAccessTokenService.getAccessTokenByAccessToken(accesToken)).thenReturn(accesToken);
+	     	when(mockAccessTokenService.verifyAccessToken(accesToken)).thenReturn(true);
+	     	
+	     	BaseExceptionModel  exceptionModel = Assertions.assertThrows(UnSuccessfulException.class,()->{
+	    		
+	     		authService.refreshToken(refreshToken,accesToken);
+		});
+
+	    assertEquals(exceptionModel.getErrorMessage(),UN_SUCCESSFUL_RENEW_REFRESH_TOKEN.getExceptionMessage());
+		assertEquals(exceptionModel.getErrorCode(), B_UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + T_REFRESH_TOKEN + D_ACCESS_TOKEN_STILL_VALID);
+		 
+	 }
+
+	@Test
+	 void RefreshToken_WhenRefreshTokenNotFoundThenItMustThrowUnSuccessFulException() {
+		
+
+			authService = new AuthService(mockUserService,
+					mockAccessTokenService,
+					mockRefreshTokenService,
+					mockConfirmationTokenService,
+					mockUserDtoConvertor);
+			
+	     	when(mockAccessTokenService.getAccessTokenByAccessToken(accesToken)).thenReturn(accesToken);
+	     	when(mockAccessTokenService.verifyAccessToken(accesToken)).thenReturn(false);
+	     	when(mockRefreshTokenService.getRefreshTokenByRefreshToken(refreshToken)).thenReturn(null);
+	     	
+	     	BaseExceptionModel  exceptionModel = Assertions.assertThrows(UnSuccessfulException.class,()->{
+	    		
+	     		authService.refreshToken(refreshToken,accesToken);
+		});
+
+	    assertEquals(exceptionModel.getErrorMessage(),UN_SUCCESSFUL_RENEW_REFRESH_TOKEN.getExceptionMessage());
+		assertEquals(exceptionModel.getErrorCode(), B_UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + T_REFRESH_TOKEN + D_REFRESH_TOKEN_NOT_FOUND);
+		 
+	 }
+	
+	@Test
+	 void RefreshToken_WhenRefreshTokenNotVerifiedThenItMustThrowUnSuccessFulException() {
+		
+
+			authService = new AuthService(mockUserService,
+					mockAccessTokenService,
+					mockRefreshTokenService,
+					mockConfirmationTokenService,
+					mockUserDtoConvertor);
+			
+	     	when(mockAccessTokenService.getAccessTokenByAccessToken(accesToken)).thenReturn(accesToken);
+	     	when(mockAccessTokenService.verifyAccessToken(accesToken)).thenReturn(false);
+	     	when(mockRefreshTokenService.getRefreshTokenByRefreshToken(refreshToken)).thenReturn(refreshTokenModel);
+	     	when(mockRefreshTokenService.verifyRefreshToken(refreshToken)).thenReturn(false);
+	     	
+	     	BaseExceptionModel  exceptionModel = Assertions.assertThrows(UnSuccessfulException.class,()->{
+	    		
+	     		authService.refreshToken(refreshToken,accesToken);
+		});
+
+	    assertEquals(exceptionModel.getErrorMessage(),UN_SUCCESSFUL_RENEW_REFRESH_TOKEN.getExceptionMessage());
+		assertEquals(exceptionModel.getErrorCode(), B_UN_SUCCESSFUL_EXCEPTION_ERROR_CODE + T_REFRESH_TOKEN + D_REFRESH_TOKEN_NOT_VALID);
+		 
+	 }
+	
+	@Test
+	 void RefreshToken_WhenRefreshTokenSuccesfullyThenItMustReturnRefreshTokenResponseThatContainsRefreshTokenAndAcessTokenAndUserInformation() {
+
+		authService = new AuthService(mockUserService,
+				mockAccessTokenService,
+				mockRefreshTokenService,
+				mockConfirmationTokenService,
+				mockUserDtoConvertor);
+		
+     	when(mockAccessTokenService.getAccessTokenByAccessToken(accesToken)).thenReturn(accesToken);
+     	when(mockAccessTokenService.verifyAccessToken(accesToken)).thenReturn(false);
+     	when(mockRefreshTokenService.getRefreshTokenByRefreshToken(refreshToken)).thenReturn(refreshTokenModel);
+     	when(mockRefreshTokenService.verifyRefreshToken(refreshToken)).thenReturn(true);
+     	
+     	RefreshTokenResponse refreshTokenResponseReturned = authService.refreshToken(refreshToken,accesToken);
+     	
+ }
+	
+	
+	//logout metod logic...
+	/* Logic Onion
+	 * 
+	 * refresh token ok ??
+	 * refresh token is exist - delete??
+	 * 
+	 */
+	
 
 }
+

@@ -1,8 +1,8 @@
-package com.util.city_api.product_core.dto._coreDto;
+package com.util.city_api.product_core.dto.primaryDto;
 
 import java.time.LocalDateTime;
 
-import com.util.city_api.entity._core.District;
+import com.util.city_api.entity.primary.District;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

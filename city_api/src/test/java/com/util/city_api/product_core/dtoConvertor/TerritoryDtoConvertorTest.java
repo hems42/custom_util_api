@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.util.city_api.entity._core.Territory;
-import com.util.city_api.product_core.dto._coreDto.TerritoryDto;
+import com.util.city_api.entity.primary.Territory;
+import com.util.city_api.product_core.dto.primaryDto.TerritoryDto;
 import com.util.city_api.product_core.dtoConvertor.mockWorkbench.DtoConvertorTestWorkBench;
 
 public class TerritoryDtoConvertorTest extends DtoConvertorTestWorkBench{

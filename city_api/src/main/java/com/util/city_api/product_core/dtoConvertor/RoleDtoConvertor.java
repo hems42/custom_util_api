@@ -2,8 +2,8 @@ package com.util.city_api.product_core.dtoConvertor;
 
 import org.springframework.stereotype.Component;
 
-import com.util.city_api.entity._core.Role;
-import com.util.city_api.product_core.dto._coreDto.RoleDto;
+import com.util.city_api.entity.primary.Role;
+import com.util.city_api.product_core.dto.primaryDto.RoleDto;
 
 @Component
 public class RoleDtoConvertor {

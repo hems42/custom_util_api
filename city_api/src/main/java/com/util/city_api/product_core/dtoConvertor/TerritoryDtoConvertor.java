@@ -2,8 +2,8 @@ package com.util.city_api.product_core.dtoConvertor;
 
 import org.springframework.stereotype.Component;
 
-import com.util.city_api.entity._core.Territory;
-import com.util.city_api.product_core.dto._coreDto.TerritoryDto;
+import com.util.city_api.entity.primary.Territory;
+import com.util.city_api.product_core.dto.primaryDto.TerritoryDto;
 
 @Component
 public class TerritoryDtoConvertor {
