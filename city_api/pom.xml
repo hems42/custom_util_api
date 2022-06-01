@@ -86,11 +86,11 @@
             <version>${spring.validation.version}</version>
         </dependency>
 
-        <!-- spring-security 
+        <!-- spring-security -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>-->
+        </dependency>
 
         <!-- spring-java-mail-sender-->
         <dependency>
@@ -176,7 +176,7 @@
 
 
         <!--SECURITY-DEPENDENCIES-->
-        <!-- spring -security jwt 
+        <!-- spring -security jwt -->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-api</artifactId>
@@ -192,10 +192,10 @@
 
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt-jackson</artifactId> --><!-- or jjwt-gson if Gson is preferred 
+            <artifactId>jjwt-jackson</artifactId> <!-- or jjwt-gson if Gson is preferred -->
             <version>0.11.2</version>
             <scope>runtime</scope>
-        </dependency>-->
+        </dependency>
 
 
         <!--TEST-DEPENDENCIES-->

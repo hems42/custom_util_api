@@ -3,6 +3,9 @@ package com.util.city_api.service.concrete;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.util.city_api.dao.UserDao;
 import com.util.city_api.entity.primary.User;
@@ -18,6 +21,9 @@ import static com.util.city_api.product_core.enums.EnumLogOperations.*;
 
 @Service
 public class UserService implements IUserService{
+	
+	@Autowired
+	private BCryptPasswordEncoder cryptPasswordEncoder;
 	
 	private final UserDao userRepository;
 	
@@ -41,7 +47,7 @@ public class UserService implements IUserService{
 			User user = userRepository.save(new User(null, 
 				 createRequest.getUserName(),
 				 createRequest.getEMail(),
-				 createRequest.getPassword(),
+				 cryptPasswordEncoder.encode(createRequest.getPassword()),
 				 true,
 				 false,
 				 false,
