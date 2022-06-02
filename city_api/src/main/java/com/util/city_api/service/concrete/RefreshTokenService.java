@@ -1,11 +1,18 @@
 package com.util.city_api.service.concrete;
 
+import java.time.LocalDateTime;
+import java.util.Random;
+import java.util.UUID;
+
 import org.springframework.stereotype.Service;
 
 import com.util.city_api.dao.RefreshTokenDao;
 import com.util.city_api.entity.primary.User;
 import com.util.city_api.entity.security.RefreshToken;
+import com.util.city_api.product_core.constants.ProductApplicationConstants;
 import com.util.city_api.service._abstract.IRefreshTokenService;
+
+import ch.qos.logback.core.CoreConstants;
 
 @Service
 public class RefreshTokenService implements IRefreshTokenService{
@@ -18,15 +25,21 @@ public class RefreshTokenService implements IRefreshTokenService{
 	}
 	
 	@Override
-	public RefreshToken createRefreshToken(User user) {
-		// TODO Auto-generated method stub
-		return null;
+	public RefreshToken createRefreshToken(User user) {	  
+		return new RefreshToken(
+				null,
+				user,
+				UUID.randomUUID().toString(),
+				LocalDateTime.now().plusNanos(ProductApplicationConstants.REFRESH_TOKEN_EXPERIMENT_TIME),
+				LocalDateTime.now()
+				);
 	} 
 
 	@Override
 	public RefreshToken saveRefreshToken(RefreshToken refreshToken) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		  return refreshTokenRepository.save(refreshToken);
+		  
 	}
 
 	@Override

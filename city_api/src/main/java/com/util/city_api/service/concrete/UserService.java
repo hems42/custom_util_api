@@ -22,8 +22,8 @@ import static com.util.city_api.product_core.enums.EnumLogOperations.*;
 @Service
 public class UserService implements IUserService{
 	
-	@Autowired
-	private BCryptPasswordEncoder cryptPasswordEncoder;
+	//@Autowired
+	private BCryptPasswordEncoder cryptPasswordEncoder = new BCryptPasswordEncoder();
 	
 	private final UserDao userRepository;
 	

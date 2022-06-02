@@ -30,14 +30,10 @@ public class AuthController {
 
 
 	@PostMapping("/signUp")
-	    public ResponseEntity<?> signup(@RequestBody UserCreateRequest userCreateRequest) {
+	    public ResponseEntity<?> signup(@RequestBody SignupRequest signupRequest) {
               
 		
-	SignupReponse response = authService.signup(new SignupRequest(
-				userCreateRequest.getUserName(),
-				userCreateRequest.getEMail(),
-				userCreateRequest.getPassword(),
-				""));
+	SignupReponse response = authService.signup(signupRequest);
 			  
 		   		return ResponseEntity.ok(response);
 		  

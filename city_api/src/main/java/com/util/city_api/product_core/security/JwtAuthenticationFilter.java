@@ -1,11 +1,11 @@
 package com.util.city_api.product_core.security;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;
@@ -16,16 +16,19 @@ import java.io.IOException;
 
 import static com.util.city_api.product_core.constants.ProductApplicationConstants.*;
 
-@Component
+@Service
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
-    @Autowired
-    private JwtUserDetailsService userDetailsService;
+    
+    private final JwtUserDetailsService userDetailsService;
 
-    @Autowired
-    private JwtUtil jwtUtil;
-
-
+    private final JwtUtil jwtUtil;
+    
+    public JwtAuthenticationFilter(UserDetailsService userDetailsService, JwtUtil jwtUtil) {
+    	this.userDetailsService = (JwtUserDetailsService) userDetailsService;
+    	this.jwtUtil = jwtUtil;
+    }
+    
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {

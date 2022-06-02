@@ -3,6 +3,7 @@ package com.util.city_api.baseMockModel;
 import org.mockito.Mockito;
 
 import com.util.city_api.dao.RefreshTokenDao;
+import com.util.city_api.product_core.dtoConvertor.RoleDtoConvertor;
 import com.util.city_api.product_core.dtoConvertor.UserDtoConvertor;
 import com.util.city_api.service._abstract.IAccesTokenService;
 import com.util.city_api.service._abstract.IConfirmationTokenService;
@@ -78,8 +79,8 @@ public class BaseMockServiceAndServiceModel extends BaseMockDaoAndDaoModel{
 		return Mockito.mock(UserService.class);
 	}
 	
-	public IRoleService getRoleService() {
-		return new RoleService(getRoleDao());
+	public IRoleService getRoleService(RoleDtoConvertor roleDtoConvertor) {
+		return new RoleService(getRoleDao(), roleDtoConvertor);
 	}
 	
 	public IRoleService getMockRoleService() {

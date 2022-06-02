@@ -105,8 +105,9 @@ public class AuthService implements IAuthService{
 		
 		
 		
-		_userDto = userService.createUser(new UserCreateRequest(signupRequest.getEmail(),
+		_userDto = userService.createUser(new UserCreateRequest(
 				signupRequest.getUsername(),
+				signupRequest.getEmail(),
 				signupRequest.getPassword()));
 		
 		_user = userDtoConvertor.convert(_userDto);
@@ -170,7 +171,7 @@ public class AuthService implements IAuthService{
         	
         	log.error(logMetodTitle +"confirmationToken not created and saved");
         	
-        	throw new UnSuccessfulException(UN_SUCCESSFUL_SIGNUP,D_CONFIRMATION_TOKEN_NOT_CREATED_OR_SAVED,"confirmationToken created and saved"); 
+        	throw new UnSuccessfulException(UN_SUCCESSFUL_SIGNUP,D_CONFIRMATION_TOKEN_NOT_CREATED_OR_SAVED,"confirmationToken not created and saved"); 
         }
 		
         

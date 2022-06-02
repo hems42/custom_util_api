@@ -4,7 +4,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.util.city_api.core.constant.CoreEnumRoles;
 import com.util.city_api.entity.primary.User;
 
 import java.util.Collection;

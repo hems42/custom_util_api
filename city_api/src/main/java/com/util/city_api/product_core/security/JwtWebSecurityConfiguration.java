@@ -14,32 +14,35 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.util.city_api.core.constant.CoreEnumRoles;
+
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class JwtWebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-
+	@Autowired
+	private JwtUtil jwtUtil;  
+   
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
     private final UserDetailsService userDetailsService;
 
     private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
 
-    public JwtWebSecurityConfiguration(JwtAuthenticationFilter jwtAuthenticationFilter,
-                                       UserDetailsService userDetailsService,
+    public JwtWebSecurityConfiguration(UserDetailsService userDetailsService,
                                        JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint) {
-        this.jwtAuthenticationFilter = jwtAuthenticationFilter;
         this.userDetailsService = userDetailsService;
         this.jwtAuthenticationEntryPoint = jwtAuthenticationEntryPoint;
+        this.jwtAuthenticationFilter = new JwtAuthenticationFilter(userDetailsService, jwtUtil);
     }
 
-    @Autowired
-    public void configurePasswordEncoder(AuthenticationManagerBuilder builder) throws Exception {
 
-        builder.userDetailsService(userDetailsService).passwordEncoder(getBCryptPasswordEncoder());
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    	auth.userDetailsService(userDetailsService).passwordEncoder(getBCryptPasswordEncoder());
     }
-
+    
     @Bean
     public BCryptPasswordEncoder getBCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
@@ -57,6 +60,7 @@ public class JwtWebSecurityConfiguration extends WebSecurityConfigurerAdapter {
             .and()
                 .csrf().disable()
                 .authorizeRequests().antMatchers("/api/auth/**").permitAll()
+                .antMatchers("/api/city/**").hasAnyRole(CoreEnumRoles.ADMIN.getRoleName())
                         .anyRequest().authenticated()
             .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
